@@ -1,19 +1,14 @@
--- My neovim config in lua!
+-- My neovim config in Lua!
 
-local cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
-local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
-local g = vim.g      -- a table to access global variables
-local opt = vim.opt  -- to set options
+-- Functions
 
-local system_name
-if vim.fn.has("mac") == 1 then
-  system_name = "macOS"
-elseif vim.fn.has("unix") == 1 then
-  system_name = "Linux"
-elseif vim.fn.has('win32') == 1 then
-  system_name = "Windows"
-else
-  print("Unsupported system for sumneko")
+local key_mapper = function(mode, key, result)
+  	vim.api.nvim_set_keymap(
+    	mode,
+    	key,
+    	result,
+    		{noremap = true, silent = true}
+  	)
 end
 
 -- Neovim options
@@ -35,115 +30,124 @@ vim.opt.breakindent = true -- Wrapped lines have the same indentation as the pre
 vim.opt.showbreak = ' > ' -- Shown before wrapped line.
 vim.opt.shiftwidth = 0 -- The amount of tab to delete or move through, 0 sets it to tabstop.
 vim.opt.termguicolors = true -- Allows more colors to be used.
-vim.g.dracula_show_end_of_buffer = true  -- default false, Turn on or off EndOfBuffer symbol
-vim.g.dracula_transparent_bg = true -- default false, enables transparent background
-vim.cmd[[colorscheme dracula]]
 
 -- Custom Neovim keymaps
 
-vim.api.nvim_set_keymap('', '<S-j>', ':tabprevious<CR>', {}) -- Sets switching to the previous tab to Shift + J.
-vim.api.nvim_set_keymap('', '<S-k>', ':tabnext<CR>', {}) -- Sets switching to the next tab to Shift + K.
+key_mapper('', '<S-j>', ':tabprevious<CR>') -- Sets switching to the previous tab to Shift + J.
+key_mapper('', '<S-k>', ':tabnext<CR>') -- Sets switching to the next tab to Shift + K.
+key_mapper('', 'ff', '<cmd>Telescope find_files<cr>')
+key_mapper('', 'fb', '<cmd>Telescope file_browser<cr>')
+key_mapper('', 'gs', '<cmd>Telescope grep_string<cr>')
+key_mapper('', 'lg', '<cmd>Telescope live_grep<cr>')
 
+-- Treesitter
+
+local configs = require'nvim-treesitter.configs'
+configs.setup {
+  	ensure_installed = "maintained",
+  	highlight = {
+    	enable = true,
+  	},
+  	indent = {
+    	enable = true
+  	}
+}
 
 -- LSP
 
-local nvim_lsp = require'lspconfig'
+key_mapper('n', 'gd', ':lua vim.lsp.buf.definition()<CR>')
+key_mapper('n', 'gD', ':lua vim.lsp.buf.declaration()<CR>')
+key_mapper('n', 'gi', ':lua vim.lsp.buf.implementation()<CR>')
+key_mapper('n', 'gw', ':lua vim.lsp.buf.document_symbol()<CR>')
+key_mapper('n', 'gW', ':lua vim.lsp.buf.workspace_symbol()<CR>')
+key_mapper('n', 'gr', ':lua vim.lsp.buf.references()<CR>')
+key_mapper('n', 'gt', ':lua vim.lsp.buf.type_definition()<CR>')
+key_mapper('n', 'K', ':lua vim.lsp.buf.hover()<CR>')
+key_mapper('n', '<c-k>', ':lua vim.lsp.buf.signature_help()<CR>')
+key_mapper('n', '<leader>af', ':lua vim.lsp.buf.code_action()<CR>')
+key_mapper('n', '<leader>rn', ':lua vim.lsp.buf.rename()<CR>')
 
-local opts = {
-    tools = { -- rust-tools options
-        autoSetHints = true,
-        hover_with_actions = true,
-        inlay_hints = {
-            show_parameter_hints = false,
-            parameter_hints_prefix = "",
-            other_hints_prefix = "",
-        },
-    },
+local lsp_installer = require("nvim-lsp-installer")
 
-    -- all the opts to send to nvim-lspconfig
-    -- these override the defaults set by rust-tools.nvim
-    -- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
-    server = {
-        -- on_attach is a callback called when the language server attachs to the buffer
-        -- on_attach = on_attach,
-        settings = {
-            -- to enable rust-analyzer settings visit:
-            -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
-            ["rust-analyzer"] = {
-                -- enable clippy on save
-                checkOnSave = {
-                    command = "clippy"
-                },
-            }
-        }
-    },
-}
+-- Register a handler that will be called for all installed servers.
+-- Alternatively, you may also register handlers on specific server instances instead (see example below).
+lsp_installer.on_server_ready(function(server)
+    local opts = {}
 
-require('rust-tools').setup(opts)
+    -- (optional) Customize the options passed to the server
+    -- if server.name == "tsserver" then
+    --     opts.root_dir = function() ... end
+    -- end
 
-local cmp = require'cmp'
-cmp.setup({
-  -- Enable LSP snippets
-  snippet = {
-    expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body)
-    end,
-  },
-  mapping = {
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-n>'] = cmp.mapping.select_next_item(),
-    -- Add tab support
-    ['<S-Tab>'] = cmp.mapping.select_prev_item(),
-    ['<Tab>'] = cmp.mapping.select_next_item(),
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Insert,
-      select = true,
-    })
-  },
+    -- This setup() function is exactly the same as lspconfig's setup function.
+    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+    server:setup(opts)
+end)
 
-  -- Installed sources
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'vsnip' },
-    { name = 'path' },
-    { name = 'buffer' },
-  },
-})
+-- Colorizer
+require'colorizer'.setup()
 
--- Treesitter
-local ts = require 'nvim-treesitter.configs'
-ts.setup {ensure_installed = 'maintained', highlight = {enable = true}, indent = {enable = true}}
+-- Theme
+vim.cmd[[colorscheme dracula]]
 
--- Packer.Nvim
+-- Packer packages
 
 return require('packer').startup(function()
 	use 'wbthomason/packer.nvim'
 
-	use {
-        'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate'
-	}
-
+	use 'nvim-treesitter/nvim-treesitter'
+	
 	use 'neovim/nvim-lspconfig'
 
-	use 'simrat39/rust-tools.nvim'
+	use 'williamboman/nvim-lsp-installer'
 
-	use 'hrsh7th/vim-vsnip'
+	use 'ms-jpq/coq_nvim'
 
-	use 'hrsh7th/cmp-nvim-lsp'
+	use 'tversteeg/registers.nvim'
 
-	use 'hrsh7th/cmp-vsnip'
+	use {
+		'nvim-telescope/telescope.nvim',
+		requires = { {'nvim-lua/plenary.nvim'}}
+	}
 
-	use 'hrsh7th/cmp-path'
+	use 'norcalli/nvim-colorizer.lua'
 
-	use 'hrsh7th/cmp-buffer'
+	use {
+		"folke/twilight.nvim",
+		config = function()
+		require("twilight").setup {
+      			-- your configuration comes here
+      			-- or leave it empty to use the default settings
+      			-- refer to the configuration section below
+    		}
+  		end
+	}
 
-	use 'hrsh7th/nvim-cmp'
+	use {
+  		"folke/zen-mode.nvim",
+  		config = function()
+    		require("zen-mode").setup {
+      			-- your configuration comes here
+      			-- or leave it empty to use the default settings
+      			-- refer to the configuration section below
+    		}
+  		end
+	}
+
+	use 'sunjon/shade.nvim'
 
 	use 'Mofiqul/dracula.nvim'
+
+	use {
+		'jghauser/mkdir.nvim',
+		config = function()
+			require('mkdir')
+		end
+	}
+
+	use {
+  		'yamatsum/nvim-nonicons',
+  		requires = {'kyazdani42/nvim-web-devicons'}
+	}
 end)
 
