@@ -2,8 +2,6 @@
 
 A bunch of config for some Linux progams I use.
 
-Note that pretty much the only reason this repo is public is so that I don't need to worry about logins and PATs.
-
 Stuff to install (that I prefer):
 
 neovim
