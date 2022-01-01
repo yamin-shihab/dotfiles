@@ -21,7 +21,7 @@ vim.opt.linebreak = true -- Line wraps don't split a word
 vim.opt.wrap = true -- Wether to wrap long lines or not
 vim.opt.ruler = true -- Shows the current line number above the status line
 vim.opt.cursorline = true -- Shows line under current line
-vim.opt.number = true -- Shows line number to the left of each line
+vim.opt.relativenumber = true -- Shows line number to the left of each line, relative to the current position
 vim.opt.title = true -- Wether neovim has a title or not
 vim.opt.background = 'dark' -- Enables syntax colors for dark color schemes
 vim.opt.incsearch = true -- Searches start without pressing the Enter key
@@ -105,7 +105,7 @@ require('telescope').setup {
 key_mapper('', 'ff', '<cmd>Telescope find_files<cr>')
 key_mapper('', 'fb', '<cmd>Telescope file_browser<cr>')
 key_mapper('', 'gs', '<cmd>Telescope grep_string<cr>')
-key_mapper('', 'lg', '<cmd>Telescope live_grep<cr>')
+key_mapper('', 'tg', '<cmd>Telescope live_grep<cr>')
 key_mapper('', 'zl', '<cmd>Telescope zoxide list<cr>')
 
 -- Packer packages
@@ -142,6 +142,7 @@ return require('packer').startup(function()
 
 	use {
   		'folke/zen-mode.nvim',
+
   		config = function()
     		require("zen-mode").setup()
   		end,
