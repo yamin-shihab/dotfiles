@@ -17,7 +17,7 @@ import XMonad.Layout.ShowWName
 ---------------
 
 -- Basic stuff
-myFont = "JetBrainsMono Nerd Font Mono"
+myFont = "JetBrainsMono Nerd Font"
 myTerminal = "wezterm"
 myModMask =	mod4Mask
 myBorderWidth =	3
