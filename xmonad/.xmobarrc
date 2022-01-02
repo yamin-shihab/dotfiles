@@ -1,16 +1,16 @@
 Config
 	{ font = "xft:JetBrainsMono Nerd Font-10"
 	, bgColor = "#282a36"
-	, fgColor = "#44485a"
+	, fgColor = "#44475a"
 	, position = TopH 30
 	, border = BottomB
 	, borderWidth = 3
 	, borderColor = "#6272a4"
 	, commands =
 		[ Run XMonadLog
-		, Run Date "<fc=#ABABAB>%F (%a) %T</fc>" "date" 10
+		, Run Date "<fc=#f8f8f2>%F (%a) %T</fc>" "date" 10
 		, Run DynNetwork
-			[ "--template" , "<dev>: <tx>kB/s|<rx>kB/s"
+			[ "--template" , "<dev>: <tx>kB/s|<rx>kB/s |"
             , "--Low"      , "1000"       -- units: B/s
             , "--High"     , "5000"       -- units: B/s
             , "--low"      , "#50fa7b"
@@ -18,7 +18,7 @@ Config
             , "--high"     , "#ff5555"
             ] 10
 		, Run MultiCpu
-			[ "--template" , "CPU: <total>%"
+			[ "--template" , "CPU: <total>% |"
             , "--Low"      , "50"         -- units: %
             , "--High"     , "85"         -- units: %
             , "--low"      , "#50fa7b"
@@ -26,7 +26,7 @@ Config
             , "--high"     , "#ff5555"
             ] 10
 		, Run Memory
-			[ "--template" ,"MEM: <usedratio>%"
+			[ "--template" ,"MEM: <usedratio>% |"
             , "--Low"      , "20"        -- units: %
             , "--High"     , "90"        -- units: %
             , "--low"      , "#50fa7b"
@@ -34,5 +34,5 @@ Config
             , "--high"     , "#ff5555"
             ] 10
 		]
-    , template = " %XMonadLog% }{ %dynnetwork% | %multicpu% %memory% | %date% "
+    , template = " %XMonadLog% }{ %dynnetwork% %multicpu% %memory% %date% "
 	}
