@@ -13,25 +13,25 @@ Config
 			[ "--template" , "<dev>: <tx>kB/s|<rx>kB/s"
             , "--Low"      , "1000"       -- units: B/s
             , "--High"     , "5000"       -- units: B/s
-            , "--low"      , "darkgreen"
-            , "--normal"   , "darkorange"
-            , "--high"     , "darkred"
+            , "--low"      , "#50fa7b"
+            , "--normal"   , "#ffb86c"
+            , "--high"     , "#ff5555"
             ] 10
 		, Run MultiCpu
 			[ "--template" , "CPU: <total>%"
             , "--Low"      , "50"         -- units: %
             , "--High"     , "85"         -- units: %
-            , "--low"      , "darkgreen"
-            , "--normal"   , "darkorange"
-            , "--high"     , "darkred"
+            , "--low"      , "#50fa7b"
+            , "--normal"   , "#ffb86c"
+            , "--high"     , "#ff5555"
             ] 10
 		, Run Memory
 			[ "--template" ,"MEM: <usedratio>%"
             , "--Low"      , "20"        -- units: %
             , "--High"     , "90"        -- units: %
-            , "--low"      , "darkgreen"
-            , "--normal"   , "darkorange"
-            , "--high"     , "darkred"
+            , "--low"      , "#50fa7b"
+            , "--normal"   , "#ffb86c"
+            , "--high"     , "#ff5555"
             ] 10
 		]
     , template = " %XMonadLog% }{ %dynnetwork% | %multicpu% %memory% | %date% "
