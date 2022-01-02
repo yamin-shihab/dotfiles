@@ -25,7 +25,7 @@ myBackgroundColor = "#282a36"
 myForegroundColor = "#f8f8f2"
 myNormalBorderColor = "#44475A"
 myFocusedBorderColor = "#6272A4"
-myWorkspaces = ["main (0)", "web (1)", "chat (2)", "edit (3)"]
+myWorkspaces = ["main", "web", "chat", "edit"]
 
 -- Keybinds
 myAdditionalKeysP =
