@@ -32,6 +32,7 @@ myAdditionalKeysP =
 	[ ("M-p", spawn "rofi -show drun")
 	, ("M-<Print>", spawn "flameshot gui")
 	, ("M-x", spawnAllStatusBars)
+	, ("M-z", sendMessage ToggleStruts)
 	]
 
 -- Looks
