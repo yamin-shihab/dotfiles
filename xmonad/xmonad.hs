@@ -36,16 +36,8 @@ myAdditionalKeysP =
 	]
 
 -- Looks
-myShowWNameTheme =
-	def
-		{ swn_font = myFont
-		, swn_bgcolor = myBackgroundColor
-		, swn_color = myForegroundColor
-		, swn_fade = 1
-		}
-
 myLayoutHook =
-	showWName' myShowWNameTheme . avoidStruts $ tiled ||| noBorders Full
+	avoidStruts $ tiled ||| noBorders Full
 		where
 			tiled = spacingWithEdge 10 $ Tall nmaster delta ratio
 			nmaster = 1
