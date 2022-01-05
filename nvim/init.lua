@@ -108,6 +108,11 @@ key_mapper('', 'gs', '<cmd>Telescope grep_string<cr>')
 key_mapper('', 'tg', '<cmd>Telescope live_grep<cr>')
 key_mapper('', 'zl', '<cmd>Telescope zoxide list<cr>')
 
+-- Autostart Coq
+vim.g.coq_settings = {
+  auto_start = 'shut-up',
+}
+
 -- Packer packages
 return require('packer').startup(function()
 	use 'wbthomason/packer.nvim'
