@@ -26,6 +26,7 @@ myForegroundColor = "#f8f8f2"
 myNormalBorderColor = "#44475A"
 myFocusedBorderColor = "#6272A4"
 myWorkspaces = ["main", "term", "web", "chat", "edit", "temp"]
+pulseAudioSink = 0
 
 -- Keybinds
 myAdditionalKeysP =
@@ -33,6 +34,9 @@ myAdditionalKeysP =
 	, ("M-<Print>", spawn "flameshot gui")
 	, ("M-x", spawnAllStatusBars)
 	, ("M-z", sendMessage ToggleStruts)
+	, ("M-<XF86AudioRaiseVolume>", spawn $ "pactl set-sink-volume " ++ show pulseAudioSink ++ " +5%")
+	, ("M-<XF86AudioLowerVolume>", spawn $ "pactl set-sink-volume " ++ show pulseAudioSink ++ " -5%")
+	, ("M-<XF86AudioMute>", spawn $ "pactl set-sink-volume " ++ show pulseAudioSink ++ " 0%")
 	]
 
 -- Looks
