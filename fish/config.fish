@@ -4,7 +4,6 @@ if status is-interactive
 	alias please="sudo"
 	alias connect="iwctl station wlan0 connect Atheer"
 	alias disonnect="iwctl station wlan0 disconnect"
-	alias exa="exa -l --color-scale -a --group-directories-first -B -h -m --git --sort name"
 	export TERMINAL="/usr/bin/wezterm"
 	zoxide init fish | source
 	if test -n "$DESKTOP_SESSION"
