@@ -1,5 +1,8 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export CC:/usr/bin/clang
+SETUVAR --export CMAKE_GENERATOR:Ninja
+SETUVAR --export CXX:/usr/bin/clang\x2b\x2b
 SETUVAR --export PF_INFO:ascii\x20title\x20host\x20kernel\x20os\x20shell\x20uptime\x20memory\x20wm\x20palette
 SETUVAR __fish_initialized:3100
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
@@ -29,6 +32,6 @@ SETUVAR fish_pager_color_completion:\x1d
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
-SETUVAR fish_user_paths:/home/yamin/crispy\x2ddoom/src/\x1e/home/yamin/\x2ecargo/bin
+SETUVAR fish_user_paths:/home/yamin/\x2elocal/bin/\x1e/home/yamin/\x2elocal/bin\x1e/home/yamin/\x2elocal/bin\x1e/home/yamin/\x2elocal/bin\x1e/home/yamin/\x2elocal/bin\x1e/home/yamin/\x2elocal/bin\x1e/home/yamin/\x2elocal/bin\x1e/home/yamin/\x2elocal/bin\x1e/home/yamin/\x2elocal/bin\x1e/home/yamin/\x2elocal/bin\x1e/home/yamin/\x2elocal/bin\x1e/home/yamin/\x2elocal/bin\x1e/home/yamin/crispy\x2ddoom/src/\x1e/home/yamin/\x2ecargo/bin
 SETUVAR theme_color_scheme:dracula
 SETUVAR theme_nerd_fonts:yes

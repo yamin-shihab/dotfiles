@@ -58,7 +58,9 @@ require('nvim-treesitter.configs').setup {
 require('Comment').setup()
 
 -- Visible indents
-require('indent_blankline').setup()
+require('indent_blankline').setup {
+	filetype_exclude = { 'alpha' },
+}
 
 -- Treesitter
 require('nvim-treesitter.configs').setup {
@@ -72,9 +74,14 @@ require('nvim-treesitter.configs').setup {
 }
 
 -- Status bar / bufferline
-require('hardline').setup {
- 	bufferline = true,
- 	theme = "dracula"
+-- require('hardline').setup {
+--  	bufferline = true,
+--  	theme = "dracula"
+-- }
+require('lualine').setup {
+	options = {
+		theme = 'dracula',
+	},
 }
 
 -- LSP
@@ -108,9 +115,14 @@ key_mapper('', 'gs', '<cmd>Telescope grep_string<cr>')
 key_mapper('', 'tg', '<cmd>Telescope live_grep<cr>')
 key_mapper('', 'zl', '<cmd>Telescope zoxide list<cr>')
 
--- Autostart Coq
+-- Coq
 vim.g.coq_settings = {
-  auto_start = 'shut-up',
+	auto_start = 'shut-up',
+	clients = {
+		tabnine = {
+			enabled = true,
+		},
+	},
 }
 
 -- Packer packages
@@ -123,7 +135,10 @@ return require('packer').startup(function()
 
 	use 'williamboman/nvim-lsp-installer'
 
-	use 'ms-jpq/coq_nvim'
+	use {
+		'ms-jpq/coq_nvim',
+		'ms-jpq/coq.artifacts',
+	}
 
 	use 'tversteeg/registers.nvim'
 
@@ -219,4 +234,31 @@ return require('packer').startup(function()
 	}
 
 	use 'ojroques/nvim-hardline'
+
+	use {
+  		'nvim-lualine/lualine.nvim',
+  		requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+	}
+
+	use {
+		'kdheepak/tabline.nvim',
+		config = function()
+    		require'tabline'.setup {
+      			-- Defaults configuration options
+      			enable = true,
+      			options = {
+      				-- If lualine is installed tabline will use separators configured in lualine by default.
+      				-- These options can be used to override those settings.
+        			section_separators = {'', ''},
+        			component_separators = {'', ''},
+        			max_bufferline_percent = 66, -- set to nil by default, and it uses vim.o.columns * 2/3
+        			show_tabs_always = false, -- this shows tabs only when there are more than one tab or if the first tab is named
+        			show_devicons = true, -- this shows devicons in buffer section
+        			show_bufnr = false, -- this appends [bufnr] to buffer section,
+        			show_filename_only = false, -- shows base filename only instead of relative path in filename
+      			}
+    		}
+		end,
+		requires = { { 'nvim-lualine/lualine.nvim', opt=true }, {'kyazdani42/nvim-web-devicons', opt = true} }
+	}
 end)
