@@ -21,7 +21,7 @@ myTerminal = "wezterm"
 
 myModMask = mod4Mask
 
-myBorderWidth = 3
+myBorderWidth = 4
 
 myBackgroundColor = "#282a36"
 
