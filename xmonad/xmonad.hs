@@ -52,7 +52,7 @@ myAdditionalKeysP =
 -- Looks
 myLayoutHook = avoidStruts $ tiled ||| noBorders Full
   where
-    tiled = spacingWithEdge 10 $ Tall nmaster delta ratio
+    tiled = spacingWithEdge 25 $ Tall nmaster delta ratio
     nmaster = 1
     ratio = 1 / 2
     delta = 3 / 100
