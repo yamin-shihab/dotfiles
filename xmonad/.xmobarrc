@@ -4,7 +4,7 @@ Config
 	, fgColor = "#44475a"
 	, position = TopH 30
 	, border = BottomB
-	, borderWidth = 3
+	, borderWidth = 4
 	, borderColor = "#6272a4"
 	, commands =
 		[ Run XMonadLog
