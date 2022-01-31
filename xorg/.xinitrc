@@ -32,10 +32,12 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
+picom --experimental-backends &
+variety &
 feh &
-# variety &
-picom &
+variety &
 feh &
+variety &
 flameshot &
 dunst &
 redshift -P 0 5500 &
