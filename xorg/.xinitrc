@@ -33,16 +33,12 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 picom --experimental-backends &
-variety &
-feh &
-variety &
-feh &
-variety &
 flameshot &
 dunst &
-redshift -P 0 5500 &
 xsetroot -cursor_name left_ptr &
-xrandr --output DVI-D-0 --left-of HDMI-0 &
 
 export XDG_CURRENT_DESKTOP=xmonad
 exec xmonad
+
+eval $(gnome-keyring-daemon --start)
+export SSH_AUTH_SOCK

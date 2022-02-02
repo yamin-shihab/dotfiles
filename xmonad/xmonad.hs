@@ -3,6 +3,7 @@
 -------------
 import XMonad
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 import XMonad.Layout.NoBorders
@@ -83,7 +84,7 @@ myXmobar = statusBarProp "xmobar" (pure myXmobarPP)
 
 -- Just look at the name
 myMainConfig =
-    xmonad . withSB myXmobar . docks $
+    xmonad . ewmh . withSB myXmobar . docks $
     def
         { terminal = myTerminal
         , modMask = myModMask
