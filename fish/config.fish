@@ -1,5 +1,6 @@
 if status is-interactive
 	# Commands to run in interactive sessions can go here
+	fish_add_path "$HOME/.local/bin" "$HOME/.cargo/bin"
 	alias pls="sudo"
 	alias please="sudo"
 	alias connect="iwctl station wlan0 connect Atheer"
