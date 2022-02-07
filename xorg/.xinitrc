@@ -36,6 +36,10 @@ picom --experimental-backends &
 flameshot &
 dunst &
 xsetroot -cursor_name left_ptr &
+/usr/lib/geoclue-2.0/demos/agent &
+redshift -t 7000:5000 &
+sudo modprobe i2c-dev &
+sudo modprobe i2c-i801 &
 
 export XDG_CURRENT_DESKTOP=xmonad
 exec xmonad
