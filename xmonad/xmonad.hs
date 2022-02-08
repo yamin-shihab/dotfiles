@@ -2,8 +2,8 @@
 -- IMPORTS --
 -------------
 import XMonad
-import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 import XMonad.Layout.NoBorders
@@ -39,7 +39,7 @@ pulseAudioSink = 0
 -- Keybinds
 myAdditionalKeysP =
     [ ("M-p", spawn "rofi -show drun")
-	, ("M-o", spawn "systemctl suspend")
+    , ("M-o", spawn "systemctl suspend")
     , ("M-<Print>", spawn "flameshot gui")
     , ("M-x", spawnAllStatusBars)
     , ("M-z", sendMessage ToggleStruts)

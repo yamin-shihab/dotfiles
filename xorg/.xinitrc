@@ -41,8 +41,8 @@ redshift -t 7000:5000 &
 sudo modprobe i2c-dev &
 sudo modprobe i2c-i801 &
 
-export XDG_CURRENT_DESKTOP=xmonad
-exec xmonad
-
 eval $(gnome-keyring-daemon --start)
 export SSH_AUTH_SOCK
+
+export XDG_CURRENT_DESKTOP=xmonad
+exec xmonad
