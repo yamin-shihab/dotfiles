@@ -16,3 +16,4 @@ c.downloads.location.directory = "/home/yamin/downloads/"
 c.fonts.default_family = "JetBrainsMono Nerd Font"
 c.fonts.default_size = "10pt"
 c.window.hide_decoration = True
+c.content.javascript.can_access_clipboard = True

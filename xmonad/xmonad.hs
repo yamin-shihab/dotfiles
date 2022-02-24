@@ -65,8 +65,8 @@ myStartupHook = spawnAllStatusBars
 -- Xmobar stuff
 spawnAllStatusBars = do
     killAllStatusBars
-    spawnStatusBar ("xmobar -x 0")
-    spawnStatusBar ("xmobar -x 1")
+    spawnStatusBar "xmobar -x 0"
+    spawnStatusBar "xmobar -x 1"
 
 myXmobarColor fgColor = xmobarColor fgColor "#282a36"
 

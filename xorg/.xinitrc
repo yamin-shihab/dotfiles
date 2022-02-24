@@ -32,14 +32,13 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
+discover-overlay &
 picom --experimental-backends &
 flameshot &
 dunst &
 xsetroot -cursor_name left_ptr &
 /usr/lib/geoclue-2.0/demos/agent &
 redshift -t 7000:5000 &
-sudo modprobe i2c-dev &
-sudo modprobe i2c-i801 &
 
 eval $(gnome-keyring-daemon --start)
 export SSH_AUTH_SOCK

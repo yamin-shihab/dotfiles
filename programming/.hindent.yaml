@@ -1,9 +1,0 @@
-indent-size: 4
-line-length: 80
-sort-imports: true
-force-trailing-newline: true
-line-breaks: [":>", ":<|>"]
-extensions:
-  - DataKinds
-  - GADTs
-  - TypeApplications
