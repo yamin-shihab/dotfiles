@@ -15,8 +15,8 @@
 
 #window {
     background-color: @background;
-    border:           1;
-    border-radius: 6;
+    border:           4;
+    border-radius: 0;
     border-color: @bordercolor;
     padding:          5;
 }

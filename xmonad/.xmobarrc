@@ -1,38 +1,73 @@
 Config
-	{ font = "xft:JetBrainsMono Nerd Font-10:style=Bold"
-	, bgColor = "#282a36"
-	, fgColor = "#44475a"
-	, position = TopH 30
-	, border = BottomB
-	, borderWidth = 4
-	, borderColor = "#6272a4"
+	{ font = 			"xft:JetBrainsMono Nerd Font-10:style=Bold"
+	, bgColor = 		"#282a36"
+	, fgColor = 		"#44475a"
+	, allDesktops = 	True
+	, position = 		TopH 30
+	, border = 			BottomB
+	, borderWidth = 	4
+	, borderColor = 	"#6272a4"
 	, commands =
 		[ Run XMonadLog
-		, Run Date "<fc=#f8f8f2>%F (%a) %T</fc>" "date" 10
+		, Run Volume "default" "Master"
+			[ "--template" , "VOL: <volume>% <status> |"
+            , "--Low"      , "80"
+            , "--High"     , "120"
+            , "--low"      , "#50fa7b"
+            , "--normal"   , "#ffb86c"
+            , "--high"     , "#ff5555"
+			, "--onc"      , "#50fa7b"
+			, "--offc"     , "#ff5555"
+            ] 10
 		, Run DynNetwork
-			[ "--template" , "<dev>: <tx>kB/s|<rx>kB/s |"
-            , "--Low"      , "1000"       -- units: B/s
-            , "--High"     , "5000"       -- units: B/s
+			[ "--template" , "<dev>: <tx>tkB/s|<rx>rkB/s |"
+            , "--Low"      , "1000"
+            , "--High"     , "5000"
+            , "--low"      , "#50fa7b"
+            , "--normal"   , "#ffb86c"
+            , "--high"     , "#ff5555"
+            ] 10
+		, Run ThermalZone 0
+			[ "--template" , "THERM: <temp>°C |"
+            , "--Low"      , "30"
+            , "--High"     , "50"
             , "--low"      , "#50fa7b"
             , "--normal"   , "#ffb86c"
             , "--high"     , "#ff5555"
             ] 10
 		, Run MultiCpu
 			[ "--template" , "CPU: <total>% |"
-            , "--Low"      , "50"         -- units: %
-            , "--High"     , "85"         -- units: %
+            , "--Low"      , "50"
+            , "--High"     , "85"
             , "--low"      , "#50fa7b"
             , "--normal"   , "#ffb86c"
             , "--high"     , "#ff5555"
             ] 10
 		, Run Memory
-			[ "--template" ,"MEM: <usedratio>% |"
-            , "--Low"      , "20"        -- units: %
-            , "--High"     , "90"        -- units: %
+			[ "--template" , "MEM: <usedratio>% |"
+            , "--Low"      , "20"
+            , "--High"     , "90"
             , "--low"      , "#50fa7b"
             , "--normal"   , "#ffb86c"
             , "--high"     , "#ff5555"
             ] 10
+		, Run Swap
+			[ "--template" , "SWAP: <usedratio>% |"
+            , "--Low"      , "20"
+            , "--High"     , "90"
+            , "--low"      , "#50fa7b"
+            , "--normal"   , "#ffb86c"
+            , "--high"     , "#ff5555"
+            ] 10
+		, Run Uptime
+			[ "--template" , "UPTM: <days>-<hours> |"
+            , "--Low"      , "0"
+            , "--High"     , "1"
+            , "--low"      , "#50fa7b"
+            , "--normal"   , "#ffb86c"
+            , "--high"     , "#ff5555"
+            ] 10
+		, Run Date "<fc=#f8f8f2>%F (%a) %T</fc>" "date" 10
 		]
-    , template = " %XMonadLog% }{ %dynnetwork% %multicpu% %memory% %date% "
+    , template = 		" %XMonadLog% }{ %default:Master% %dynnetwork% %thermal0% %multicpu% %memory% %swap% %uptime% %date% "
 	}

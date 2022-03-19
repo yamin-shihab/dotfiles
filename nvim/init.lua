@@ -235,4 +235,12 @@ return require('packer').startup(function()
   		'nvim-lualine/lualine.nvim',
   		requires = { 'kyazdani42/nvim-web-devicons', opt = true },
 	}
+
+	use {
+  		"narutoxy/dim.lua",
+  		requires = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
+  		config = function()
+    		require('dim').setup({})
+  		end
+	}
 end)

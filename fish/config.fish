@@ -5,12 +5,10 @@ if status is-interactive
 	alias suspend="sudo systemctl suspend"
 	alias connect="iwctl station wlan0 connect Atheer"
 	alias disonnect="iwctl station wlan0 disconnect"
-	alias destroy-all-orphans="sudo pacman -Rns (pacman -Qtdq)"
 	alias weather="https wttr.in/Edmonton"
 	alias bat="bat --theme=Dracula"
 	export TERMINAL="/usr/bin/wezterm"
 	zoxide init fish | source
-
 
 	if [ "$TERM" = "linux" ]; then
 		printf %b '\e[40m' '\e[8]' # set default background to color 0 'dracula-bg'
