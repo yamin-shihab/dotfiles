@@ -17,14 +17,6 @@ Config
             , "--normal"   , "#ffb86c"
             , "--high"     , "#ff5555"
             ] 10
-		, Run ThermalZone 0
-			[ "--template" , "THERM: <temp>°C |"
-            , "--Low"      , "30"
-            , "--High"     , "50"
-            , "--low"      , "#50fa7b"
-            , "--normal"   , "#ffb86c"
-            , "--high"     , "#ff5555"
-            ] 10
 		, Run MultiCpu
 			[ "--template" , "CPU: <total>% |"
             , "--Low"      , "50"
@@ -59,5 +51,5 @@ Config
             ] 10
 		, Run Date "<fc=#f8f8f2>%F (%a) %T</fc>" "date" 10
 		]
-    , template = 		" %XMonadLog% }{ %dynnetwork% %thermal0% %multicpu% %memory% %swap% %uptime% %date% "
+    , template = 		" %XMonadLog% }{ %dynnetwork% %multicpu% %memory% %swap% %uptime% %date% "
 	}
