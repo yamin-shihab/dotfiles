@@ -42,7 +42,7 @@ Config
             , "--high"     , "#ff5555"
             ] 10
 		, Run Uptime
-			[ "--template" , "UPTM: <days>-<hours> |"
+			[ "--template" , "UPTIME: <days>-<hours> |"
             , "--Low"      , "0"
             , "--High"     , "1"
             , "--low"      , "#50fa7b"
