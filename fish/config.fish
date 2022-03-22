@@ -5,7 +5,7 @@ if status is-interactive
 	alias suspend="sudo systemctl suspend"
 	alias connect="iwctl station wlan0 connect Atheer"
 	alias disonnect="iwctl station wlan0 disconnect"
-	alias weather="https wttr.in/Edmonton"
+	alias weather="curl wttr.in/Edmonton"
 	alias bat="bat --theme=Dracula"
 	export TERMINAL="/usr/bin/wezterm"
 	zoxide init fish | source
