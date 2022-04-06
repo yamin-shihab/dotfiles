@@ -196,17 +196,6 @@ map("v", "<C-x>", require("dial.map").dec_visual())
 map("v", "g<C-a>", require("dial.map").inc_gvisual())
 map("v", "g<C-x>", require("dial.map").dec_gvisual())
 
--- Scrollbar
-vim.cmd(
-	[[autocmd WinScrolled, VimResized, QuitPre * silent! lua require('scrollbar').show()]]
-)
-vim.cmd(
-	[[autocmd WinEnter, FocusGained * silent! lua require('scrollbar').show()]]
-)
-vim.cmd(
-	[[autocmd WinLeave, BufLeave, BufWinLeave, FocusLost * silent! lua require('scrollbar').clear()]]
-)
-
 -- Tag autorename and autoclose
 require("nvim-ts-autotag").setup()
 
@@ -228,9 +217,6 @@ require("fm-nvim").setup({
 		},
 	},
 })
-
--- Smooth scrolling
-require("neoscroll").setup()
 
 -- Open where left off
 require("nvim-lastplace").setup()
@@ -493,12 +479,10 @@ return require("packer").startup(function()
 		requres = { "gitsigns.nvim", "nvim-gps" },
 	})
 	use("Mofiqul/dracula.nvim")
-	use("Xuyuanp/scrollbar.nvim")
 	use("folke/which-key.nvim")
 	use("folke/zen-mode.nvim")
 	use("gelguy/wilder.nvim")
 	use("j-hui/fidget.nvim")
-	use("karb94/neoscroll.nvim")
 	use("lewis6991/gitsigns.nvim")
 	use("mhinz/vim-startify")
 	use("sunjon/shade.nvim")
