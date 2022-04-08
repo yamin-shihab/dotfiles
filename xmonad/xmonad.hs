@@ -18,7 +18,7 @@ import XMonad.Util.SpawnOnce
 -- Basic stuff
 myFont = "JetBrainsMono Nerd Font"
 
-myTerminal = "wezterm"
+myTerminal = "st"
 
 myModMask = mod4Mask
 
@@ -36,20 +36,21 @@ myWorkspaces = ["main", "term", "web", "chat", "edit", "temp"]
 
 pulseAudioSink = 0
 
--- Keybinds
 myAdditionalKeysP =
-    [ ("M-p", spawn "rofi -show drun")
-    , ("M-o", spawn "systemctl suspend")
-    , ("M-<Print>", spawn "flameshot gui")
-    , ("M-x", spawnAllStatusBars)
-    , ("M-z", sendMessage ToggleStruts)
-    , ( "M-<XF86AudioRaiseVolume>"
-      , spawn $ "pactl set-sink-volume " ++ show pulseAudioSink ++ " +5%")
-    , ( "M-<XF86AudioLowerVolume>"
-      , spawn $ "pactl set-sink-volume " ++ show pulseAudioSink ++ " -5%")
-    , ( "M-<XF86AudioMute>"
-      , spawn $ "pactl set-sink-volume " ++ show pulseAudioSink ++ " 0%")
-    ]
+  [ ("M-p", spawn "rofi -show drun")
+  , ("M-o", spawn "systemctl suspend")
+  , ("M-<Print>", spawn "flameshot gui")
+  , ("M-x", spawnAllStatusBars)
+  , ("M-z", sendMessage ToggleStruts)
+  , ( "M-<XF86AudioRaiseVolume>"
+    , spawn $ "pactl set-sink-volume " ++ show pulseAudioSink ++ " +5%")
+  , ( "M-<XF86AudioLowerVolume>"
+    , spawn $ "pactl set-sink-volume " ++ show pulseAudioSink ++ " -5%")
+  , ( "M-<XF86AudioMute>"
+    , spawn $ "pactl set-sink-volume " ++ show pulseAudioSink ++ " 0%")
+  , ("M-c", spawn "setxkbmap -layout us -variant colemak")
+  , ("M-v", spawn "setxkbmap -layout us")
+  ]
 
 -- Looks
 myLayoutHook = avoidStruts $ tiled ||| noBorders Full
@@ -64,39 +65,39 @@ myStartupHook = spawnAllStatusBars
 
 -- Xmobar stuff
 spawnAllStatusBars = do
-    killAllStatusBars
-    spawnStatusBar "xmobar -x 0"
-    spawnStatusBar "xmobar -x 1"
+  killAllStatusBars
+  spawnStatusBar "xmobar -x 0"
+  spawnStatusBar "xmobar -x 1"
 
 myXmobarColor fgColor = xmobarColor fgColor "#282a36"
 
 myXmobarPP =
-    def
-        { ppCurrent = myXmobarColor "#f1fa8c"
-        , ppVisible = myXmobarColor "#44475a"
-        , ppHidden = myXmobarColor "#44475a"
-        , ppUrgent = myXmobarColor "#ff5555"
-        , ppLayout = myXmobarColor "#bd93f9"
-        , ppTitle = myXmobarColor "#50fa7b"
-        , ppSep = " | "
-        }
+  def
+    { ppCurrent = myXmobarColor "#f1fa8c"
+    , ppVisible = myXmobarColor "#44475a"
+    , ppHidden = myXmobarColor "#44475a"
+    , ppUrgent = myXmobarColor "#ff5555"
+    , ppLayout = myXmobarColor "#bd93f9"
+    , ppTitle = myXmobarColor "#50fa7b"
+    , ppSep = " | "
+    }
 
 myXmobar = statusBarProp "xmobar" (pure myXmobarPP)
 
 -- Just look at the name
 myMainConfig =
-    xmonad . ewmh . withSB myXmobar . docks $
-    def
-        { terminal = myTerminal
-        , modMask = myModMask
-        , borderWidth = myBorderWidth
-        , normalBorderColor = myNormalBorderColor
-        , focusedBorderColor = myFocusedBorderColor
-        , startupHook = myStartupHook
-        , layoutHook = myLayoutHook
-        , workspaces = myWorkspaces
-        } `additionalKeysP`
-    myAdditionalKeysP
+  xmonad . ewmh . withSB myXmobar . docks $
+  def
+    { terminal = myTerminal
+    , modMask = myModMask
+    , borderWidth = myBorderWidth
+    , normalBorderColor = myNormalBorderColor
+    , focusedBorderColor = myFocusedBorderColor
+    , startupHook = myStartupHook
+    , layoutHook = myLayoutHook
+    , workspaces = myWorkspaces
+    } `additionalKeysP`
+  myAdditionalKeysP
 
 ---------------------
 -- APPLYING CONFIG --

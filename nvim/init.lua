@@ -46,9 +46,6 @@ vim.g.glow_border = "single"
 -- Update packages
 map("", "<M-p>", ":PackerSync<CR>")
 
--- LSP progress
-require("fidget").setup()
-
 -- Git
 require("gitsigns").setup()
 
@@ -482,7 +479,6 @@ return require("packer").startup(function()
 	use("folke/which-key.nvim")
 	use("folke/zen-mode.nvim")
 	use("gelguy/wilder.nvim")
-	use("j-hui/fidget.nvim")
 	use("lewis6991/gitsigns.nvim")
 	use("mhinz/vim-startify")
 	use("sunjon/shade.nvim")
