@@ -11,6 +11,12 @@ local function map(mode, lhs, rhs, opts)
 	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+-- Colemak bindings
+map("", "h", "k")
+map("", "k", "j")
+map("", "j", "h")
+map("", "l", "l")
+
 -- Neovim options
 vim.opt.autoread = true -- When a file has been changed outside of vim and not inside vim, automatically update the vim version
 vim.opt.background = "dark" -- Enables syntax colors for dark color schemes
@@ -357,7 +363,7 @@ lspconfig.arduino_language_server.setup({
 		-- Required
 		"arduino-language-server",
 		"-cli-config",
-		"/home/yamin/.arduino5/arduino-cli.yaml",
+		"$HOME/.arduino5/arduino-cli.yaml",
 		-- Optional
 		"-cli",
 		"/usr/bin/arduino-cli",

@@ -11,6 +11,7 @@ import XMonad.Layout.ShowWName
 import XMonad.Layout.Spacing
 import XMonad.Util.EZConfig
 import XMonad.Util.SpawnOnce
+import qualified XMonad.StackSet as W
 
 ---------------
 -- VARIABLES --
@@ -48,8 +49,16 @@ myAdditionalKeysP =
     , spawn $ "pactl set-sink-volume " ++ show pulseAudioSink ++ " -5%")
   , ( "M-<XF86AudioMute>"
     , spawn $ "pactl set-sink-volume " ++ show pulseAudioSink ++ " 0%")
+  -- Colemak stuff
   , ("M-c", spawn "setxkbmap -layout us -variant colemak")
   , ("M-v", spawn "setxkbmap -layout us")
+  , ("M-`", spawn "feh $HOME/my_other_stuff/colemak.png")
+  , ("M-S-k", windows W.swapDown)
+  , ("M-S-h", windows W.swapUp)
+  , ("M-k", windows W.focusDown)
+  , ("M-h", windows W.focusUp)
+  , ("M-j", sendMessage Shrink)
+  , ("M-l", sendMessage Expand)
   ]
 
 -- Looks
