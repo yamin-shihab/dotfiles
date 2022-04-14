@@ -39,6 +39,7 @@ xsetroot -cursor_name left_ptr &
 /usr/lib/geoclue-2.0/demos/agent &
 redshift -t 7000:5000 &
 setxkbmap -layout us -variant colemak &
+xset r rate 300 40 &
 
 eval $(gnome-keyring-daemon --start)
 export SSH_AUTH_SOCK
