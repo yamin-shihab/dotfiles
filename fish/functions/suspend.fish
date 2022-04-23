@@ -1,3 +1,3 @@
-function suspend -d 'Suspends the system, using systemctl'
+function suspend -d "Suspends the system, using systemctl"
 	systemctl suspend $argv
 end
