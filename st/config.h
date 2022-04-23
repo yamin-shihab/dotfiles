@@ -27,7 +27,7 @@ char *vtiden = "\033[?6c";
 
 /* Kerning / character bounding-box multipliers */
 static float cwscale = 1.0;
-static float chscale = 1.1;
+static float chscale = 1.0;
 /* Character rendering offsets in pixels */
 static short cxoffset = 0.0;
 static short cyoffset = 1.0;
