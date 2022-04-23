@@ -1,5 +1,5 @@
 Config
-	{ font = 			"xft:JetBrainsMono Nerd Font-10:style=Bold"
+	{ font = 			"xft:Comic Mono-10:style=Bold"
 	, bgColor = 		"#282a36"
 	, fgColor = 		"#44475a"
 	, allDesktops = 	True
