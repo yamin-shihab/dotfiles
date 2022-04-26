@@ -4,7 +4,7 @@ function narrate -d "Gives a Super Smash Bros. narrator success or failure sound
 	 	return
 	end
 
-	set melee_sound_dir "$HOME/.config/fish/melee-sounds"
+	set melee_sound_dir "$HOME/.config/fish/narrate_sounds"
 
  	$argv
 
