@@ -1,3 +1,28 @@
+xdg_open = false
+xdg_open_fork = false
+use_trash = false
+watch_files = true
+
 [display]
+automatically_count_files = true
+collapse_preview = true
+column_ratio = [1, 4, 4]
+scroll_offset = 6
+show_borders = true
 show_hidden = true
 show_icons = false
+tilde_in_titlebar = true
+line_number_style = "none"
+
+[display.sort]
+method = "natural"
+case_sensitive = false
+directories_first = true
+reverse = false
+
+[preview]
+max_preview_size = 2097152
+preview_script = "bat"
+
+[tab]
+home_page = "home"
