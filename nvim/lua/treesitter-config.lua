@@ -13,22 +13,6 @@ return {
 		-- Dim unused variables
 		require("dim").setup()
 
-		-- Show context
-		require("treesitter-context").setup({
-			patterns = {
-				default = {
-					"class",
-					"function",
-					"method",
-					"for",
-					"while",
-					"if",
-					"switch",
-					"case",
-				},
-			},
-		})
-
 		-- Tag autorename and autoclose
 		require("nvim-ts-autotag").setup()
 

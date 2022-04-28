@@ -43,10 +43,6 @@ return {
 					},
 				})
 				use({
-					"romgrk/nvim-treesitter-context",
-					requires = { "nvim-treesitter/nvim-treesitter" },
-				})
-				use({
 					"SmiteshP/nvim-gps",
 					requires = { "nvim-treesitter/nvim-treesitter" },
 				})
@@ -71,6 +67,7 @@ return {
 				use("lukas-reineke/indent-blankline.nvim")
 				use("mhinz/vim-startify")
 				use("norcalli/nvim-colorizer.lua")
+				use("rcarriga/nvim-notify")
 				use("yamatsum/nvim-cursorline")
 
 				-- Functionality
