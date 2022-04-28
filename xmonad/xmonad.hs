@@ -17,8 +17,6 @@ import qualified XMonad.StackSet as W
 -- VARIABLES --
 ---------------
 -- Basic stuff
-myFont = "JetBrainsMono Nerd Font"
-
 myTerminal = "st"
 
 myModMask = mod4Mask
@@ -39,7 +37,8 @@ pulseAudioSink = 0
 
 myAdditionalKeysP =
   [ ("M-p", spawn "rofi -show drun")
-  , ("M-o", spawn "systemctl suspend")
+  , ("M-o", spawn "suspend && slock")
+  , ("M-'", spawn "slock")
   , ("M-<Print>", spawn "flameshot gui")
   , ("M-x", spawnAllStatusBars)
   , ("M-z", sendMessage ToggleStruts)
@@ -75,8 +74,8 @@ myStartupHook = spawnAllStatusBars
 -- Xmobar stuff
 spawnAllStatusBars = do
   killAllStatusBars
-  spawnStatusBar "xmobar -x 0 $HOME/.xmonad/xmobarrc"
-  spawnStatusBar "xmobar -x 1 $HOME/.xmonad/xmobarrc"
+  spawnStatusBar "xmobar -x 0"
+  spawnStatusBar "xmobar -x 1"
 
 myXmobarColor fgColor = xmobarColor fgColor "#282a36"
 

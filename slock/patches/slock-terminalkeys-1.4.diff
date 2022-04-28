@@ -1,0 +1,40 @@
+From 4b6b51100fa14256753f663c93daeb0f89f0a65a Mon Sep 17 00:00:00 2001
+From: Matthias Schoth <mschoth@gmail.com>
+Date: Fri, 15 May 2020 22:10:27 +0200
+Subject: [PATCH] Add key commands that are commonly used in terminal
+ applications to slock.
+
+---
+ slock.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/slock.c b/slock.c
+index d2f0886..bf1a392 100644
+--- a/slock.c
++++ b/slock.c
+@@ -156,6 +156,22 @@ readpw(Display *dpy, struct xrandr *rr, struct lock **locks, int nscreens,
+ 			    IsPFKey(ksym) ||
+ 			    IsPrivateKeypadKey(ksym))
+ 				continue;
++			if (ev.xkey.state & ControlMask) {
++				switch (ksym) {
++				case XK_u:
++					ksym = XK_Escape;
++					break;
++				case XK_m:
++					ksym = XK_Return;
++					break;
++				case XK_j:
++					ksym = XK_Return;
++					break;
++				case XK_h:
++                                       ksym = XK_BackSpace;
++					break;
++				}
++			}
+ 			switch (ksym) {
+ 			case XK_Return:
+ 				passwd[len] = '\0';
+-- 
+2.26.2
+
