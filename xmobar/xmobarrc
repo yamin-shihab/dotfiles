@@ -52,5 +52,5 @@ Config
 		, Run Kbd [("us(colemak)", "COLEMAK"), ("us", "QWERTY")]
 		, Run Date "<fc=#f8f8f2>%F (%a) %T</fc>" "date" 10
 		]
-    , template = " %XMonadLog% }{ %wlan0wi% | %multicpu% | %memory% | %swap% | %uptime% | %kbd% | %date% "
+    , template = " %XMonadLog% }{ %wlan0wi% | %multicpu% | %memory% | %swap% | %uptime% | LAYOUT: <fc=#50fa7b>%kbd%</fc> | %date% "
 	}
