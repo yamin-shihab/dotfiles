@@ -33,8 +33,6 @@ myFocusedBorderColor = "#6272A4"
 
 myWorkspaces = ["main", "term", "web", "chat", "edit", "temp"]
 
-pulseAudioSink = 0
-
 myAdditionalKeysP =
   [ ("M-p", spawn "rofi -show drun")
   , ("M-o", spawn "systemctl suspend && slock")
@@ -43,11 +41,11 @@ myAdditionalKeysP =
   , ("M-x", spawnAllStatusBars)
   , ("M-z", sendMessage ToggleStruts)
   , ( "M-<XF86AudioRaiseVolume>"
-    , spawn $ "pactl set-sink-volume " ++ show pulseAudioSink ++ " +5%")
+    , spawn "pulsemixer --change-volume 5")
   , ( "M-<XF86AudioLowerVolume>"
-    , spawn $ "pactl set-sink-volume " ++ show pulseAudioSink ++ " -5%")
+    , spawn "pulsemixer --change-volume -5")
   , ( "M-<XF86AudioMute>"
-    , spawn $ "pactl set-sink-volume " ++ show pulseAudioSink ++ " 0%")
+    , spawn "pulsemixer --toggle-mute")
   -- Colemak stuff
   , ("M-c", spawn "setxkbmap -layout us -variant colemak")
   , ("M-v", spawn "setxkbmap -layout us")

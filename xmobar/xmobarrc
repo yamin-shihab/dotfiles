@@ -1,55 +1,56 @@
 Config
-	{ font = 			"xft:Comic Mono-10:style=Bold"
-	, bgColor = 		"#282a36"
-	, fgColor = 		"#44475a"
-	, allDesktops = 	True
-	, position = 		TopH 30
-	, border = 			BottomB
-	, borderWidth = 	4
-	, borderColor = 	"#6272a4"
+	{ font = "xft:Comic Mono-10:style=Bold"
+	, bgColor =	"#282a36"
+	, fgColor =	"#44475a"
+	, allDesktops = True
+	, position = TopH 30
+	, border = BottomB
+	, borderWidth =	4
+	, borderColor =	"#6272a4"
 	, commands =
 		[ Run XMonadLog
-		, Run DynNetwork
-			[ "--template" , "<dev>: <tx>tkB/s|<rx>rkB/s |"
-            , "--Low"      , "1000"
-            , "--High"     , "5000"
-            , "--low"      , "#50fa7b"
-            , "--normal"   , "#ffb86c"
-            , "--high"     , "#ff5555"
-            ] 10
+		, Run Wireless "wlan0"
+		 	[ "--template", "<essid>: <quality>%"
+            , "--Low", "30"
+            , "--High", "70"
+            , "--high", "#50fa7b"
+            , "--normal", "#ffb86c"
+            , "--low", "#ff5555"
+		 	] 10
 		, Run MultiCpu
-			[ "--template" , "CPU: <total>% |"
-            , "--Low"      , "50"
-            , "--High"     , "85"
-            , "--low"      , "#50fa7b"
-            , "--normal"   , "#ffb86c"
-            , "--high"     , "#ff5555"
+			[ "--template", "CPU: <total>%"
+            , "--Low", "50"
+            , "--High", "85"
+            , "--low", "#50fa7b"
+            , "--normal", "#ffb86c"
+            , "--high", "#ff5555"
             ] 10
 		, Run Memory
-			[ "--template" , "MEM: <usedratio>% |"
-            , "--Low"      , "20"
-            , "--High"     , "90"
-            , "--low"      , "#50fa7b"
-            , "--normal"   , "#ffb86c"
-            , "--high"     , "#ff5555"
+			[ "--template", "MEM: <usedratio>%"
+            , "--Low", "20"
+            , "--High", "90"
+            , "--low", "#50fa7b"
+            , "--normal", "#ffb86c"
+            , "--high", "#ff5555"
             ] 10
 		, Run Swap
-			[ "--template" , "SWAP: <usedratio>% |"
-            , "--Low"      , "20"
-            , "--High"     , "90"
-            , "--low"      , "#50fa7b"
-            , "--normal"   , "#ffb86c"
-            , "--high"     , "#ff5555"
+			[ "--template", "SWAP: <usedratio>%"
+            , "--Low", "20"
+            , "--High", "90"
+            , "--low", "#50fa7b"
+            , "--normal", "#ffb86c"
+            , "--high", "#ff5555"
             ] 10
 		, Run Uptime
-			[ "--template" , "UPTIME: <days>-<hours> |"
-            , "--Low"      , "0"
-            , "--High"     , "1"
-            , "--low"      , "#50fa7b"
-            , "--normal"   , "#ffb86c"
-            , "--high"     , "#ff5555"
+			[ "--template", "UPTIME: <days>-<hours>"
+            , "--Low", "0"
+            , "--High", "1"
+            , "--low", "#50fa7b"
+            , "--normal", "#ffb86c"
+            , "--high", "#ff5555"
             ] 10
+		, Run Kbd [("us(colemak)", "COLEMAK"), ("us", "QWERTY")]
 		, Run Date "<fc=#f8f8f2>%F (%a) %T</fc>" "date" 10
 		]
-    , template = 		" %XMonadLog% }{ %dynnetwork% %multicpu% %memory% %swap% %uptime% %date% "
+    , template = " %XMonadLog% }{ %wlan0wi% | %multicpu% | %memory% | %swap% | %uptime% | %kbd% | %date% "
 	}
