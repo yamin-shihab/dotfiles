@@ -9,7 +9,7 @@ Config
 	, borderColor =	"#6272a4"
 	, commands =
 		[ Run XMonadLog
-		, Run Com "/home/yamin/.config/xmobar/vol.sh" [] "vol" 1 -- Replace with appropriate path
+		, Run Com "/home/yamin/.config/xmobar/vol.sh" [] "vol" 10 -- Replace with appropriate path
 		, Run Wireless "wlan0"
 		 	[ "--template", "<essid>: <quality>%"
             , "--Low", "30"
@@ -17,7 +17,7 @@ Config
             , "--high", "#50fa7b"
             , "--normal", "#ffb86c"
             , "--low", "#ff5555"
-		 	] 1
+		 	] 10
 		, Run MultiCpu
 			[ "--template", "CPU: <total>%"
             , "--Low", "50"
@@ -25,7 +25,7 @@ Config
             , "--low", "#50fa7b"
             , "--normal", "#ffb86c"
             , "--high", "#ff5555"
-            ] 1
+            ] 10
 		, Run Memory
 			[ "--template", "MEM: <usedratio>%"
             , "--Low", "20"
@@ -33,7 +33,7 @@ Config
             , "--low", "#50fa7b"
             , "--normal", "#ffb86c"
             , "--high", "#ff5555"
-            ] 1
+            ] 10
 		, Run Swap
 			[ "--template", "SWAP: <usedratio>%"
             , "--Low", "20"
@@ -41,7 +41,7 @@ Config
             , "--low", "#50fa7b"
             , "--normal", "#ffb86c"
             , "--high", "#ff5555"
-            ] 1
+            ] 10
 		, Run Uptime
 			[ "--template", "UPTIME: <days>-<hours>"
             , "--Low", "0"
@@ -49,9 +49,9 @@ Config
             , "--low", "#50fa7b"
             , "--normal", "#ffb86c"
             , "--high", "#ff5555"
-            ] 1
+            ] 10
 		, Run Kbd [("us(colemak)", "COLEMAK"), ("us", "QWERTY")]
-		, Run Date "<fc=#f8f8f2>%F (%a) %T</fc>" "date" 1
+		, Run Date "<fc=#f8f8f2>%F (%a) %T</fc>" "date" 10
 		]
     , template = " %XMonadLog% }{ VOL: %vol% | %wlan0wi% | %multicpu% | %memory% | %swap% | %uptime% | LAYOUT: <fc=#50fa7b>%kbd%</fc> | %date% "
 	}
