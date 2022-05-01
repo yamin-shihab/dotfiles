@@ -1,4 +1,4 @@
-/* user and group to drop privileges to */
+/* user and group to drop privileges to (replace with appropriate values) */
 static const char *user  = "yamin";
 static const char *group = "yamin";
 

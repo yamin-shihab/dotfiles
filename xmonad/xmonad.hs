@@ -35,7 +35,7 @@ myWorkspaces = ["main", "term", "web", "chat", "edit", "temp"]
 
 myAdditionalKeysP =
   [ ("M-p", spawn "rofi -show drun")
-  , ("M-o", spawn "systemctl suspend && slock")
+  , ("M-o", spawn "slock systemctl suspend")
   , ("M-'", spawn "slock")
   , ("M-<Print>", spawn "flameshot gui")
   , ("M-x", spawnAllStatusBars)
