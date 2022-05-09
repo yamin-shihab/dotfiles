@@ -17,7 +17,7 @@ import XMonad.Util.SpawnOnce
 -- VARIABLES --
 ---------------
 -- Basic stuff
-mySpacing = 25
+mySpacing = 15
 
 myTerminal = "st"
 

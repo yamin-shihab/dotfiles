@@ -10,6 +10,7 @@ draw.blood(c, {
     }
 })
 
+c.spellcheck.languages = [ "en-CA" ]
 c.auto_save.session = True
 c.colors.webpage.preferred_color_scheme = "dark"
 c.downloads.location.directory = "$HOME/downloads/"
