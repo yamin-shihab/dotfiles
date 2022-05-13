@@ -64,9 +64,6 @@ return {
 		vim.keymap.set("", "<C-a>", ":DialIncrement<CR>")
 		vim.keymap.set("", "<C-x>", ":DialDecrement<CR>")
 
-		-- File manager (I'm using Joshuto)
-		vim.keymap.set("", "<M-j>", ":Joshuto<CR>")
-
 		-- Luasnip
 		local luasnip = require("luasnip")
 		-- Nvim-cmp

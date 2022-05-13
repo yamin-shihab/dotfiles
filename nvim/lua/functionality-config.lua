@@ -47,30 +47,8 @@ return {
 			},
 		})
 
-		-- File manager (I'm using Joshuto)
-		require("fm-nvim").setup({
-			ui = {
-				default = "float",
-				float = {
-					border = "single",
-					blend = 20,
-					height = 0.85,
-					width = 0.85,
-					x = 0.5,
-					y = 0.5,
-				},
-				split = {
-					direction = "topleft",
-					size = 32,
-				},
-			},
-		})
-
 		-- Open where left off
 		require("nvim-lastplace").setup()
-
-		-- Commenting
-		require("Comment").setup()
 
 		-- Automatic pairs
 		require("nvim-autopairs").setup({

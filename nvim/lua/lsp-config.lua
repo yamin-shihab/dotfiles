@@ -36,7 +36,7 @@ return {
 							"lowercase-global",
 						},
 						globals = {
-							"vim", --[[ I have been saved from useless warnings! ]]
+							"vim", -- I have been saved from useless warnings!
 						},
 					},
 				},

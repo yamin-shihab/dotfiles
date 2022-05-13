@@ -51,7 +51,7 @@ return {
 				use("p00f/nvim-ts-rainbow")
 				use("windwp/nvim-ts-autotag")
 
-				-- Looks
+				-- Appearance
 				use({
 					"folke/todo-comments.nvim",
 					requires = { "nvim-lua/plenary.nvim" },
@@ -62,12 +62,10 @@ return {
 				})
 				use("Mofiqul/dracula.nvim")
 				use("folke/which-key.nvim")
-				use("gelguy/wilder.nvim")
 				use("lewis6991/gitsigns.nvim")
 				use("lukas-reineke/indent-blankline.nvim")
 				use("mhinz/vim-startify")
 				use("norcalli/nvim-colorizer.lua")
-				use("rcarriga/nvim-notify")
 				use("yamatsum/nvim-cursorline")
 
 				-- Functionality
@@ -75,7 +73,7 @@ return {
 					"abecodes/tabout.nvim",
 					wants = { "nvim-treesitter" },
 					after = { "nvim-cmp" },
-					config = function() -- Config here cos it loads after nvim-cmp
+					config = function() -- Config is here cos it loads after nvim-cmp
 						require("tabout").setup()
 					end,
 				})
@@ -91,14 +89,11 @@ return {
 				use("andweeb/presence.nvim")
 				use("ethanholz/nvim-lastplace")
 				use("folke/trouble.nvim")
-				use("is0n/fm-nvim")
 				use("jghauser/mkdir.nvim")
 				use("monaqa/dial.nvim")
 				use("nacro90/numb.nvim")
 				use("numToStr/Comment.nvim")
 				use("sQVe/sort.nvim")
-				use("seandewar/killersheep.nvim") -- Don't ask why...
-				use("seandewar/nvimesweeper")
 				use("sindrets/winshift.nvim")
 				use("windwp/nvim-autopairs")
 

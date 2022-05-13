@@ -2,49 +2,8 @@
 
 return {
 	setup = function()
-		-- Notifications
-		require("notify").setup({
-			level = "info",
-
-			stages = "fade_in_slide_out",
-
-			on_open = nil,
-
-			on_close = nil,
-
-			render = "default",
-
-			timeout = 5000,
-
-			max_width = nil,
-			max_height = nil,
-
-			background_colour = "Normal",
-
-			minimum_width = 50,
-
-			icons = {
-				ERROR = "e",
-				WARN = "w",
-				INFO = "i",
-				DEBUG = "d",
-				TRACE = "t",
-			},
-		})
-		vim.notify = require("notify")
-
 		-- Git
 		require("gitsigns").setup()
-
-		-- Nicer menu
-		local wilder = require("wilder")
-		wilder.setup({ modes = { ":", "/", "?" } })
-		wilder.set_option(
-			"renderer",
-			wilder.wildmenu_renderer({
-				highlighter = wilder.basic_highlighter(),
-			})
-		)
 
 		-- Key combinations list
 		require("which-key").setup({

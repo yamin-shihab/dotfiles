@@ -9,7 +9,7 @@ Config
 	, borderColor =	"#6272a4"
 	, commands =
 		[ Run XMonadLog
-		, Run Com "/home/yamin/.config/xmobar/vol.sh" [] "vol" 10 -- Replace with appropriate path
+		, Run Com "/home/placeholder_user/.config/xmobar/vol.sh" [] "vol" 10 -- Replace with appropriate path
 		, Run Wireless "wlan0"
 		 	[ "--template", "<essid>: <quality>%"
             , "--Low", "30"
