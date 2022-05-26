@@ -22,7 +22,6 @@ return {
 		vim.opt.termguicolors = true
 		vim.opt.timeoutlen = 1000
 		vim.opt.title = true
-		vim.opt.winblend = 20
 		vim.opt.wrap = true
 	end,
 }

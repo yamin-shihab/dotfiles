@@ -5,7 +5,7 @@ Config
 	, allDesktops = True
 	, position = TopH 30
 	, border = BottomB
-	, borderWidth =	4
+	, borderWidth =	3
 	, borderColor =	"#6272a4"
 	, commands =
 		[ Run XMonadLog
@@ -43,7 +43,7 @@ Config
             , "--high", "#ff5555"
             ] 10
 		, Run Uptime
-			[ "--template", "UPTIME: <days>-<hours>"
+			[ "--template", "UPTIME: <days>-<hours>-<minutes>"
             , "--Low", "0"
             , "--High", "1"
             , "--low", "#50fa7b"

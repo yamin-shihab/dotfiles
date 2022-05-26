@@ -78,10 +78,6 @@ return {
 					end,
 				})
 				use({
-					"nvim-telescope/telescope.nvim",
-					requires = { "nvim-lua/plenary.nvim" },
-				})
-				use({
 					"phaazon/hop.nvim",
 					branch = "v1",
 				})
@@ -109,9 +105,6 @@ return {
 					removed_sym = "-",
 					moved_sym = "@",
 					header_sym = "-",
-					open_fn = function()
-						return require("packer.util").float({ border = "single" })
-					end,
 				},
 			},
 		}

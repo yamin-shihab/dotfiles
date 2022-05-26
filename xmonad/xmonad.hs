@@ -17,13 +17,13 @@ import XMonad.Util.SpawnOnce
 -- VARIABLES --
 ---------------
 -- Basic stuff
-mySpacing = 15
+mySpacing = 10
 
 myTerminal = "st"
 
 myModMask = mod4Mask
 
-myBorderWidth = 4
+myBorderWidth = 3
 
 myBackgroundColor = "#282a36"
 
@@ -47,6 +47,7 @@ myAdditionalKeysP =
     , ("M-<XF86AudioMute>", spawn "pulsemixer --toggle-mute")
   -- Colemak stuff
     , ("M-;", spawn "rofi -show drun")
+	, ("M-S-;", spawn "rofi -show window")
     , ("M-c", spawn "setxkbmap -layout us -variant colemak")
     , ("M-v", spawn "setxkbmap -layout us")
     , ("M-`", spawn "feh $HOME/my_other_stuff/colemak.png")
@@ -56,14 +57,7 @@ myAdditionalKeysP =
     , ("M-S-h", windows W.swapUp)
     , ("M-k", windows W.focusDown)
     , ("M-h", windows W.focusUp)
-    ] ++
-        -- Magic copy+paste weird Haskell code warning!
-    [ ( mask ++ "M-" ++ [key]
-      , screenWorkspace scr >>= flip whenJust (windows . action))
-    | (key, scr) <- zip "wfp" [0, 1, 2]
-    , (action, mask) <- [(W.view, ""), (W.shift, "S-")]
     ]
-        -- Maybe choosing XMonad was a mistake...
 
 -- Looks
 myLayoutHook = avoidStruts $ tiled ||| noBorders Full
