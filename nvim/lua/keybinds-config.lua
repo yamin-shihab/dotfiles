@@ -6,10 +6,20 @@ return {
 		vim.keymap.set("", "<M-Space>", ":%s//g<Left><Left>")
 
 		-- Colemak bindings
-		vim.keymap.set("", "h", "k")
-		vim.keymap.set("", "k", "j")
-		vim.keymap.set("", "j", "h")
-		vim.keymap.set("", "l", "l")
+		vim.keymap.set("", "n", "h")
+		vim.keymap.set("", "N", "H")
+		vim.keymap.set("", "e", "j")
+		vim.keymap.set("", "i", "k")
+		vim.keymap.set("", "o", "l")
+		vim.keymap.set("", "O", "L")
+		vim.keymap.set("", "k", "n")
+		vim.keymap.set("", "K", "N")
+		vim.keymap.set("", "l", "i")
+		vim.keymap.set("", "L", "I")
+		vim.keymap.set("", "h", "o")
+		vim.keymap.set("", "H", "O")
+		vim.keymap.set("", "j", "e")
+		vim.keymap.set("", "J", "E")
 
 		-- EZ motions
 		vim.keymap.set("", "<M-w>", ":HopWord<CR>")
