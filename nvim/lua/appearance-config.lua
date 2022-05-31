@@ -5,15 +5,6 @@ return {
 		-- Git
 		require("gitsigns").setup()
 
-		-- Key combinations list
-		require("which-key").setup({
-			icons = {
-				breadcrumb = ">>",
-				separator = "->",
-				group = "+",
-			},
-		})
-
 		-- Highlight comments
 		require("todo-comments").setup({
 			keywords = {

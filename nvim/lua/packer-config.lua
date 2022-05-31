@@ -61,8 +61,8 @@ return {
 					requres = { "gitsigns.nvim", "nvim-gps" },
 				})
 				use("Mofiqul/dracula.nvim")
-				use("folke/which-key.nvim")
 				use("lewis6991/gitsigns.nvim")
+				use("tversteeg/registers.nvim")
 				use("lukas-reineke/indent-blankline.nvim")
 				use("mhinz/vim-startify")
 				use("norcalli/nvim-colorizer.lua")
