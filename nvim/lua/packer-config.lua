@@ -49,7 +49,6 @@ return {
 				use("lewis6991/spellsitter.nvim")
 				use("nvim-treesitter/nvim-treesitter")
 				use("p00f/nvim-ts-rainbow")
-				use("windwp/nvim-ts-autotag")
 
 				-- Appearance
 				use({
@@ -77,11 +76,7 @@ return {
 						require("tabout").setup()
 					end,
 				})
-				use({
-					"phaazon/hop.nvim",
-					branch = "v1",
-				})
-				use("McAuleyPenney/tidy.nvim")
+				use("mcauley-penney/tidy.nvim")
 				use("andweeb/presence.nvim")
 				use("ethanholz/nvim-lastplace")
 				use("folke/trouble.nvim")

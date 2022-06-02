@@ -36,8 +36,8 @@ myFocusedBorderColor = "#6272A4"
 myWorkspaces = ["main", "term", "web", "chat", "edit", "temp"]
 
 myAdditionalKeysP =
-    [ ("M-o", spawn "slock systemctl suspend")
-    , ("M-'", spawn "slock")
+    [ ("M-S-o", spawn "slock systemctl suspend")
+    , ("M-S-'", spawn "slock")
     , ("M-<Print>", spawn "flameshot gui")
     , ("M-a", spawn "himawaripy --auto-offset")
     , ("M-x", spawnAllStatusBars)
@@ -50,14 +50,22 @@ myAdditionalKeysP =
 	, ("M-S-;", spawn "rofi -show window")
     , ("M-c", spawn "setxkbmap -layout us -variant colemak")
     , ("M-v", spawn "setxkbmap -layout us")
-    , ("M-`", spawn "feh $HOME/my_other_stuff/colemak.png")
-    , ("M-j", sendMessage Shrink)
-    , ("M-l", sendMessage Expand)
-    , ("M-S-k", windows W.swapDown)
-    , ("M-S-h", windows W.swapUp)
-    , ("M-k", windows W.focusDown)
-    , ("M-h", windows W.focusUp)
+    , ("M-`", spawn "feh $HOME/images/saved/colemak.png")
+    , ("M-n", sendMessage Shrink)
+    , ("M-o", sendMessage Expand)
+    , ("M-S-e", windows W.swapDown)
+    , ("M-S-i", windows W.swapUp)
+    , ("M-e", windows W.focusDown)
+    , ("M-i", windows W.focusUp)
+	, ("M-k", refresh)
+    ] ++
+    -- Magic copy+paste weird Haskell code warning!
+    [ ( mask ++ "M-" ++ [key]
+      , screenWorkspace scr >>= flip whenJust (windows . action))
+    | (key, scr) <- zip "wfp" [0, 1, 2]
+    , (action, mask) <- [(W.view, ""), (W.shift, "S-")]
     ]
+    -- Maybe choosing XMonad was a mistake...
 
 -- Looks
 myLayoutHook = avoidStruts $ tiled ||| noBorders Full

@@ -21,10 +21,6 @@ return {
 		vim.keymap.set("", "j", "e")
 		vim.keymap.set("", "J", "E")
 
-		-- EZ motions
-		vim.keymap.set("", "<M-w>", ":HopWord<CR>")
-		vim.keymap.set("", "<M-l>", ":HopLine<CR>")
-
 		-- Update packages
 		vim.keymap.set("", "<M-p>", ":PackerSync<CR>")
 

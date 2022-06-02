@@ -2,9 +2,6 @@
 
 return {
 	setup = function()
-		-- EZ motions
-		require("hop").setup()
-
 		-- Diagnostics
 		require("trouble").setup({
 			icons = false,

@@ -13,9 +13,6 @@ return {
 		-- Dim unused variables
 		require("dim").setup()
 
-		-- Tag autorename and autoclose
-		require("nvim-ts-autotag").setup()
-
 		-- Treesitter + colored delimiters
 		require("nvim-treesitter.configs").setup({
 			ensure_installed = "all",
