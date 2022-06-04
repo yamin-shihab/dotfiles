@@ -5,6 +5,7 @@ return {
 		vim.opt.background = "dark"
 		vim.opt.breakindent = true
 		vim.opt.cursorline = true
+		vim.opt.ignorecase = true
 		vim.opt.laststatus = 3
 		vim.opt.lazyredraw = true
 		vim.opt.linebreak = true
