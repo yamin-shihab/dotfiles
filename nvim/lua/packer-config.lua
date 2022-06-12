@@ -68,14 +68,6 @@ return {
 				use("yamatsum/nvim-cursorline")
 
 				-- Functionality
-				use({
-					"abecodes/tabout.nvim",
-					wants = { "nvim-treesitter" },
-					after = { "nvim-cmp" },
-					config = function() -- Config is here cos it loads after nvim-cmp
-						require("tabout").setup()
-					end,
-				})
 				use("mcauley-penney/tidy.nvim")
 				use("andweeb/presence.nvim")
 				use("ethanholz/nvim-lastplace")
