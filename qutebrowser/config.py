@@ -25,10 +25,10 @@ c.content.javascript.can_access_clipboard = True
 c.content.pdfjs = True
 
 # Cheatsheet
-config.bind("Z", "open -t https://raw.githubusercontent.com/qutebrowser/qutebrowser/master/doc/img/cheatsheet-big.png")
+config.bind("z", "open -t https://raw.githubusercontent.com/qutebrowser/qutebrowser/master/doc/img/cheatsheet-big.png")
 
 # Dracula for Duckduckgo
-config.bind("z", "jseval var dracula=['7=282a36','8=f8f8f2','9=50fa7b','ae=t','t=p','s=m','w=n','m=l','o=s','j=282a36','a=p','aa=bd93f9','u=-1','x=f1fa8c','y=44475a','af=1','ai=1','f=1'];for(var i=0;i<dracula.length;i++)document.cookie=dracula[i];alert('Appearance settings have successfully been updated!');location.reload();")
+config.bind("Z", "jseval var dracula=['7=282a36','8=f8f8f2','9=50fa7b','ae=t','t=p','s=m','w=n','m=l','o=s','j=282a36','a=p','aa=bd93f9','u=-1','x=f1fa8c','y=44475a','af=1','ai=1','f=1'];for(var i=0;i<dracula.length;i++)document.cookie=dracula[i];alert('Appearance settings have successfully been updated!');location.reload();")
 
 # Colemak bindings
 config.bind("n", "scroll left", mode="caret")
