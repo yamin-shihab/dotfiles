@@ -2,9 +2,6 @@
 
 return {
 	setup = function()
-		-- Substitute is a pain
-		vim.keymap.set("", "<M-Space>", ":%s//g<Left><Left>")
-
 		-- Colemak bindings
 		vim.keymap.set("", "n", "h")
 		vim.keymap.set("", "N", "H")
@@ -21,18 +18,17 @@ return {
 		vim.keymap.set("", "j", "e")
 		vim.keymap.set("", "J", "E")
 
+		-- Substitute is a pain
+		vim.keymap.set("", "<M-s>", ":%s//g<Left><Left>")
+
 		-- Update packages
 		vim.keymap.set("", "<M-p>", ":PackerSync<CR>")
 
-		-- Sort
-		vim.keymap.set("", "<M-`>", ":Sort<CR>")
+		-- Update treesitter
+		vim.keymap.set("", "<M-t>", ":TSUpdate<CR>")
 
 		-- Window navigation
-		vim.keymap.set("", "<M-S-w>", ":WinShift<CR>")
-
-		-- Better increment/decrement
-		vim.keymap.set("", "<C-a>", ":DialIncrement<CR>")
-		vim.keymap.set("", "<C-x>", ":DialDecrement<CR>")
+		vim.keymap.set("", "<M-w>", ":WinShift<CR>")
 
 		-- Luasnip
 		local luasnip = require("luasnip")

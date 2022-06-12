@@ -5,31 +5,6 @@ return {
 		-- Git
 		require("gitsigns").setup()
 
-		-- Highlight comments
-		require("todo-comments").setup({
-			keywords = {
-				FIX = {
-					icon = "f",
-					color = "error",
-					alt = { "FIXME", "BUG", "FIXIT", "ISSUE" },
-				},
-				TODO = { icon = "t", color = "info" },
-				HACK = { icon = "h", color = "warning" },
-				WARN = { icon = "w", color = "warning", alt = { "WARNING", "XXX" } },
-				PERF = { icon = "p", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
-				NOTE = { icon = "n", color = "hint", alt = { "INFO" } },
-			},
-			highlight = {
-				before = "fg",
-				keyword = "fg",
-				after = "fg",
-				pattern = [[.*<(KEYWORDS)\s*:]],
-				comments_only = true,
-				max_line_len = 400,
-				exclude = {},
-			},
-		})
-
 		-- Visible indents
 		require("indent_blankline").setup({
 			filetype_exclude = { "startify" },

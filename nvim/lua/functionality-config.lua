@@ -22,28 +22,6 @@ return {
 		-- Line peaking
 		require("numb").setup()
 
-		-- Better increment/decrement
-		local augend = require("dial.augend")
-		require("dial.config").augends:register_group({
-			default = {
-				augend.constant.new({
-					elements = { "and", "or" },
-					word = true,
-					cyclic = true,
-				}),
-				augend.constant.new({
-					elements = { "&&", "||" },
-					word = false,
-					cyclic = true,
-				}),
-				augend.constant.new({
-					elements = { "true", "false" },
-					word = true,
-					cyclic = true,
-				}),
-			},
-		})
-
 		-- Open where left off
 		require("nvim-lastplace").setup()
 

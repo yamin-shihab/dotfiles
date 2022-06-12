@@ -2,20 +2,6 @@
 
 return {
 	setup = function()
-		-- Bootstrap packer if it isn't installed
-		local fn = vim.fn
-		local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-		if fn.empty(fn.glob(install_path)) > 0 then
-			packer_bootstrap = fn.system({
-				"git",
-				"clone",
-				"--depth",
-				"1",
-				"https://github.com/wbthomason/packer.nvim",
-				install_path,
-			})
-		end
-
 		-- Packer packages
 		return {
 			packages = function(use)
@@ -52,46 +38,36 @@ return {
 
 				-- Appearance
 				use({
-					"folke/todo-comments.nvim",
-					requires = { "nvim-lua/plenary.nvim" },
-				})
-				use({
 					"ojroques/nvim-hardline",
 					requres = { "gitsigns.nvim", "nvim-gps" },
 				})
 				use("Mofiqul/dracula.nvim")
 				use("lewis6991/gitsigns.nvim")
-				use("tversteeg/registers.nvim")
 				use("lukas-reineke/indent-blankline.nvim")
 				use("mhinz/vim-startify")
 				use("norcalli/nvim-colorizer.lua")
+				use("tversteeg/registers.nvim")
 				use("yamatsum/nvim-cursorline")
 
 				-- Functionality
-				use("mcauley-penney/tidy.nvim")
 				use("andweeb/presence.nvim")
 				use("ethanholz/nvim-lastplace")
 				use("folke/trouble.nvim")
 				use("jghauser/mkdir.nvim")
-				use("monaqa/dial.nvim")
+				use("mcauley-penney/tidy.nvim")
 				use("nacro90/numb.nvim")
 				use("numToStr/Comment.nvim")
-				use("sQVe/sort.nvim")
 				use("sindrets/winshift.nvim")
 				use("windwp/nvim-autopairs")
-
-				if packer_bootstrap then
-					require("packer").sync()
-				end
 			end,
 			config = {
 				display = {
-					working_sym = "%",
-					error_sym = "!",
 					done_sym = "*",
-					removed_sym = "-",
-					moved_sym = "@",
+					error_sym = "!",
 					header_sym = "-",
+					moved_sym = "@",
+					removed_sym = "-",
+					working_sym = "%",
 				},
 			},
 		}
