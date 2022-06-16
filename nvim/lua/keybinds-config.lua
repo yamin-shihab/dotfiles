@@ -18,18 +18,6 @@ return {
 		vim.keymap.set("", "j", "e")
 		vim.keymap.set("", "J", "E")
 
-		-- Substitute is a pain
-		vim.keymap.set("", "<M-s>", ":%s//g<Left><Left>")
-
-		-- Update packages
-		vim.keymap.set("", "<M-p>", ":PackerSync<CR>")
-
-		-- Update treesitter
-		vim.keymap.set("", "<M-t>", ":TSUpdate<CR>")
-
-		-- Window navigation
-		vim.keymap.set("", "<M-w>", ":WinShift<CR>")
-
 		-- Luasnip
 		local luasnip = require("luasnip")
 		-- Nvim-cmp
