@@ -2,6 +2,9 @@
 
 return {
 	setup = function()
+		-- S P E E D
+		require("impatient")
+
 		-- Diagnostics
 		require("trouble").setup({
 			icons = false,

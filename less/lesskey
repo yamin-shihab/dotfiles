@@ -1,9 +1,0 @@
-#command
-i back-line
-e forw-line
-I back-line-force
-E forw-line-force
-k repeat-search
-K reverse-search
-\en repeat-search-all
-\eN reverse-search-all

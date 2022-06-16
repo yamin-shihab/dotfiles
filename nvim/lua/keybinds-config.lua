@@ -2,21 +2,14 @@
 
 return {
 	setup = function()
-		-- Colemak bindings
-		vim.keymap.set("", "n", "h")
-		vim.keymap.set("", "N", "H")
-		vim.keymap.set("", "e", "j")
-		vim.keymap.set("", "i", "k")
-		vim.keymap.set("", "o", "l")
-		vim.keymap.set("", "O", "L")
-		vim.keymap.set("", "k", "n")
-		vim.keymap.set("", "K", "N")
-		vim.keymap.set("", "l", "i")
-		vim.keymap.set("", "L", "I")
-		vim.keymap.set("", "h", "o")
-		vim.keymap.set("", "H", "O")
-		vim.keymap.set("", "j", "e")
-		vim.keymap.set("", "J", "E")
+		-- Press escape after searching to clear search highlighting
+		vim.keymap.set("", "<Esc>", ":noh<CR><Esc>")
+
+		-- Update packer
+		vim.keymap.set("", "<Leader>p", ":PackerSync<CR>:PackerCompile<CR>")
+
+		-- Update treesitter
+		vim.keymap.set("", "<Leader>t", ":TSUpdate<CR>")
 
 		-- Luasnip
 		local luasnip = require("luasnip")

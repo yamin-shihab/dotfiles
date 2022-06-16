@@ -45,19 +45,11 @@ myAdditionalKeysP =
     , ("M-<XF86AudioRaiseVolume>", spawn "pulsemixer --change-volume 5")
     , ("M-<XF86AudioLowerVolume>", spawn "pulsemixer --change-volume -5")
     , ("M-<XF86AudioMute>", spawn "pulsemixer --toggle-mute")
-  -- Colemak stuff
     , ("M-;", spawn "rofi -show drun")
 	, ("M-S-;", spawn "rofi -show window")
     , ("M-c", spawn "setxkbmap -layout us -variant colemak")
     , ("M-v", spawn "setxkbmap -layout us")
     , ("M-`", spawn "feh $HOME/images/saved/colemak.png")
-    , ("M-n", sendMessage Shrink)
-    , ("M-o", sendMessage Expand)
-    , ("M-S-e", windows W.swapDown)
-    , ("M-S-i", windows W.swapUp)
-    , ("M-e", windows W.focusDown)
-    , ("M-i", windows W.focusUp)
-	, ("M-k", refresh)
     ] ++
     -- Magic copy+paste weird Haskell code warning!
     [ ( mask ++ "M-" ++ [key]
