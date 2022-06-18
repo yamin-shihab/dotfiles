@@ -2,6 +2,16 @@
 
 return {
 	setup = function()
+		-- Disable spellcheck in terminals
+		vim.api.nvim_create_autocmd({ "TermOpen" }, {
+			pattern = { "*" },
+			callback = function()
+				vim.opt_local.spell = false
+				vim.opt_local.number = false
+				vim.opt_local.relativenumber = false
+			end,
+		})
+
 		-- Git
 		require("gitsigns").setup()
 
@@ -12,9 +22,9 @@ return {
 
 		-- Status bar / bufferline
 		require("hardline").setup({
-			bufferline = true,
+			bufferline = false,
 			theme = "dracula",
-			sections = { -- define sections
+			sections = {
 				{
 					class = "mode",
 					item = require("hardline.parts.mode").get_item,
@@ -23,10 +33,6 @@ return {
 					class = "high",
 					item = require("hardline.parts.git").get_item,
 					hide = 100,
-				},
-				{
-					class = "med",
-					item = require("hardline.parts.cwd").get_item,
 				},
 				{
 					class = "med",
@@ -42,7 +48,7 @@ return {
 					item = require("hardline.parts.treesitter-context").get_item,
 				},
 				{
-					class = "low",
+					class = "med",
 					item = require("hardline.parts.wordcount").get_item,
 					hide = 100,
 				},

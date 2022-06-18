@@ -5,6 +5,9 @@ return {
 		-- Press escape after searching to clear search highlighting
 		vim.keymap.set("", "<Esc>", ":noh<CR><Esc>")
 
+		-- Winshift
+		vim.keymap.set("", "<Leader>w", ":WinShift<CR>")
+
 		-- Update packer
 		vim.keymap.set("", "<Leader>p", ":PackerSync<CR>:PackerCompile<CR>")
 

@@ -16,7 +16,7 @@ return {
 		vim.opt.scrolljump = 5
 		vim.opt.shiftwidth = 4
 		vim.opt.showbreak = " > "
-		vim.opt.showtabline = 2
+		vim.opt.showtabline = 0
 		vim.opt.smartcase = true
 		vim.opt.softtabstop = 4
 		vim.opt.spell = true
