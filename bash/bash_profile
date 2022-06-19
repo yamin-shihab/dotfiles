@@ -17,6 +17,7 @@ export CC="clang"
 export CXX="clang++"
 export EDITOR="nvim"
 export PF_INFO="ascii title host kernel os shell uptime memory wm palette"
+export EXA_COLORS="da=35"
 
 export PATH="${PATH:+${PATH}:}$HOME/.local/bin:$CARGO_HOME/bin:$GOPATH/bin"
 

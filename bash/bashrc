@@ -21,42 +21,57 @@ if [ "$TERM" = "linux" ]; then
     clear
 fi
 
-# Zoxide replacement for cd
-eval "$(zoxide init bash)"
-
 # Completions
 complete -cf doas
 
-# Aliases
+# Aliases/functions
+cat() {
+	bat $@
+}
 cheat() {
-	curl -Ls "cheat.sh/$1"
+	curl -sL "cheat.sh/$1"
 }
 connect() {
 	iwctl station $1 connect $2
 }
 crypto() {
-	curl -Ls "rate.sx/$1"
+	curl -sL "rate.sx/$1"
 }
 dad() {
-	curl -Ls "https://icanhazdadjoke.com"
+	curl -sL "https://icanhazdadjoke.com"
+}
+df() {
+	duf $@
 }
 dict() {
-	curl -Ls "dict://dict.org/d:$1"
+	curl -sL "dict://dict.org/d:$1"
 }
 disconnect() {
 	iwctl station $1 disconnect
 }
+find() {
+	fd $@
+}
 gitignore() {
-	curl -Ls "gitignore.io/api/$1"
+	curl -sL "gitignore.io/api/$1"
+}
+ls() {
+	exa -a --group-directories-first $@
 }
 parrot() {
-	curl -Ls "parrot.live"
+	curl -sL "parrot.live"
+}
+paru() {
+	$(which paru) --bottomup $@
+}
+pkgclean() {
+	paru -c && paru -Sc
 }
 pubip() {
-	curl -Ls "ifconfig.co/$1"
+	curl -sL "ifconfig.co/$1"
 }
 weather() {
-	curl -Ls "wttr.in/$1"
+	curl -sL "wttr.in/$1"
 }
 
 # My custom prompt

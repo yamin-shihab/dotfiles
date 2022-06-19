@@ -14,13 +14,12 @@ return {
 		vim.opt.relativenumber = true
 		vim.opt.ruler = true
 		vim.opt.scrolljump = 5
-		vim.opt.shiftwidth = 4
+		vim.opt.shiftwidth = 8
 		vim.opt.showbreak = " > "
 		vim.opt.showtabline = 0
 		vim.opt.smartcase = true
-		vim.opt.softtabstop = 4
 		vim.opt.spell = true
-		vim.opt.tabstop = 4
+		vim.opt.tabstop = 8
 		vim.opt.termguicolors = true
 		vim.opt.title = true
 	end,
