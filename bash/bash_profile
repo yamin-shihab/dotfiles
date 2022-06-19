@@ -22,4 +22,4 @@ export EXA_COLORS="da=35"
 export PATH="${PATH:+${PATH}:}$HOME/.local/bin:$CARGO_HOME/bin:$GOPATH/bin"
 
 if [ -r ~/.profile ]; then . ~/.profile; fi
-case "$-" in *i*) if [ -r ~/.bashrc ]; then . ~/.bashrc; fi;; esac
+case "$-" in *i*) if [ -r ~/.bashrc ]; then . ~/.bashrc; fi ;; esac
