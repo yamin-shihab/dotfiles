@@ -1,0 +1,63 @@
+# Dracula theme for Linux TTY
+if [ "$TERM" = "linux" ]; then
+    printf %b '\e[40m' '\e[8]' # set default background to color 0 'dracula-bg'
+    printf %b '\e[37m' '\e[8]' # set default foreground to color 7 'dracula-fg'
+    printf %b '\e]P0282a36'    # redefine 'black'          as 'dracula-bg'
+    printf %b '\e]P86272a4'    # redefine 'bright-black'   as 'dracula-comment'
+    printf %b '\e]P1ff5555'    # redefine 'red'            as 'dracula-red'
+    printf %b '\e]P9ff7777'    # redefine 'bright-red'     as '#ff7777'
+    printf %b '\e]P250fa7b'    # redefine 'green'          as 'dracula-green'
+    printf %b '\e]PA70fa9b'    # redefine 'bright-green'   as '#70fa9b'
+    printf %b '\e]P3f1fa8c'    # redefine 'brown'          as 'dracula-yellow'
+    printf %b '\e]PBffb86c'    # redefine 'bright-brown'   as 'dracula-orange'
+    printf %b '\e]P4bd93f9'    # redefine 'blue'           as 'dracula-purple'
+    printf %b '\e]PCcfa9ff'    # redefine 'bright-blue'    as '#cfa9ff'
+    printf %b '\e]P5ff79c6'    # redefine 'magenta'        as 'dracula-pink'
+    printf %b '\e]PDff88e8'    # redefine 'bright-magenta' as '#ff88e8'
+    printf %b '\e]P68be9fd'    # redefine 'cyan'           as 'dracula-cyan'
+    printf %b '\e]PE97e2ff'    # redefine 'bright-cyan'    as '#97e2ff'
+    printf %b '\e]P7f8f8f2'    # redefine 'white'          as 'dracula-fg'
+    printf %b '\e]PFffffff'    # redefine 'bright-white'   as '#ffffff'
+    clear
+fi
+
+# Zoxide replacement for cd
+eval "$(zoxide init bash)"
+
+# Aliases
+cheat() {
+	curl -Ls "cheat.sh/$1"
+}
+connect() {
+	iwctl station $1 connect $2
+}
+crypto() {
+	curl -Ls "rate.sx/$1"
+}
+dad() {
+	curl -Ls "https://icanhazdadjoke.com"
+}
+dict() {
+	curl -Ls "dict://dict.org/d:$1"
+}
+disconnect() {
+	iwctl station $1 disconnect
+}
+gitignore() {
+	curl -Ls "gitignore.io/api/$1"
+}
+parrot() {
+	curl -Ls "parrot.live"
+}
+pubip() {
+	curl -Ls "ifconfig.co/$1"
+}
+weather() {
+	curl -Ls "wttr.in/$1"
+}
+
+# My custom prompt
+export PS1="\[\033[01;38;5;13m\][\[$(tput sgr0)\]\[\033[01;38;5;10m\]\u\[$(tput sgr0)\]\[\033[01;38;5;13m\]@\[$(tput sgr0)\]\[\033[01;38;5;14m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[01;38;5;11m\]\w\[$(tput sgr0)\]\[\033[01;38;5;13m\]]\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[01;38;5;9m\]\$?\[$(tput sgr0)\]\[$(tput bold)\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]"
+
+# It's better than Neofetch (:
+pfetch

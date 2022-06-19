@@ -1,0 +1,24 @@
+# Variables
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export GOPATH="$XDG_DATA_HOME/go"
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
+export HISTFILE="$XDG_STATE_HOME/bash/history"
+
+export PAGER="bat"
+export BAT_THEME="Dracula"
+export CC="clang"
+export CXX="clang++"
+export EDITOR="nvim"
+export PF_INFO="ascii title host kernel os shell uptime memory wm palette"
+
+export PATH="${PATH:+${PATH}:}$HOME/.local/bin:$CARGO_HOME/bin:$GOPATH/bin"
+
+if [ -r ~/.profile ]; then . ~/.profile; fi
+case "$-" in *i*) if [ -r ~/.bashrc ]; then . ~/.bashrc; fi;; esac
