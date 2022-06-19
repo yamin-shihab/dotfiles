@@ -24,6 +24,9 @@ fi
 # Zoxide replacement for cd
 eval "$(zoxide init bash)"
 
+# Completions
+complete -cf doas
+
 # Aliases
 cheat() {
 	curl -Ls "cheat.sh/$1"
