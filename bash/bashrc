@@ -29,7 +29,7 @@ cat() {
 	bat $@
 }
 cheat() {
-	curl -sL "cheat.sh/$1"
+	curl -sL "cht.sh/$1"
 }
 connect() {
 	iwctl station $1 connect $2
@@ -65,7 +65,11 @@ parrot() {
 	curl -sL "parrot.live"
 }
 paru() {
-	$(which paru) --bottomup $@
+	if [[ $@ = "" ]]; then
+		paru -Syu
+	else
+		$(which paru) --bottomup $@
+	fi
 }
 pkgclean() {
 	paru -c && paru -Sc
