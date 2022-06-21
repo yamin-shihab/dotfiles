@@ -11,7 +11,7 @@ export GOPATH="$XDG_DATA_HOME/go"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export HISTFILE="$XDG_STATE_HOME/bash/history"
 
-export PAGER="bat"
+export PAGER="bat -p"
 export BAT_THEME="Dracula"
 export CC="clang"
 export CXX="clang++"

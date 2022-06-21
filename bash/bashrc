@@ -26,7 +26,7 @@ complete -cf doas
 
 # Aliases/functions
 cat() {
-	bat $@
+	bat -p $@
 }
 cheat() {
 	curl -sL "cht.sh/$1"
@@ -42,6 +42,9 @@ dad() {
 }
 df() {
 	duf $@
+}
+du() {
+	ds $@
 }
 dict() {
 	curl -sL "dict://dict.org/d:$1"
@@ -72,7 +75,7 @@ paru() {
 	fi
 }
 pkgclean() {
-	paru -c && paru -Sc
+	paru -c && paru -Sc && paccache -r
 }
 pubip() {
 	curl -sL "ifconfig.co/$1"
