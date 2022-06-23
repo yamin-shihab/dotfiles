@@ -24,10 +24,17 @@ fi
 # Completions
 complete -cf doas
 
+# Better autocomplete
+bind -s 'set completion-ignore-case on'
+bind "set show-all-if-ambiguous on"
+bind "TAB:menu-complete"
+
 # Aliases/functions
-cat() {
-	bat -p $@
-}
+if [[ $(which bat) != "" ]]; then
+	cat() {
+		bat -p $@
+	}
+fi
 cheat() {
 	curl -sL "cht.sh/$1"
 }
@@ -40,30 +47,45 @@ crypto() {
 dad() {
 	curl -sL "https://icanhazdadjoke.com"
 }
-df() {
-	duf $@
-}
-du() {
-	ds $@
-}
+if [[ $(which duf) != "" ]]; then
+	df() {
+		duf $@
+	}
+fi
+if [[ $(which ds) != "" ]]; then
+	du() {
+		ds $@
+	}
+fi
 dict() {
 	curl -sL "dict://dict.org/d:$1"
 }
 disconnect() {
 	iwctl station $1 disconnect
 }
-find() {
-	fd $@
-}
+if [[ $(which fd) != "" ]]; then
+	find() {
+		fd $@
+	}
+fi
 gitignore() {
 	curl -sL "gitignore.io/api/$1"
 }
-grep() {
-	rg $@
-}
-ls() {
-	exa -a --group-directories-first $@
-}
+if [[ $(which rg) != "" ]]; then
+	grep() {
+		rg $@
+	}
+fi
+if [[ $(which exa) != "" ]]; then
+	ls() {
+		exa -a --group-directories-first $@
+	}
+fi
+if [[ $(which batman) != "" ]]; then
+	man() {
+		batman $@
+	}
+fi
 parrot() {
 	curl -sL "parrot.live"
 }
@@ -80,9 +102,16 @@ pkgclean() {
 pubip() {
 	curl -sL "ifconfig.co/$1"
 }
-vim() {
-	nvim $@
-}
+if [[ $(which htop) != "" ]]; then
+	top() {
+		htop $@
+	}
+fi
+if [[ $(which nvim) != "" ]]; then
+	vim() {
+		nvim $@
+	}
+fi
 weather() {
 	curl -sL "wttr.in/$1"
 }

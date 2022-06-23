@@ -11,15 +11,18 @@ export GOPATH="$XDG_DATA_HOME/go"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export HISTFILE="$XDG_STATE_HOME/bash/history"
 
-export PAGER="bat -p"
+if [[ $(which bat) != "" ]]; then
+	export PAGER="bat -p"
+fi
 export BAT_THEME="Dracula"
 export CC="clang"
 export CXX="clang++"
-export EDITOR="nvim"
+if [[ $(which nvim) != "" ]]; then
+	export EDITOR="nvim"
+fi
 export PF_INFO="ascii title host kernel os shell uptime memory wm palette"
 export EXA_COLORS="da=35"
 
 export PATH="${PATH:+${PATH}:}$HOME/.local/bin:$CARGO_HOME/bin:$GOPATH/bin"
 
-if [ -r ~/.profile ]; then . ~/.profile; fi
-case "$-" in *i*) if [ -r ~/.bashrc ]; then . ~/.bashrc; fi ;; esac
+source ~/.bashrc
