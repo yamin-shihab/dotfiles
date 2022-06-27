@@ -20,3 +20,4 @@ vim.opt.spell = true
 vim.opt.tabstop = 8
 vim.opt.termguicolors = true
 vim.opt.title = true
+vim.opt.ttimeoutlen = 0
