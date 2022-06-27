@@ -20,6 +20,9 @@ export CXX="clang++"
 if [[ $(which nvim) != "" ]]; then
 	export EDITOR="nvim"
 fi
+if [[ $(which ninja) != "" ]]; then
+	export CMAKE_GENERATOR="Ninja"
+fi
 export PF_INFO="ascii title host kernel os shell uptime memory wm palette"
 export EXA_COLORS="da=35"
 

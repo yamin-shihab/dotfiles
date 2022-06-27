@@ -1,0 +1,48 @@
+From b7f2e9e933710e3339b710e24e37c6f0b3befa34 Mon Sep 17 00:00:00 2001
+From: Matthias Schoth <mschoth@gmail.com>
+Date: Fri, 24 Jul 2020 23:55:31 +0200
+Subject: [PATCH] visualbell
+
+---
+ x.c | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/x.c b/x.c
+index 210f184..bcf61f1 100644
+--- a/x.c
++++ b/x.c
+@@ -253,6 +253,7 @@ static char *opt_name  = NULL;
+ static char *opt_title = NULL;
+ 
+ static int oldbutton = 3; /* button event on startup: 3 = release */
++static int bellon = 0;    /* visual bell status */
+ 
+ void
+ clipcopy(const Arg *dummy)
+@@ -1713,6 +1714,8 @@ xbell(void)
+ 		xseturgency(1);
+ 	if (bellvolume)
+ 		XkbBell(xw.dpy, xw.win, bellvolume, (Atom)NULL);
++	if (!bellon) /* turn visual bell on */
++		bellon = 1;
+ }
+ 
+ void
+@@ -1958,7 +1961,13 @@ run(void)
+ 			}
+ 		}
+ 
+-		draw();
++		if (bellon) {
++			bellon++;
++			bellon %= 3;
++			MODBIT(win.mode, !IS_SET(MODE_REVERSE), MODE_REVERSE);
++			redraw();
++		}
++		else draw();
+ 		XFlush(xw.dpy);
+ 		drawing = 0;
+ 	}
+-- 
+2.27.0
+

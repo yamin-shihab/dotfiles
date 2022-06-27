@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "JetBrainsMono Nerd Font:pixelsize=16:antialias=true:autohint=true";
+static char *font = "JetBrains Mono NL:pixelsize=20:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -55,6 +55,12 @@ int allowwindowops = 0;
  */
 static double minlatency = 8;
 static double maxlatency = 33;
+
+/*
+ * Synchronized-Update timeout in ms
+ * https://gitlab.com/gnachman/iterm2/-/wikis/synchronized-updates-spec
+ */
+static uint su_timeout = 200;
 
 /*
  * blinking timeout (set to 0 to disable blinking) for the terminal blinking

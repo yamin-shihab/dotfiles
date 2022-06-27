@@ -80,6 +80,9 @@ if [[ $(which exa) != "" ]]; then
 	ls() {
 		exa -a --group-directories-first $@
 	}
+	ll() {
+		exa -la --group-directories-first $@
+	}
 fi
 if [[ $(which batman) != "" ]]; then
 	man() {
