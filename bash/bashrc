@@ -1,35 +1,35 @@
 # Variables
-XDG_CACHE_HOME="$HOME/.cache"
-XDG_CONFIG_HOME="$HOME/.config"
-XDG_DATA_HOME="$HOME/.local/share"
-XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
 
-CARGO_HOME="$XDG_DATA_HOME/cargo"
-NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
-RUSTUP_HOME="$XDG_DATA_HOME/rustup"
-GOPATH="$XDG_DATA_HOME/go"
-CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
-HISTFILE="$XDG_STATE_HOME/bash/history"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export GOPATH="$XDG_DATA_HOME/go"
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
+export HISTFILE="$XDG_STATE_HOME/bash/history"
 
 if [[ $(which bat) != "" ]]; then
-	PAGER="bat -p"
+	export PAGER="bat -p"
 fi
-BAT_THEME="Dracula"
-CC="clang"
-CXX="clang++"
+export BAT_THEME="Dracula"
+export CC="clang"
+export CXX="clang++"
 if [[ $(which nvim) != "" ]]; then
-	EDITOR="nvim"
+	export EDITOR="nvim"
 fi
 if [[ $(which ninja) != "" ]]; then
-	CMAKE_GENERATOR="Ninja"
+	export CMAKE_GENERATOR="Ninja"
 fi
-PF_INFO="ascii title host kernel os shell uptime memory wm palette"
-EXA_COLORS="da=35"
+export PF_INFO="ascii title host kernel os shell uptime memory wm palette"
+export EXA_COLORS="da=35"
 
-PATH="${PATH:+${PATH}:}$HOME/.local/bin:$CARGO_HOME/bin:$GOPATH/bin"
+export PATH="${PATH:+${PATH}:}$HOME/.local/bin:$CARGO_HOME/bin:$GOPATH/bin"
 
 # My custom prompt
-PS1="\[\033[01;38;5;13m\][\[$(tput sgr0)\]\[\033[01;38;5;10m\]\u\[$(tput sgr0)\]\[\033[01;38;5;13m\]@\[$(tput sgr0)\]\[\033[01;38;5;14m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[01;38;5;11m\]\w\[$(tput sgr0)\]\[\033[01;38;5;13m\]]\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[01;38;5;9m\]\$?\[$(tput sgr0)\]\[$(tput bold)\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]"
+export PS1="\[\033[01;38;5;13m\][\[$(tput sgr0)\]\[\033[01;38;5;10m\]\u\[$(tput sgr0)\]\[\033[01;38;5;13m\]@\[$(tput sgr0)\]\[\033[01;38;5;14m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[01;38;5;11m\]\w\[$(tput sgr0)\]\[\033[01;38;5;13m\]]\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[01;38;5;9m\]\$?\[$(tput sgr0)\]\[$(tput bold)\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]"
 
 # Dracula theme for Linux TTY
 if [ "$TERM" = "linux" ]; then
@@ -68,22 +68,24 @@ alias c="bat -p"
 alias cp="cp -iv"
 alias dad="curl -sL 'icanhazdadjoke.com'"
 alias diff="diff --color=auto"
-alias e="$EDITOR"
 alias g="git"
 alias ip="ip --color=auto"
 alias ka="killall"
 alias l="exa -a --group-directories-first"
 alias ll="exa -la --group-directories-first"
 alias m="batman"
+alias mk="make"
 alias mkd="mkdir -pv"
 alias mv="mv -iv"
 alias nyan="curl -sL 'ascii.live/nyan'"
 alias p="paru"
 alias parrot="curl -sL 'parrot.live'"
 alias pkgclean="paru -c && paru -Sc && paccache -r"
+alias pls="sudo"
 alias rick="curl -sL 'ascii.live/rick'"
 alias rm="rm -vI"
 alias tp="htop"
+alias v="$EDITOR"
 cht() { curl -sL "cht.sh/$1"; }
 connect() { iwctl station $1 connect $2; }
 crypto() { curl -sL "rate.sx/$1"; }

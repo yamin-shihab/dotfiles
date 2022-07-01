@@ -10,10 +10,8 @@ require("packer").startup({
 		use({
 			"hrsh7th/nvim-cmp",
 			requires = {
-				"L3MON4D3/LuaSnip",
 				"hrsh7th/cmp-nvim-lsp",
 				"neovim/nvim-lspconfig",
-				"saadparwaiz1/cmp_luasnip",
 			},
 			config = require("configs/cmp"),
 		})
