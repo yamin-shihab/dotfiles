@@ -1,3 +1,5 @@
+set font "JetBrains Mono NL"
+
 set window-title-basename "true"
 set selection-clipboard "clipboard"
 

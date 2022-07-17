@@ -39,7 +39,6 @@ myAdditionalKeysP =
     [ ("M-S-'", spawn "slock systemctl suspend")
     , ("M-'", spawn "slock")
     , ("M-<Print>", spawn "flameshot gui")
-    , ("M-a", spawn "himawaripy --auto-offset")
     , ("M-x", spawnAllStatusBars)
     , ("M-z", sendMessage ToggleStruts)
     , ("M-<XF86AudioRaiseVolume>", spawn "pulsemixer --change-volume 5")

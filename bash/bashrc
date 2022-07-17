@@ -59,6 +59,10 @@ bind "set completion-ignore-case on"
 bind "set show-all-if-ambiguous on"
 bind "TAB:menu-complete"
 
+# Use bash-completion, if available
+[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
+	. /usr/share/bash-completion/bash_completion
+
 # Zoxide instead of cd
 eval "$(zoxide init bash)"
 
