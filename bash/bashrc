@@ -14,9 +14,6 @@ export HISTFILE="$XDG_STATE_HOME/bash/history"
 if [[ $(which bat) != "" ]]; then
 	export PAGER="bat -p"
 fi
-export BAT_THEME="Dracula"
-export CC="clang"
-export CXX="clang++"
 if [[ $(which nvim) != "" ]]; then
 	export EDITOR="nvim"
 fi
@@ -25,6 +22,9 @@ if [[ $(which ninja) != "" ]]; then
 fi
 export PF_INFO="ascii title host kernel os shell uptime memory wm palette"
 export EXA_COLORS="da=35"
+export BAT_THEME="Dracula"
+export CC="clang"
+export CXX="clang++"
 
 export PATH="${PATH:+${PATH}:}$HOME/.local/bin:$CARGO_HOME/bin:$GOPATH/bin"
 
@@ -71,8 +71,8 @@ alias diff="diff --color=auto"
 alias g="git"
 alias ip="ip --color=auto"
 alias ka="killall"
-alias l="exa -a --group-directories-first"
-alias ll="exa -la --group-directories-first"
+alias l="exa -as='Name' --group-directories-first"
+alias ll="exa -las='Name' --group-directories-first"
 alias m="batman"
 alias mk="make"
 alias mkd="mkdir -pv"
@@ -81,9 +81,10 @@ alias nyan="curl -sL 'ascii.live/nyan'"
 alias p="paru"
 alias parrot="curl -sL 'parrot.live'"
 alias pkgclean="paru -c && paru -Sc && paccache -r"
-alias pls="sudo"
 alias rick="curl -sL 'ascii.live/rick'"
 alias rm="rm -vI"
+alias s="sudo"
+alias t="touch"
 alias tp="htop"
 alias v="$EDITOR"
 cht() { curl -sL "cht.sh/$1"; }
