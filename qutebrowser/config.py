@@ -26,3 +26,7 @@ c.fonts.default_size = "10pt"
 c.window.hide_decoration = True
 c.content.javascript.can_access_clipboard = True
 c.content.pdfjs = True
+
+
+# Don't load autoconfig
+config.load_autoconfig(False)
