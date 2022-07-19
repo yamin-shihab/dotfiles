@@ -10,7 +10,6 @@ import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig
 import XMonad.Util.SpawnOnce
 
-
 -- Basic stuff
 mySpacing = 5
 myTerminal = "st"
@@ -21,7 +20,6 @@ myForegroundColor = "#f8f8f2"
 myNormalBorderColor = "#44475A"
 myFocusedBorderColor = "#6272A4"
 myWorkspaces = ["main", "term", "web", "chat", "edit", "temp"]
-
 
 -- Keybinds
 myAdditionalKeysP =
@@ -34,6 +32,7 @@ myAdditionalKeysP =
 	, ("M-<XF86AudioLowerVolume>", spawn "pulsemixer --change-volume -5")
 	, ("M-<XF86AudioMute>", spawn "pulsemixer --toggle-mute")
 	, ("M-;", spawn "rofi -monitor -4 -show drun")
+	, ("M-b", spawn "killall livewallpaper; livewallpaper")
 	, ("M-c", spawn "setxkbmap -layout us -variant colemak")
 	, ("M-v", spawn "setxkbmap -layout us")
 	] ++
@@ -45,14 +44,12 @@ myAdditionalKeysP =
 	]
 	-- Maybe choosing XMonad was a mistake...
 
-
 -- Looks
 myLayoutHook = avoidStruts $ tiled ||| noBorders Full where
 	tiled = spacingWithEdge mySpacing $ Tall nmaster delta ratio
 	nmaster = 1
 	ratio = 1 / 2
 	delta = 3 / 100
-
 
 -- Startup garbaj
 myStartupHook = do
@@ -66,8 +63,6 @@ myStartupHook = do
 	spawnOnce "xset r 66"
 	spawnOnce "xautolock -time 5 -locker slock"
 	spawnOnce "xbanish"
-	spawnOnce "livewallpaper"
-
 
 -- XMobar stuff
 spawnAllStatusBars = do
@@ -89,7 +84,6 @@ myXmobarPP = def
 
 myXmobar = statusBarProp "xmobar" (pure myXmobarPP)
 
-
 -- Just look at the name
 myMainConfig = xmonad . ewmh . withSB myXmobar . docks $ def
 	{ terminal = myTerminal
@@ -101,7 +95,6 @@ myMainConfig = xmonad . ewmh . withSB myXmobar . docks $ def
 	, layoutHook = myLayoutHook
 	, workspaces = myWorkspaces
 	} `additionalKeysP` myAdditionalKeysP
-
 
 -- Da config
 main = myMainConfig

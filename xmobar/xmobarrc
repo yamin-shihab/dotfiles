@@ -1,7 +1,7 @@
 Config
 	{ font = "xft:JetBrains Mono NL-10:style=Bold"
-	, bgColor =	"#282a36"
-	, fgColor =	"#44475a"
+	, bgColor = "#282a36"
+	, fgColor = "#44475a"
 	, allDesktops = True
 	, position = TopH 30
 	, border = BottomB
@@ -9,49 +9,56 @@ Config
 	, borderColor =	"#6272a4"
 	, commands =
 		[ Run XMonadLog
-		, Run Com "/home/yamin/.config/xmobar/vol.sh" [] "vol" 10 -- Replace with appropriate path
+		, Run Volume "pulse" "Master"
+			[ "--template", "VOL: <volume>"
+			, "-L", "75"
+			, "-H", "125"
+			, "--high", "#50fa7b"
+        		, "--normal", "#ffb86c"
+        		, "--low", "#ff5555"
+			] 10
 		, Run Wireless "wlan0"
-		 	[ "--template", "<essid>: <quality>%"
-            , "--Low", "30"
-            , "--High", "70"
-            , "--high", "#50fa7b"
-            , "--normal", "#ffb86c"
-            , "--low", "#ff5555"
+			[ "--template", "<essid>: <quality>%"
+	        	, "--Low", "30"
+        		, "--High", "70"
+        		, "--high", "#50fa7b"
+        		, "--normal", "#ffb86c"
+        		, "--low", "#ff5555"
 		 	] 10
 		, Run MultiCpu
 			[ "--template", "CPU: <total>%"
-            , "--Low", "50"
-            , "--High", "85"
-            , "--low", "#50fa7b"
-            , "--normal", "#ffb86c"
-            , "--high", "#ff5555"
-            ] 10
+        		, "--Low", "50"
+        		, "--High", "85"
+        		, "--low", "#50fa7b"
+        		, "--normal", "#ffb86c"
+        		, "--high", "#ff5555"
+        		] 10
 		, Run Memory
 			[ "--template", "MEM: <usedratio>%"
-            , "--Low", "20"
-            , "--High", "90"
-            , "--low", "#50fa7b"
-            , "--normal", "#ffb86c"
-            , "--high", "#ff5555"
-            ] 10
+        		, "--Low", "20"
+        		, "--High", "90"
+        		, "--low", "#50fa7b"
+        		, "--normal", "#ffb86c"
+        		, "--high", "#ff5555"
+        		] 10
 		, Run Swap
 			[ "--template", "SWAP: <usedratio>%"
-            , "--Low", "20"
-            , "--High", "90"
-            , "--low", "#50fa7b"
-            , "--normal", "#ffb86c"
-            , "--high", "#ff5555"
-            ] 10
+        		, "--Low", "20"
+        		, "--High", "90"
+        		, "--low", "#50fa7b"
+        		, "--normal", "#ffb86c"
+        		, "--high", "#ff5555"
+        		] 10
 		, Run Uptime
 			[ "--template", "UPTIME: <days>-<hours>-<minutes>"
-            , "--Low", "0"
-            , "--High", "1"
-            , "--low", "#50fa7b"
-            , "--normal", "#ffb86c"
-            , "--high", "#ff5555"
-            ] 10
+        		, "--Low", "0"
+        		, "--High", "1"
+        		, "--low", "#50fa7b"
+        		, "--normal", "#ffb86c"
+        		, "--high", "#ff5555"
+        		] 10
 		, Run Kbd [("us(colemak)", "COLEMAK"), ("us", "QWERTY")]
 		, Run Date "<fc=#f8f8f2>%F (%a) %T</fc>" "date" 10
 		]
-    , template = " %XMonadLog% }{ VOL: %vol% | %wlan0wi% | %multicpu% | %memory% | %swap% | %uptime% | LAYOUT: <fc=#50fa7b>%kbd%</fc> | %date% "
+    , template = " %XMonadLog% }{ %pulse:Master% | %wlan0wi% | %multicpu% | %memory% | %swap% | %uptime% | LAYOUT: <fc=#50fa7b>%kbd%</fc> | %date% "
 	}

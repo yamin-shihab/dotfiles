@@ -28,10 +28,8 @@ export CXX="clang++"
 
 export PATH="${PATH:+${PATH}:}$HOME/.local/bin:$CARGO_HOME/bin:$GOPATH/bin"
 
-
 # My custom prompt
 export PS1="\[\033[01;38;5;13m\][\[$(tput sgr0)\]\[\033[01;38;5;10m\]\u\[$(tput sgr0)\]\[\033[01;38;5;13m\]@\[$(tput sgr0)\]\[\033[01;38;5;14m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[01;38;5;11m\]\w\[$(tput sgr0)\]\[\033[01;38;5;13m\]]\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[01;38;5;9m\]\$?\[$(tput sgr0)\]\[$(tput bold)\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]"
-
 
 # Dracula theme for Linux TTY
 if [ "$TERM" = "linux" ]; then
@@ -56,21 +54,17 @@ if [ "$TERM" = "linux" ]; then
 	clear
 fi
 
-
 # Better autocomplete
 bind "set completion-ignore-case on"
 bind "set show-all-if-ambiguous on"
 bind "TAB:menu-complete"
 
-
 # Use bash-completion, if available
-[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
+[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] &&
 	. /usr/share/bash-completion/bash_completion
-
 
 # Zoxide instead of cd
 eval "$(zoxide init bash)"
-
 
 # Aliases/functions
 alias bc="bc -ql"
@@ -105,7 +99,6 @@ disconnect() { iwctl station $1 disconnect; }
 gitignore() { curl -sL "gitignore.io/api/$1"; }
 pubip() { curl -sL "ifconfig.co/$1"; }
 weather() { curl -sL "wttr.in/$1"; }
-
 
 # It's better than Neofetch (:
 pfetch

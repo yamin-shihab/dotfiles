@@ -1,6 +1,7 @@
 -- Neovim options
 
 vim.opt.breakindent = true
+vim.opt.colorcolumn = "80"
 vim.opt.cursorline = true
 vim.opt.ignorecase = true
 vim.opt.laststatus = 3
