@@ -24,8 +24,7 @@ myWorkspaces = ["main", "term", "web", "chat", "edit", "temp"]
 myAdditionalKeysP =
 	[ ("M-S-'", spawn "slock systemctl suspend")
 	, ("M-'", spawn "slock")
-	, ("M-<Print>", spawn "flameshot gui")
-	, ("M-x", spawnAllStatusBars)
+	, ("M-x", spawn "flameshot gui")
 	, ("M-z", sendMessage ToggleStruts)
 	, ("M-<XF86AudioRaiseVolume>", spawn "pulsemixer --change-volume 5")
 	, ("M-<XF86AudioLowerVolume>", spawn "pulsemixer --change-volume -5")
