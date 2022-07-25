@@ -11,8 +11,8 @@ Config
 		[ Run XMonadLog
 		, Run Volume "pulse" "Master"
 			[ "--template", "VOL: <volume>"
-			, "-L", "75"
-			, "-H", "125"
+			, "-L", "25"
+			, "-H", "75"
 			, "--high", "#50fa7b"
         		, "--normal", "#ffb86c"
         		, "--low", "#ff5555"
@@ -41,14 +41,6 @@ Config
         		, "--normal", "#ffb86c"
         		, "--high", "#ff5555"
         		] 10
-		, Run Swap
-			[ "--template", "SWAP: <usedratio>%"
-        		, "--Low", "20"
-        		, "--High", "90"
-        		, "--low", "#50fa7b"
-        		, "--normal", "#ffb86c"
-        		, "--high", "#ff5555"
-        		] 10
 		, Run Uptime
 			[ "--template", "UPTIME: <days>-<hours>-<minutes>"
         		, "--Low", "0"
@@ -60,5 +52,5 @@ Config
 		, Run Kbd [("us(colemak)", "COLEMAK"), ("us", "QWERTY")]
 		, Run Date "<fc=#f8f8f2>%F (%a) %T</fc>" "date" 10
 		]
-    , template = " %XMonadLog% }{ %pulse:Master% | %wlan0wi% | %multicpu% | %memory% | %swap% | %uptime% | LAYOUT: <fc=#50fa7b>%kbd%</fc> | %date% "
+    , template = " %XMonadLog% }{ %pulse:Master% | %wlan0wi% | %multicpu% | %memory% | %uptime% | LAYOUT: <fc=#50fa7b>%kbd%</fc> | %date% "
 	}
