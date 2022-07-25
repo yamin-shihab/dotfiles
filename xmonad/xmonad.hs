@@ -2,7 +2,6 @@ import XMonad
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.StatusBar
-import XMonad.Hooks.StatusBar.PP
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ShowWName
 import XMonad.Layout.Spacing
@@ -19,7 +18,7 @@ myBackgroundColor = "#282a36"
 myForegroundColor = "#f8f8f2"
 myNormalBorderColor = "#44475A"
 myFocusedBorderColor = "#6272A4"
-myWorkspaces = ["main", "term", "web", "chat", "edit", "temp"]
+myWorkspaces = ["MAIN", "TERM", "WEB", "CHAT", "EDIT", "TEMP"]
 
 -- Keybinds
 myAdditionalKeysP =
@@ -64,28 +63,13 @@ myStartupHook = do
 	spawnOnce "xautolock -time 5 -locker slock"
 	spawnOnce "xbanish"
 
--- XMobar stuff
+-- Status bar stuff
 spawnAllStatusBars = do
 	killAllStatusBars
-	spawnStatusBar "xmobar -x 0"
-	spawnStatusBar "xmobar -x 1"
-
-myXmobarColor fgColor = xmobarColor fgColor "#282a36"
-
-myXmobarPP = def
-	{ ppCurrent = myXmobarColor "#f1fa8c"
-	, ppVisible = myXmobarColor "#44475a"
-	, ppHidden = myXmobarColor "#44475a"
-	, ppUrgent = myXmobarColor "#ff5555"
-	, ppLayout = myXmobarColor "#bd93f9"
-	, ppTitle = myXmobarColor "#50fa7b"
-	, ppSep = " | "
-	}
-
-myXmobar = statusBarProp "xmobar" (pure myXmobarPP)
+	spawnStatusBar "$HOME/.config/polybar/launch.sh"
 
 -- Just look at the name
-myMainConfig = xmonad . ewmh . withSB myXmobar . docks $ def
+myMainConfig = xmonad . ewmh . docks $ def
 	{ terminal = myTerminal
 	, modMask = myModMask
 	, borderWidth = myBorderWidth
