@@ -18,7 +18,7 @@ myBackgroundColor = "#282a36"
 myForegroundColor = "#f8f8f2"
 myNormalBorderColor = "#44475A"
 myFocusedBorderColor = "#6272A4"
-myWorkspaces = ["MAIN", "TERM", "WEB", "CHAT", "EDIT", "TEMP"]
+myWorkspaces = ["main", "term", "web", "chat", "edit", "temp"]
 
 -- Keybinds
 myAdditionalKeysP =
@@ -31,7 +31,6 @@ myAdditionalKeysP =
 	, ("M-<XF86AudioLowerVolume>", spawn "pulsemixer --change-volume -5")
 	, ("M-<XF86AudioMute>", spawn "pulsemixer --toggle-mute")
 	, ("M-;", spawn "rofi -monitor -4 -show drun")
-	, ("M-b", spawn "killall livewallpaper; livewallpaper")
 	, ("M-c", spawn "setxkbmap -layout us -variant colemak")
 	, ("M-v", spawn "setxkbmap -layout us")
 	] ++
@@ -53,6 +52,7 @@ myLayoutHook = avoidStruts $ tiled ||| noBorders Full where
 -- Startup garbaj
 myStartupHook = do
 	spawnAllStatusBars
+	spawnOnce "livewallpaper"
 	spawnOnce "picom --experimental-backends"
 	spawnOnce "dunst"
 	spawnOnce "xsetroot -cursor_name left_ptr"
