@@ -1,18 +1,6 @@
-# Autostart
-exec --no-startup-id $HOME/.config/polybar/launch.sh
-exec --no-startup-id picom --experimental-backends
-exec --no-startup-id dunst
-exec --no-startup-id redshift
-exec --no-startup-id setxkbmap -layout us -variant colemak
-exec --no-startup-id xset r rate 300 40
-exec --no-startup-id xset r 66
-exec --no-startup-id xautolock -time 5 -locker slock
-exec --no-startup-id xbanish
-
 # Settings
 font pango:JetBrains Mono NL 8
-default_border pixel 3
-default_floating_border pixel 3
+for_window [class="^.*"] border pixel 3
 gaps inner 11
 
 # Colors
@@ -24,16 +12,16 @@ client.placeholder #000000 #282a36 #f8f8f2 #000000 #44475a
 client.background #282a36
 
 # Custom keybinds
-bindsym --release $m+Shift+apostrophe exec --no-startup-id slock systemctl suspend
 bindsym --release $m+apostrophe exec --no-startup-id slock
-bindsym $m+x exec --no-startup-id flameshot gui
+bindsym --release $m+Shift+apostrophe exec --no-startup-id slock systemctl suspend
+bindsym $m+p exec --no-startup-id flameshot gui
 bindsym $m+XF86AudioRaiseVolume exec --no-startup-id pulsemixer --change-volume 5
 bindsym $m+XF86AudioLowerVolume exec --no-startup-id pulsemixer --change-volume -5
 bindsym $m+XF86AudioMute exec --no-startup-id pulsemixer --toggle-mute
 bindsym $m+semicolon exec --no-startup-id rofi -monitor -4 -show drun
-bindsym $m+Shift+Return exec --no-startup-id st
-bindsym $m+c exec --no-startup-id setxkbmap -layout us -variant colemak
-bindsym $m+v exec --no-startup-id setxkbmap -layout us
+bindsym $m+Return exec --no-startup-id st
+bindsym $m+comma exec --no-startup-id setxkbmap -layout us -variant colemak
+bindsym $m+period exec --no-startup-id setxkbmap -layout us
 
 # Defaultish keybinds
 set $m Mod4
