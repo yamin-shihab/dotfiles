@@ -29,16 +29,32 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-# Autostart programs and start window manager
-export XDG_CURRENT_DESKTOP="i3"
-variety -n &
-picom --experimental-backends &
-dunst &
-redshift &
-setxkbmap -layout us -variant colemak &
-xset r rate 300 40 &
-xset r 66 &
-xautolock -time 5 -locker slock &
-xbanish &
-$HOME/.config/polybar/launch.sh &
-exec i3
+# Autostart programs
+autostart() {
+	variety -n &
+	picom --experimental-backends &
+	dunst &
+	/usr/lib/geoclue-2.0/demos/agent &
+	redshift &
+	setxkbmap -layout us -variant colemak &
+	xsetroot -cursor_name left_ptr &
+	xset r rate 300 40 &
+	xset r 66 &
+	xautolock -time 5 -locker slock &
+	xbanish &
+	autotiling &
+	$HOME/.config/polybar/launch.sh &
+}
+
+# Start random window manager, or the one given if given
+if [ "$3" = "" ]; then
+	wm=$(shuf -e bspwm i3 | head -n 1)
+	export XDG_CURRENT_DESKTOP=$wm
+	autostart
+	exec $wm
+else
+	export XDG_CURRENT_DESKTOP=$3
+	autostart
+	exec $3
+fi
+# "given if given"

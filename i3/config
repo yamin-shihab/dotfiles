@@ -13,7 +13,6 @@ client.background #282a36
 
 # Custom keybinds
 bindsym --release $m+apostrophe exec --no-startup-id slock
-bindsym --release $m+Shift+apostrophe exec --no-startup-id slock systemctl suspend
 bindsym $m+p exec --no-startup-id flameshot gui
 bindsym $m+XF86AudioRaiseVolume exec --no-startup-id pulsemixer --change-volume 5
 bindsym $m+XF86AudioLowerVolume exec --no-startup-id pulsemixer --change-volume -5
@@ -22,6 +21,8 @@ bindsym $m+semicolon exec --no-startup-id rofi -monitor -4 -show drun
 bindsym $m+Return exec --no-startup-id st
 bindsym $m+comma exec --no-startup-id setxkbmap -layout us -variant colemak
 bindsym $m+period exec --no-startup-id setxkbmap -layout us
+bindsym $m+w move workspace to output left
+bindsym $m+f move workspace to output right
 
 # Defaultish keybinds
 set $m Mod4
@@ -43,8 +44,8 @@ bindsym $m+Shift+Left move left
 bindsym $m+Shift+Down move down
 bindsym $m+Shift+Up move up
 bindsym $m+Shift+Right move right
-bindsym $m+w split h
-bindsym $m+f split v
+bindsym $m+y split h
+bindsym $m+u split v
 bindsym $m+space fullscreen toggle
 bindsym $m+Shift+space floating toggle
 bindsym $m+s layout toggle split
@@ -63,7 +64,7 @@ bindsym $m+Shift+2 move container to workspace $ws2
 bindsym $m+Shift+3 move container to workspace $ws3
 bindsym $m+Shift+4 move container to workspace $ws4
 bindsym $m+q reload
-bindsym $m+Shift+q exec --no-startup-id i3-msg exit
+bindsym $m+Shift+q exit
 bindsym $m+r mode "resize"
 mode "resize" {
         bindsym h resize shrink width 10 px or 10 ppt
