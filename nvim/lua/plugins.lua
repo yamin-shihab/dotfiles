@@ -6,27 +6,7 @@ require("packer").startup({
 		use({ "lewis6991/impatient.nvim", config = require("configs/impatient") })
 		use("wbthomason/packer.nvim")
 
-		-- LSP
-		use({
-			"hrsh7th/nvim-cmp",
-			requires = {
-				"hrsh7th/cmp-nvim-lsp",
-				"neovim/nvim-lspconfig",
-			},
-			config = require("configs/cmp"),
-		})
-		use({ "neovim/nvim-lspconfig", config = require("configs/lspconfig") })
-		use("folke/lsp-colors.nvim")
-
 		-- Treesitter
-		use({
-			"narutoxy/dim.lua",
-			requires = {
-				"neovim/nvim-lspconfig",
-				"nvim-treesitter/nvim-treesitter",
-			},
-			config = require("configs/dim"),
-		})
 		use({
 			"SmiteshP/nvim-gps",
 			requires = { "nvim-treesitter/nvim-treesitter" },
@@ -34,7 +14,7 @@ require("packer").startup({
 		})
 		use({ "lewis6991/spellsitter.nvim", config = require("configs/spellsitter") })
 		use("nvim-treesitter/nvim-treesitter")
-		use({ "p00f/nvim-ts-rainbow", config = require("configs/treesitter") }) -- Treesitter config is required by nvim-ts-rainbow so it's here
+		use({ "p00f/nvim-ts-rainbow", config = require("configs/treesitter") })
 
 		-- Appearance
 		use({
@@ -54,7 +34,6 @@ require("packer").startup({
 		use("andweeb/presence.nvim")
 		use({ "ethanholz/nvim-lastplace", config = require("configs/lastplace") })
 		use("https://gitlab.com/yorickpeterse/nvim-window.git")
-		use({ "folke/trouble.nvim", config = require("configs/trouble") })
 		use("jghauser/mkdir.nvim")
 		use("mcauley-penney/tidy.nvim")
 		use({ "nacro90/numb.nvim", config = require("configs/numb") })
