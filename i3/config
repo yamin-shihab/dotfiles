@@ -21,8 +21,6 @@ bindsym $m+semicolon exec --no-startup-id rofi -monitor -4 -show drun
 bindsym $m+Return exec --no-startup-id st
 bindsym $m+comma exec --no-startup-id setxkbmap -layout us -variant colemak
 bindsym $m+period exec --no-startup-id setxkbmap -layout us
-bindsym $m+w move workspace to output left
-bindsym $m+f move workspace to output right
 
 # Defaultish keybinds
 set $m Mod4
@@ -44,8 +42,6 @@ bindsym $m+Shift+Left move left
 bindsym $m+Shift+Down move down
 bindsym $m+Shift+Up move up
 bindsym $m+Shift+Right move right
-bindsym $m+y split h
-bindsym $m+u split v
 bindsym $m+space fullscreen toggle
 bindsym $m+Shift+space floating toggle
 bindsym $m+s layout toggle split
@@ -55,14 +51,17 @@ set $ws1 main
 set $ws2 term
 set $ws3 web
 set $ws4 chat
+set $ws5 hide
 bindsym $m+1 workspace $ws1
 bindsym $m+2 workspace $ws2
 bindsym $m+3 workspace $ws3
 bindsym $m+4 workspace $ws4
+bindsym $m+5 workspace $ws5
 bindsym $m+Shift+1 move container to workspace $ws1
 bindsym $m+Shift+2 move container to workspace $ws2
 bindsym $m+Shift+3 move container to workspace $ws3
 bindsym $m+Shift+4 move container to workspace $ws4
+bindsym $m+Shift+5 move container to workspace $ws5
 bindsym $m+q reload
 bindsym $m+Shift+q exit
 bindsym $m+r mode "resize"
