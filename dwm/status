@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+while true; do
+	xsetroot -name " $(date --rfc-3339=s)"
+	sleep 1
+done

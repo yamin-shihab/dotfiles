@@ -43,18 +43,21 @@ autostart() {
 	xautolock -time 5 -locker slock &
 	xbanish &
 	autotiling &
-	$HOME/.config/polybar/launch.sh &
+	status &
+	if [ "$1" != dwm ]; then
+		$HOME/.config/polybar/launch.sh &
+	fi
 }
 
 # Start random window manager, or the one given if given
 if [ "$3" = "" ]; then
-	wm=$(shuf -e bspwm i3 | head -n 1)
+	wm=$(shuf -e bspwm dwm | head -n 1)
 	export XDG_CURRENT_DESKTOP=$wm
-	autostart
+	autostart $wm
 	exec $wm
 else
 	export XDG_CURRENT_DESKTOP=$3
-	autostart
+	autostart $3
 	exec $3
 fi
 # "given if given"
