@@ -61,6 +61,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("flameshot gui")},
 	{ MODKEY,                       XK_c,      spawn,          SHCMD("setxkbmap -layout us -variant colemak")},
 	{ MODKEY,                       XK_x,      spawn,          SHCMD("setxkbmap -layout us")},
+	{ MODKEY,                       XK_comma,  focusnthmon,    {.i = 0 } },
+	{ MODKEY,                       XK_period, focusnthmon,    {.i = 1 } },
+	{ MODKEY|ShiftMask,             XK_comma,  tagnthmon,      {.i = 0 } },
+	{ MODKEY|ShiftMask,             XK_period, tagnthmon,      {.i = 1 } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          SHCMD("st") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
@@ -79,10 +83,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
+	/* { MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } }, */
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
