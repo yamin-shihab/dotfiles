@@ -29,13 +29,14 @@ static const unsigned int ulinevoffset = 0;
 static const int ulineall = 0;
 static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
+	{ "Zoom",     NULL,       NULL,       0,            1,           -1 },
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 };
 static const float mfact     = 0.55;
 static const int nmaster     = 1;
 static const int resizehints = 0;
-static const int lockfullscreen = 1;
+static const int lockfullscreen = 0;
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },
@@ -81,6 +82,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	{ MODKEY|ShiftMask,             XK_f,      togglefullscreen, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	/* { MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
