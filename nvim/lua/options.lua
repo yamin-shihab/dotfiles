@@ -14,7 +14,6 @@ vim.opt.scrolloff = 5
 vim.opt.showbreak = " > "
 vim.opt.showtabline = 0
 vim.opt.smartcase = true
-vim.opt.spell = true
 vim.opt.termguicolors = true
 vim.opt.title = true
 vim.opt.ttimeoutlen = 0

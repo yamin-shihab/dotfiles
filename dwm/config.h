@@ -10,7 +10,7 @@ static const char *fonts[] = { "JetBrains Mono NL:size=10" };
 static const char fg[] = "#f8f8f2";
 static const char bg[] = "#282a36";
 static const char unfocused[] = "#44475a";
-static const char focused[] = "#6272a4" ;
+static const char focused[] = "#bd93f9";
 static const char urg[] = "#ff5555";
 static const char *colors[][3] = {
 	/*                fg       bg       border */

@@ -12,7 +12,6 @@ require("packer").startup({
 			requires = { "nvim-treesitter/nvim-treesitter" },
 			config = require("configs/gps"),
 		})
-		use({ "lewis6991/spellsitter.nvim", config = require("configs/spellsitter") })
 		use("nvim-treesitter/nvim-treesitter")
 		use({ "p00f/nvim-ts-rainbow", config = require("configs/treesitter") })
 
