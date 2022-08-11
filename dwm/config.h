@@ -29,7 +29,7 @@ static const unsigned int ulinevoffset = 0;
 static const int ulineall = 0;
 static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Zoom",     NULL,       NULL,       0,            1,           -1 },
+	{ "zoom",     NULL,       NULL,       0,            1,           -1 },
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 };

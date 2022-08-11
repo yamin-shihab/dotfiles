@@ -29,35 +29,22 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-# Autostart programs
-autostart() {
-	variety -n &
-	picom --experimental-backends &
-	dunst &
-	/usr/lib/geoclue-2.0/demos/agent &
-	redshift &
-	setxkbmap -layout us -variant colemak &
-	xsetroot -cursor_name left_ptr &
-	xset r rate 300 40 &
-	xset r 66 &
-	xautolock -time 5 -locker slock &
-	xbanish &
-	autotiling &
-	status &
-	if [ "$1" != dwm ]; then
-		$HOME/.config/polybar/launch.sh &
-	fi
-}
-
-# Start random window manager, or the one given if given
-if [ "$3" = "" ]; then
-	wm=$(shuf -e bspwm dwm | head -n 1)
-	export XDG_CURRENT_DESKTOP=$wm
-	autostart $wm
-	exec $wm
+# Start window manager given
+export XDG_CURRENT_DESKTOP=$2
+variety -n &
+picom --experimental-backends &
+dunst &
+/usr/lib/geoclue-2.0/demos/agent &
+redshift &
+setxkbmap -layout us -variant colemak &
+xsetroot -cursor_name left_ptr &
+xset r rate 300 40 &
+xset r 66 &
+xautolock -time 5 -locker slock &
+xbanish &
+if [ "$2" != dwm ]; then
+	$HOME/.config/polybar/launch.sh &
 else
-	export XDG_CURRENT_DESKTOP=$3
-	autostart $3
-	exec $3
+	status &
 fi
-# "given if given"
+exec $2
