@@ -66,7 +66,7 @@ fi
 
 # Better Ctrl+r
 if [ -f /usr/share/doc/mcfly/mcfly.bash ]; then
-	. /usr/share/doc/mcfly/mcfly.bash
+	source /usr/share/doc/mcfly/mcfly.bash
 	export MCFLY_FUZZY="2"
 fi
 
@@ -74,11 +74,12 @@ fi
 bind "set completion-ignore-case on"
 bind "set show-all-if-ambiguous on"
 bind "TAB:menu-complete"
+bind "\"\e[Z\":menu-complete-backward"
 complete -cf s
 
 # Use bash-completion, if available
 if [ -f /usr/share/bash-completion/bash_completion ]; then
-	. /usr/share/bash-completion/bash_completion
+	source /usr/share/bash-completion/bash_completion
 fi
 
 # Zoxide instead of cd
@@ -109,7 +110,7 @@ alias pkgclean="paru -c && paru -Sc && paccache -r"
 alias pp="prettyping"
 alias rick="curl -sL 'ascii.live/rick'"
 alias rm="rm -vI"
-alias s="sudo "
+alias s="doas "
 alias sx="startx"
 alias t="touch"
 alias tp="htop"
