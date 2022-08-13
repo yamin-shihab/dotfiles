@@ -58,6 +58,7 @@ static Key keys[] = {
 	{ MODKEY,                       XF86XK_AudioLowerVolume, spawn, SHCMD("pulsemixer --change-volume -5")},
 	{ MODKEY,                       XF86XK_AudioMute, spawn,   SHCMD("pulsemixer --toggle-mute")},
 	{ MODKEY,                       XK_apostrophe,spawn,       SHCMD("slock") },
+	{ MODKEY|ShiftMask,             XK_apostrophe,spawn,       SHCMD("slock systemctl suspend") },
 	{ MODKEY,                       XK_semicolon,spawn,        SHCMD("rofi -show drun") },
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("flameshot gui")},
 	{ MODKEY,                       XK_c,      spawn,          SHCMD("setxkbmap -layout us -variant colemak")},

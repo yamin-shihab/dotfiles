@@ -39,10 +39,10 @@ export BAT_THEME="Dracula"
 export PATH="${PATH:+${PATH}:}$HOME/.local/bin:$CARGO_HOME/bin:$GOPATH/bin:/usr/local/games:/usr/games"
 
 # My custom prompt
-export PS1="\[\033[01;38;5;13m\][\[$(tput sgr0)\]\[\033[01;38;5;10m\]\u\[$(tput sgr0)\]\[\033[01;38;5;13m\]@\[$(tput sgr0)\]\[\033[01;38;5;14m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[01;38;5;11m\]\w\[$(tput sgr0)\]\[\033[01;38;5;13m\]]\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[01;38;5;9m\]\$?\[$(tput sgr0)\]\[$(tput bold)\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]"
+export PS1="\[$(tput bold)\]\[\033[38;5;5m\][\[$(tput bold)\]\[\033[38;5;2m\]\u\[$(tput bold)\]\[\033[38;5;5m\]@\[$(tput bold)\]\[\033[38;5;3m\]\w\[$(tput bold)\]\[\033[38;5;5m\]]\[$(tput bold)\] \[$(tput bold)\]\[\033[38;5;1m\]\$?\[$(tput bold)\]\[\033[38;5;6m\]\\$\[$(tput bold)\] \[$(tput sgr0)\]"
 
 # Dracula theme for Linux TTY
-if [[ "$TERM" = "linux" ]]; then
+if [ "$TERM" = "linux" ]; then
 	printf %b '\e[40m' '\e[8]'
 	printf %b '\e[37m' '\e[8]'
 	printf %b '\e]P0282a36'
@@ -65,8 +65,8 @@ if [[ "$TERM" = "linux" ]]; then
 fi
 
 # Better Ctrl+r
-if [[ -f /usr/share/doc/mcfly/mcfly.bash ]]; then
-	source /usr/share/doc/mcfly/mcfly.bash
+if [ -f /usr/share/doc/mcfly/mcfly.bash ]; then
+	. /usr/share/doc/mcfly/mcfly.bash
 	export MCFLY_FUZZY="2"
 fi
 
@@ -77,8 +77,9 @@ bind "TAB:menu-complete"
 complete -cf s
 
 # Use bash-completion, if available
-[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] &&
+if [ -f /usr/share/bash-completion/bash_completion ]; then
 	. /usr/share/bash-completion/bash_completion
+fi
 
 # Zoxide instead of cd
 if command -v zoxide &> /dev/null; then
