@@ -1,4 +1,4 @@
-# XDG variables
+# Export variables
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -15,34 +15,19 @@ export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
 export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
 
-# Program variables
-if command -v bat &> /dev/null; then
-	export PAGER="bat -p"
-fi
-if command -v nvim &> /dev/null; then
-	export EDITOR="nvim"
-fi
-if command -v ninja &> /dev/null; then
-	export CMAKE_GENERATOR="Ninja"
-fi
-if command -v clang &> /dev/null; then
-	export CC="clang"
-fi
-if command -v clang++ &> /dev/null; then
-	export CXX="clang++"
-fi
-export PF_INFO="ascii title host kernel os shell uptime memory wm palette"
-export EXA_COLORS="da=35"
-export BAT_THEME="Dracula"
-
-# Path
 export PATH="${PATH:+${PATH}:}$HOME/.local/bin:$CARGO_HOME/bin:$GOPATH/bin:/usr/local/games:/usr/games"
 
-# My custom prompt
+command -v bat &> /dev/null && export BAT_THEME="Dracula" && export PAGER="bat -p"
+command -v clang &> /dev/null && export CC="clang"
+command -v clang++ &> /dev/null && export CXX="clang++"
+command -v ninja &> /dev/null && export CMAKE_GENERATOR="Ninja"
+command -v nvim &> /dev/null && export EDITOR="nvim"
+
+export EXA_COLORS="da=35"
 export PS1="\[$(tput bold)\]\[\033[38;5;5m\][\[$(tput bold)\]\[\033[38;5;2m\]\u\[$(tput bold)\]\[\033[38;5;5m\]@\[$(tput bold)\]\[\033[38;5;3m\]\w\[$(tput bold)\]\[\033[38;5;5m\]]\[$(tput bold)\] \[$(tput bold)\]\[\033[38;5;1m\]\$?\[$(tput bold)\]\[\033[38;5;6m\]\\$\[$(tput bold)\] \[$(tput sgr0)\]"
 
 # Dracula theme for Linux TTY
-if [ "$TERM" = "linux" ]; then
+if [[ "$TERM" = "linux" ]]; then
 	printf %b '\e[40m' '\e[8]'
 	printf %b '\e[37m' '\e[8]'
 	printf %b '\e]P0282a36'
@@ -64,32 +49,21 @@ if [ "$TERM" = "linux" ]; then
 	clear
 fi
 
-# Better Ctrl+r
-if [ -f /usr/share/doc/mcfly/mcfly.bash ]; then
-	source /usr/share/doc/mcfly/mcfly.bash
-	export MCFLY_FUZZY="2"
-fi
+# Programs and stuff
+command -v mcfly &> /dev/null && export MCFLY_FUZZY="2" && export MCFLY_KEY_SCHEME="vim" && eval "$(mcfly init bash)"
+command -v zoxide &> /dev/null && eval "$(zoxide init bash)"
+[[ -f /usr/share/bash-completion/bash_completion ]] || [[ -f /usr/local/share/bash-completion/bash_completion ]] && . /usr/share/bash-completion/bash_completion
 
-# Better autocomplete
+# Autocomplete settings
 bind "set completion-ignore-case on"
 bind "set show-all-if-ambiguous on"
 bind "TAB:menu-complete"
 bind "\"\e[Z\":menu-complete-backward"
 complete -cf s
 
-# Use bash-completion, if available
-if [ -f /usr/share/bash-completion/bash_completion ]; then
-	source /usr/share/bash-completion/bash_completion
-fi
-
-# Zoxide instead of cd
-if command -v zoxide &> /dev/null; then
-	eval "$(zoxide init bash)"
-fi
-
 # Aliases/functions
 alias bc="bc -ql"
-alias c="bat -p"
+alias c="$PAGER"
 alias cp="cp -iv"
 alias ctl="systemctl"
 alias dad="curl -sL 'icanhazdadjoke.com'"
@@ -123,6 +97,4 @@ pubip() { curl -sL "ifconfig.co/$1"; }
 weather() { curl -sL "wttr.in/$1"; }
 
 # It's better than Neofetch (:
-if command -v pfetch &> /dev/null; then
-	pfetch
-fi
+command -v pfetch &> /dev/null && export PF_INFO="ascii title host kernel os shell uptime memory wm palette" && pfetch

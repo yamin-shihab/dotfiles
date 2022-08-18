@@ -1,0 +1,164 @@
+# Variables and stuff
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
+export ELINKS_CONFDIR="$XDG_CONFIG_HOME/elinks"
+export GOPATH="$XDG_DATA_HOME/go"
+export HISTFILE="$XDG_STATE_HOME/zsh/history"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
+
+pupdate() { case ":${PATH:=$1}:" in *:"$1":*) ;; *) PATH="$1:$PATH" ;; esac; }
+pupdate "$HOME/.local/bin"
+pupdate "$CARGO_HOME/bin"
+pupdate "$GOPATH/bin"
+pupdate "/usr/local/games"
+pupdate "/usr/games"
+
+command -v bat &> /dev/null && export BAT_THEME="Dracula" && export PAGER="bat -p"
+command -v clang &> /dev/null && export CC="clang"
+command -v clang++ &> /dev/null && export CXX="clang++"
+command -v ninja &> /dev/null && export CMAKE_GENERATOR="Ninja"
+command -v nvim &> /dev/null && export EDITOR="nvim" && export VISUAL="nvim"
+
+export EXA_COLORS="da=35"
+
+# Dracula theme for Linux TTY
+if [[ "$TERM" = "linux" ]]; then
+	printf %b "\e[40m" "\e[8]"
+	printf %b "\e[37m" "\e[8]"
+	printf %b "\e]P0282a36"
+	printf %b "\e]P86272a4"
+	printf %b "\e]P1ff5555"
+	printf %b "\e]P9ff7777"
+	printf %b "\e]P250fa7b"
+	printf %b "\e]PA70fa9b"
+	printf %b "\e]P3f1fa8c"
+	printf %b "\e]PBffb86c"
+	printf %b "\e]P4bd93f9"
+	printf %b "\e]PCcfa9ff"
+	printf %b "\e]P5ff79c6"
+	printf %b "\e]PDff88e8"
+	printf %b "\e]P68be9fd"
+	printf %b "\e]PE97e2ff"
+	printf %b "\e]P7f8f8f2"
+	printf %b "\e]PFffffff"
+	clear
+fi
+
+# Programs and stuff
+command -v mcfly &> /dev/null && export MCFLY_FUZZY="2" && export MCFLY_KEY_SCHEME="vim" && eval "$(mcfly init zsh)"
+command -v zoxide &> /dev/null && eval "$(zoxide init zsh)"
+
+# Aliases/functions
+alias -g bc="bc -ql"
+alias -g c="$PAGER"
+alias -g cp="cp -iv"
+alias -g ctl="systemctl"
+alias -g dad="curl -sL 'icanhazdadjoke.com'"
+alias -g diff="diff --color=auto"
+alias -g g="git"
+alias -g ip="ip --color=auto"
+alias -g ka="killall"
+alias -g l="exa -as='Name' --group-directories-first"
+alias -g ll="exa -las='Name' --group-directories-first"
+alias -g m="batman"
+alias -g mk="make"
+alias -g mkd="mkdir -pv"
+alias -g mv="mv -iv"
+alias -g nyan="curl -sL 'ascii.live/nyan'"
+alias -g p="paru"
+alias -g parrot="curl -sL 'parrot.live'"
+alias -g pkgclean="paru -c && paru -Sc && paccache -r"
+alias -g pp="prettyping"
+alias -g rick="curl -sL 'ascii.live/rick'"
+alias -g rm="rm -vI"
+alias -g s="doas "
+alias -g sx="startx"
+alias -g t="touch"
+alias -g tp="htop"
+alias -g v="$EDITOR"
+cht() { curl -sL "cht.sh/$1"; }
+crypto() { curl -sL "rate.sx/$1"; }
+dict() { curl -sL "dict://dict.org/d:$1"; }
+gitignore() { curl -sL "gitignore.io/api/$1"; }
+pubip() { curl -sL "ifconfig.co/$1"; }
+weather() { curl -sL "wttr.in/$1"; }
+
+# ZSH keybinds
+bindkey -v
+bindkey "^H" backward-delete-char
+bindkey "^?" backward-delete-char
+bindkey "^[[Z" reverse-menu-complete
+export KEYTIMEOUT=1
+
+# ZSH change cursor shape according to VI mode
+cursor_block="\e[2 q"
+cursor_beam="\e[6 q"
+
+zle-keymap-select() {
+	if [[ ${KEYMAP} == vicmd ]] || [[ $1 = "block" ]]; then
+		echo -ne $cursor_block
+	elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ ${KEYMAP} = "" ]] || [[ $1 = "beam" ]]; then
+		echo -ne $cursor_beam
+	fi
+}
+
+zle-line-init() {
+    echo -ne $cursor_beam
+}
+
+zle -N zle-keymap-select
+zle -N zle-line-init
+
+# ZSH options
+setopt AUTO_CD
+setopt CHASE_DOTS
+setopt MENU_COMPLETE
+setopt CORRECT
+setopt CORRECT_ALL
+setopt NO_AUTO_REMOVE_SLASH
+
+# ZSH completion
+zstyle ":completion:*" cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
+zstyle ":completion:*" menu select
+zstyle ":completion:*" squeeze-slashes true
+zstyle ":completion:*" matcher-list "m:{[:lower:][:upper:]}={[:upper:][:lower:]}" "m:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*" "m:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*" "m:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*"
+zstyle ":completion:*" list-suffixes zstyle ":completion:*" expand prefix suffix 
+zstyle ":completion:*" completer _complete _match _approximate
+zstyle ":completion:*:match:*" original only
+zstyle ":completion:*:approximate:*" max-errors 1 numeric
+
+rationalise-dot() {
+	if [[ $LBUFFER = *.. ]]; then
+		LBUFFER+=/..
+	else
+		LBUFFER+=.
+	fi
+}
+
+zle -N rationalise-dot
+bindkey . rationalise-dot
+autoload -Uz compinit && compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
+_comp_options+=(globdots)
+
+# ZSH export variables
+export SAVEHIST="10000"
+export HISTSIZE="10000"
+export PROMPT="%B%F{magenta}[%F{green}%n%F{magenta}@%F{yellow}%~%F{magenta}] %F{red}%?%F{cyan}%# %b%f"
+
+# ZSH plugins
+[[ -f "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] &&
+	. "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+[[ -f "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] &&
+	. "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+# It's better than Neofetch (:
+command -v pfetch &> /dev/null && export PF_INFO="ascii title host kernel os shell uptime memory wm palette" && pfetch
