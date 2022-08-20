@@ -1,8 +1,8 @@
-mod4 + Return
+mod4 + shift + Return
 	st
 
 mod4 + semicolon
-	rofi -monitor -4 -show drun
+	rofi -show drun
 
 mod4 + apostrophe
 	slock
@@ -19,10 +19,10 @@ mod4 + XF86AudioLowerVolume
 mod4 + XF86AudioMute
 	pulsemixer --toggle-mute
 
-mod4 + comma
+mod4 + c
 	setxkbmap -layout us -variant colemak
 
-mod4 + period
+mod4 + x
 	setxkbmap -layout us
 
 mod4 + q
@@ -34,7 +34,7 @@ mod4 + shift + q
 mod4 + shift + c
 	bspc node -c
 
-mod4 + {t,space,shift + space}
+mod4 + {t,shift+f,f}
 	bspc node -t {tiled,fullscreen,floating}
 
 mod4 + {_,shift + }{h,j,k,l}
@@ -52,8 +52,5 @@ mod4 + ctrl + shift + {h,j,k,l}
 mod4 + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-mod4 + w
-	bspc monitor -f DVI-D-0
-
-mod4 + f
-	bspc monitor -f HDMI-0
+mod4 + {comma,period}
+	bspc monitor -f {DVI-D-0,HDMI-0}
