@@ -44,7 +44,5 @@ xautolock -time 5 -locker slock &
 xbanish &
 if [ "$2" != dwm ]; then
 	$HOME/.config/polybar/launch.sh &
-else
-	status &
 fi
 exec $2
