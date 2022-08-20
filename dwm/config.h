@@ -6,6 +6,9 @@ static const unsigned int gappx = 9;
 static const unsigned int snap = 32;
 static const int showbar = 1;
 static const int topbar = 1;
+static const int usealtbar = 1;
+static const char *altbarclass = "Polybar";
+static const char *altbarcmd = "$XDG_CONFIG_HOME/polybar/launch.sh";
 static const char *fonts[] = { "JetBrains Mono NL:size=10" };
 static const char fg[] = "#f8f8f2";
 static const char bg[] = "#282a36";
@@ -17,8 +20,6 @@ static const char *colors[][3] = {
 	[SchemeNorm]  = { fg,      bg,      unfocused },
 	[SchemeSel]   = { fg,      bg,      focused },
 	[SchemeUrg]   = { fg,      bg,      urg },
-	[SchemeTitle] = { bg,      focused, focused },
-	[SchemeUline] = { focused, bg,      focused },
 };
 
 /* Settings */

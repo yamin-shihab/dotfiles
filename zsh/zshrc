@@ -67,8 +67,8 @@ alias -g diff="diff --color=auto"
 alias -g g="git"
 alias -g ip="ip --color=auto"
 alias -g ka="killall"
-alias -g l="exa -as='Name' --group-directories-first"
-alias -g ll="exa -las='Name' --group-directories-first"
+alias -g l="exa -F -as='Name' --group-directories-first"
+alias -g ll="exa -F -las='Name' --group-directories-first"
 alias -g m="batman"
 alias -g mk="make"
 alias -g mkd="mkdir -pv"
@@ -135,26 +135,16 @@ zstyle ":completion:*" list-suffixes zstyle ":completion:*" expand prefix suff
 zstyle ":completion:*" completer _complete _match _approximate
 zstyle ":completion:*:match:*" original only
 zstyle ":completion:*:approximate:*" max-errors 1 numeric
-
-rationalise-dot() {
-	if [[ $LBUFFER = *.. ]]; then
-		LBUFFER+=/..
-	else
-		LBUFFER+=.
-	fi
-}
-
-zle -N rationalise-dot
-bindkey . rationalise-dot
 autoload -Uz compinit && compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 _comp_options+=(globdots)
 
 # ZSH export variables
 export SAVEHIST="10000"
 export HISTSIZE="10000"
-export PROMPT="%B%F{magenta}[%F{green}%n%F{magenta}@%F{yellow}%~%F{magenta}] %F{red}%?%F{cyan}%# %b%f"
+export PROMPT="%B%F{5}[%F{2}%n%F{5}@%F{3}%~%F{5}] %F{1}%?%F{6}%# %b%f"
+export RPROMPT="%F{8}%D %*%f"
 
-# ZSH plugins
+# ZSH plugins (be sure to use the right paths to your installation and to also use zsh-completions)
 [[ -f "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] &&
 	. "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 [[ -f "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] &&
