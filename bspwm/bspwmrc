@@ -10,7 +10,7 @@ bspc config split_ratio 0.55
 bspc config borderless_monocle true
 bspc config gapless_monocle true
 bspc config normal_border_color "#44475a"
-bspc config active_border_color "#bd93f9"
+bspc config active_border_color "#44475a"
 bspc config focused_border_color "#bd93f9"
 bspc config urgent_border_color "#ff5555"
 bspc config automatic_scheme spiral
@@ -25,4 +25,4 @@ bspc rule -a Chromium desktop='^2'
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
-bspc rule -a zoom floating=on
+bspc rule -a zoom state=floating
