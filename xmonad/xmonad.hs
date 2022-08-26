@@ -55,94 +55,99 @@ myLayoutHook = tiled ||| noBorders Full where
 
 -- Help text
 help = unlines
-	[ "The default modifier key is 'alt'. Default keybindings:"
+	[ "My modifier is mod4. My keybindings:"
 	, ""
 	, "-- launching and killing programs"
-	, "mod-Shift-Enter Launch st"
-	, "mod-p Launch dmenu"
-	, "mod-Shift-p Launch gmrun"
-	, "mod-Shift-c Close/kill the focused window"
-	, "mod-Space Rotate through the available layout algorithms"
-	, "mod-Shift-Space Reset the layouts on the current workSpace to default"
-	, "mod-n Resize/refresh viewed windows to the correct size"
-	, "mod-Shift-/ Show this help message with the default keybindings"
+	, "mod-Shift-Enter      Launch st"
+	, "mod-semicolon        Launch rofi"
+	, "mod-{-,=}            Decrease or increase volume using pulsemixer"
+	, "mod-s                Launch flameshot gui"
+	, "mod-Shift-s          Launch flameshot full"
+	, "mod-apostrophe       Launch slock"
+	, "mod-Shift-apostrophe Launch slock and suspend computer with systemctl"
+	, "mod-{x,c}            Switch keyboard layout between qwerty and colemak using setxkbmap"
+	, "mod-Shift-c          Close/kill the focused window"
+	, "mod-Space            Rotate through the available layout algorithms"
+	, "mod-Shift-Space      Reset the layouts on the current workSpace to default"
+	, "mod-n                Resize/refresh viewed windows to the correct size"
+	, "mod-Shift-/          Show this help message with the default keybindings"
 	, ""
 	, "-- move focus up or down the window stack"
-	, "mod-Tab Move focus to the next window"
-	, "mod-Shift-Tab Move focus to the previous window"
-	, "mod-j Move focus to the next window"
-	, "mod-k Move focus to the previous window"
-	, "mod-m Move focus to the master window"
+	, "mod-Tab              Move focus to the next window"
+	, "mod-Shift-Tab        Move focus to the previous window"
+	, "mod-j                Move focus to the next window"
+	, "mod-k                Move focus to the previous window"
+	, "mod-m                Move focus to the master window"
 	, ""
 	, "-- modifying the window order"
-	, "mod-Return Swap the focused window and the master window"
-	, "mod-Shift-j Swap the focused window with the next window"
-	, "mod-Shift-k Swap the focused window with the previous window"
+	, "mod-Return           Swap the focused window and the master window"
+	, "mod-Shift-j          Swap the focused window with the next window"
+	, "mod-Shift-k          Swap the focused window with the previous window"
 	, ""
 	, "-- resizing the master/slave ratio"
-	, "mod-h Shrink the master area"
-	, "mod-l Expand the master area"
+	, "mod-h                Shrink the master area"
+	, "mod-l                Expand the master area"
 	, ""
 	, "-- floating layer support"
-	, "mod-t Push window back into tiling; unfloat and re-tile it"
+	, "mod-t                Push window back into tiling; unfloat and re-tile it"
 	, ""
 	, "-- increase or decrease number of windows in the master area"
-	, "mod-comma  (mod-,) Increment the number of windows in the master area"
-	, "mod-period (mod-.) Deincrement the number of windows in the master area"
+	, "mod-comma            Increment the number of windows in the master area"
+	, "mod-period           Deincrement the number of windows in the master area"
 	, ""
 	, "-- quit, or restart"
-	, "mod-Shift-q Quit xmonad"
-	, "mod-q Restart xmonad"
+	, "mod-Shift-q          Quit xmonad"
+	, "mod-q                Restart xmonad"
 	, ""
 	, "-- Workspaces & screens"
-	, "mod-[1..9] Switch to workSpace N"
-	, "mod-Shift-[1..9] Move client to workspace N"
-	, "mod-{w,e,r} Switch to physical/Xinerama screens 1, 2, or 3"
-	, "mod-Shift-{w,e,r} Move client to screen 1, 2, or 3"
+	, "mod-[1..9]           Switch to workSpace N"
+	, "mod-Shift-[1..9]     Move client to workspace N"
+	, "mod-{w,f,p}          Switch to physical/Xinerama screens 1, 2, or 3"
+	, "mod-Shift-{w,f,p}    Move client to screen 1, 2, or 3"
 	, ""
 	, "-- Mouse bindings: default actions bound to mouse events"
-	, "mod-button1 Set the window to floating mode and move by dragging"
-	, "mod-button2 Raise the window to the top of the stack"
-	, "mod-button3 Set the window to floating mode and resize by dragging"
+	, "mod-button1          Set the window to floating mode and move by dragging"
+	, "mod-button2          Raise the window to the top of the stack"
+	, "mod-button3          Set the window to floating mode and resize by dragging"
 	]
 
 -- Keybinds
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 	-- Custom program binds
-	[ ((modMask .|. shiftMask, xK_Return), spawn myTerminal)
-	, ((modMask, xK_semicolon), spawn "rofi -show drun")
-	, ((modMask .|. shiftMask, xK_p), spawn "flameshot gui")
-	, ((modMask, 0x1008FF11), spawn "pulsemixer --change-volume -5")
-	, ((modMask, 0x1008FF12), spawn "pulsemixer --toggle-mute")
-	, ((modMask, 0x1008FF13), spawn "pulsemixer --change-volume +5")
-	, ((modMask, xK_apostrophe), spawn "slock")
+	[ ((modMask .|. shiftMask, xK_Return),     spawn myTerminal)
+	, ((modMask, xK_semicolon),                spawn "rofi -show drun")
+	, ((modMask, xK_s),                        spawn "flameshot gui")
+	, ((modMask .|. shiftMask, xK_s),          spawn "flameshot full")
+	, ((modMask, xK_minus),                    spawn "pulsemixer --change-volume -5")
+	, ((modMask, xK_equal),                    spawn "pulsemixer --change-volume +5")
+	, ((modMask, xK_apostrophe),               spawn "slock")
 	, ((modMask .|. shiftMask, xK_apostrophe), spawn "slock systemctl suspend")
-	, ((modMask, xK_c), spawn "setxkbmap -layout us -variant colemak")
-	, ((modMask, xK_x), spawn "setxkbmap -layout us")
+	, ((modMask, xK_c),                        spawn "setxkbmap -layout us -variant colemak")
+	, ((modMask, xK_x),                        spawn "setxkbmap -layout us")
 	-- Window management and layouts binds
-	, ((modMask .|. shiftMask, xK_c), kill)
-	, ((modMask, xK_space), sendMessage NextLayout)
-	, ((modMask .|. shiftMask, xK_space), setLayout $ XMonad.layoutHook conf)
+	, ((modMask .|. shiftMask, xK_c),          kill)
+	, ((modMask, xK_space),                    sendMessage NextLayout)
+	, ((modMask .|. shiftMask, xK_space),      setLayout $ XMonad.layoutHook conf)
 	, ((modMask, xK_n), refresh)
 	-- Window movement and size binds
-	, ((modMask, xK_Tab), windows W.focusDown)
-	, ((modMask .|. shiftMask, xK_Tab), windows W.focusUp)
-	, ((modMask, xK_j), windows W.focusDown)
-	, ((modMask, xK_k), windows W.focusUp)
-	, ((modMask, xK_m), windows W.focusMaster)
-	, ((modMask, xK_Return), windows W.swapMaster)
-	, ((modMask .|. shiftMask, xK_j	), windows W.swapDown)
-	, ((modMask .|. shiftMask, xK_k	), windows W.swapUp)
-	, ((modMask, xK_h), sendMessage Shrink)
-	, ((modMask, xK_l), sendMessage Expand)
-	, ((modMask, xK_t), withFocused $ windows . W.sink)
-	, ((modMask, xK_comma), sendMessage (IncMasterN 1))
-	, ((modMask, xK_period), sendMessage (IncMasterN (-1)))
+	, ((modMask, xK_Tab),                      windows W.focusDown)
+	, ((modMask .|. shiftMask, xK_Tab),        windows W.focusUp)
+	, ((modMask, xK_j),                        windows W.focusDown)
+	, ((modMask, xK_k),                        windows W.focusUp)
+	, ((modMask, xK_m),                        windows W.focusMaster)
+	, ((modMask, xK_Return),                   windows W.swapMaster)
+	, ((modMask .|. shiftMask, xK_j	),         windows W.swapDown)
+	, ((modMask .|. shiftMask, xK_k	),         windows W.swapUp)
+	, ((modMask, xK_h),                        sendMessage Shrink)
+	, ((modMask, xK_l),                        sendMessage Expand)
+	, ((modMask, xK_t),                        withFocused $ windows . W.sink)
+	, ((modMask, xK_comma),                    sendMessage (IncMasterN 1))
+	, ((modMask, xK_period),                   sendMessage (IncMasterN (-1)))
 	-- Recompile and help
-	, ((modMask .|. shiftMask, xK_q	), io (exitWith ExitSuccess))
-	, ((modMask, xK_q), spawn "if type xmonad; then xmonad --recompile && xmonad --restart; else xmessage xmonad not in \\$PATH: \"$PATH\"; fi")
-	, ((modMask .|. shiftMask, xK_slash), helpCommand)
-	, ((modMask, xK_question), helpCommand)
+	, ((modMask .|. shiftMask, xK_q	),         io (exitWith ExitSuccess))
+	, ((modMask, xK_q),                        spawn "if type xmonad; then xmonad --recompile && xmonad --restart; else xmessage xmonad not in \\$PATH: \"$PATH\"; fi")
+	, ((modMask .|. shiftMask, xK_slash),      helpCommand)
+	, ((modMask, xK_question),                 helpCommand)
 	]
 	++
 	-- Workspace movement
