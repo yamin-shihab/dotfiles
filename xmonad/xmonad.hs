@@ -23,18 +23,18 @@ myWorkspaces = [ "main", "term", "web", "chat", "hide" ]
 
 -- Startup hook
 myStartupHook = do
-	spawnOnce "echo 15 | canvas -S 1920x1080 -b -n -a"
-	spawnOnce "picom --experimental-backends"
-	spawnOnce "dunst"
+	spawnOnce "$HOME/.config/polybar/launch.sh"
 	spawnOnce "/usr/lib/geoclue-2.0/demos/agent"
+	spawnOnce "dunst"
+	spawnOnce "echo 15 | canvas -S 1920x1080 -B -n -a"
+	spawnOnce "picom --experimental-backends"
 	spawnOnce "redshift"
 	spawnOnce "setxkbmap -layout us -variant colemak"
-	spawnOnce "xsetroot -cursor_name left_ptr"
-	spawnOnce "xset r rate 300 40"
-	spawnOnce "xset r 66"
 	spawnOnce "xautolock -time 5 -locker slock"
 	spawnOnce "xbanish"
-	spawnOnce "$HOME/.config/polybar/launch.sh"
+	spawnOnce "xset r 66"
+	spawnOnce "xset r rate 300 40"
+	spawnOnce "xsetroot -cursor_name left_ptr"
 
 -- Manage hook
 myManageHook = composeAll
@@ -45,7 +45,7 @@ myManageHook = composeAll
 	, isDialog --> doFloat ]
 
 -- Layouts
-myLayout = tiled ||| noBorders Full where
+myLayoutHook = tiled ||| noBorders Full where
 	tiled = spacing $ avoidStruts $ Dwindle.Spiral Dwindle.R Dwindle.CW 1.2 1.1
 	direction = Dwindle.R
 	rotation = Dwindle.CW
@@ -160,16 +160,17 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- Config
 myConfig = def
 	{ borderWidth = myBorderWidth
-	, workspaces = myWorkspaces
-	, layoutHook = myLayout
-	, terminal = myTerminal
-	, normalBorderColor = myNormalBorderColor
-	, focusedBorderColor = myFocusedBorderColor
-	, modMask = myModMask
-	, keys = myKeys
-	, manageHook = myManageHook
-	, focusFollowsMouse = myFocusFollowsMouse
 	, clickJustFocuses = myClickJustFocuses
+	, focusFollowsMouse = myFocusFollowsMouse
+	, focusedBorderColor = myFocusedBorderColor
+	, keys = myKeys
+	, layoutHook = myLayoutHook
+	, manageHook = myManageHook
+	, modMask = myModMask
+	, normalBorderColor = myNormalBorderColor
+	, startupHook = myStartupHook
+	, terminal = myTerminal
+	, workspaces = myWorkspaces
 	}
 
 main = xmonad $ docks $ ewmhFullscreen $ ewmh $ myConfig
