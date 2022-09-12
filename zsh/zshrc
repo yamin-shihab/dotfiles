@@ -65,10 +65,12 @@ command -v zoxide &> /dev/null && eval "$(zoxide init zsh)"
 # Aliases/functions
 alias bc="bc -ql"
 alias c="$PAGER"
+alias connect="iwctl station wlan0 connect Atheer"
 alias cp="cp -iv"
 alias ctl="systemctl"
 alias dad="curl -sL 'icanhazdadjoke.com'"
 alias diff="diff --color=auto"
+alias disconnect="iwctl station wlan0 disconnect"
 alias g="git"
 alias ip="ip --color=auto"
 alias ka="killall"
@@ -106,23 +108,20 @@ bindkey "^[[Z" reverse-menu-complete
 export KEYTIMEOUT=1
 
 # ZSH change cursor shape according to VI mode
-cursor_block="\e[2 q"
-cursor_beam="\e[6 q"
-
-zle-keymap-select() {
-	if [[ ${KEYMAP} == vicmd ]] || [[ $1 = "block" ]]; then
-		echo -ne $cursor_block
-	elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ ${KEYMAP} = "" ]] || [[ $1 = "beam" ]]; then
-		echo -ne $cursor_beam
-	fi
+function zle-keymap-select() {
+	case "$KEYMAP" in
+		vicmd) echo -ne "\e[1 q";;
+		viins|main) echo -ne "\e[5 q";;
+	esac
 }
-
-zle-line-init() {
-    echo -ne $cursor_beam
+function zle-line-init() {
+	zle -K viins
+	echo -ne "\e[5 q"
 }
-
+function preexec() { echo -ne "\e[5 q"; }
 zle -N zle-keymap-select
 zle -N zle-line-init
+echo -ne "\e[5 q"
 
 # ZSH options
 setopt AUTO_CD

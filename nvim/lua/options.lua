@@ -1,5 +1,6 @@
 -- Neovim options
 
+vim.g.rust_recommended_style = 0
 vim.opt.breakindent = true
 vim.opt.colorcolumn = "80"
 vim.opt.cursorline = true

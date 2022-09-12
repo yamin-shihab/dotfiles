@@ -28,7 +28,7 @@ myStartupHook = do
 	spawnOnce "$HOME/.config/polybar/launch.sh"
 	spawnOnce "/usr/lib/geoclue-2.0/demos/agent"
 	spawnOnce "dunst"
-	spawnOnce "echo 15 | canvas -S 1920x1080 -B -n -a"
+	spawnOnce "echo 10 | canvas -S 1920x1080 -B -n -a"
 	spawnOnce "picom --experimental-backends"
 	spawnOnce "redshift"
 	spawnOnce "setxkbmap -layout us -variant colemak"
@@ -60,7 +60,7 @@ myLayoutHook = tiled ||| noBorders Full where
 
 -- Keybinds
 myKeys =
-	[ ((myModMask, xK_semicolon),                spawn "rofi -show drun")
+	[ ((myModMask, xK_semicolon),                spawn "rofi -1 -show drun")
 	, ((myModMask, xK_s),                        spawn "flameshot gui")
 	, ((myModMask .|. shiftMask, xK_s),          spawn "flameshot full")
 	, ((myModMask, xK_apostrophe),               spawn "slock")
