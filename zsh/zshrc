@@ -74,8 +74,8 @@ alias disconnect="iwctl station wlan0 disconnect"
 alias g="git"
 alias ip="ip --color=auto"
 alias ka="killall"
-alias l="exa -Fa -s='Name' --group-directories-first"
-alias ll="exa -Fla -s='Name' --group-directories-first"
+alias l="exa --git -Fa -s='Name' --group-directories-first"
+alias ll="exa --git -Fla -s='Name' --group-directories-first"
 alias ls="ls -FA --color=auto --group-directories-first"
 alias m="batman"
 alias mk="make"
@@ -93,7 +93,6 @@ alias sx="startx"
 alias t="touch"
 alias tp="htop"
 alias v="$EDITOR"
-cht() { curl -sL "cht.sh/$1"; }
 crypto() { curl -sL "rate.sx/$1"; }
 dict() { curl -sL "dict://dict.org/d:$1"; }
 gitignore() { curl -sL "gitignore.io/api/$1"; }
