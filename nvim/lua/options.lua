@@ -1,6 +1,6 @@
 -- Neovim options
-
-vim.g.rust_recommended_style = 0
+vim.g.rust_recommended_style = false
+vim.g.python_recommended_style = false
 vim.opt.breakindent = true
 vim.opt.colorcolumn = "80"
 vim.opt.cursorline = true
@@ -13,6 +13,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 5
 vim.opt.showbreak = " > "
+vim.opt.showmode = false
 vim.opt.showtabline = 0
 vim.opt.smartcase = true
 vim.opt.termguicolors = true

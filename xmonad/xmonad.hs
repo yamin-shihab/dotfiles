@@ -30,7 +30,6 @@ myStartupHook = do
 	spawnOnce "dunst"
 	spawnOnce "echo 10 | canvas -S 1920x1080 -B -n -a"
 	spawnOnce "picom --experimental-backends"
-	spawnOnce "redshift"
 	spawnOnce "setxkbmap -layout us -variant colemak"
 	spawnOnce "xautolock -time 5 -locker slock"
 	spawnOnce "xbanish"
@@ -43,15 +42,14 @@ myLogHook = updatePointer (0.5, 0.5) (0, 0)
 
 -- Manage hook
 myManageHook = composeAll
-	[ className =? "MPlayer" --> doFloat
-	, className =? "mplayer2" --> doFloat
-	, className =? "Gimp" --> doFloat
-	, className =? "zoom" --> doFloat
-	, isDialog --> doFloat ]
+	[ isDialog --> doFloat
+	, isFullscreen --> doFullFloat
+	]
 
 -- Layouts
 myLayoutHook = tiled ||| noBorders Full where
-	tiled = spacing $ avoidStruts $ Dwindle.Spiral Dwindle.R Dwindle.CW 1.2 1.1
+	tiled = spacing $ avoidStruts $ layout direction rotation ratio delta
+	layout = Dwindle.Spiral
 	direction = Dwindle.R
 	rotation = Dwindle.CW
 	ratio = 1.2
@@ -69,6 +67,8 @@ myKeys =
 	, ((myModMask, xK_minus),                    spawn "pulsemixer --change-volume -5")
 	, ((myModMask, xK_c),                        spawn "setxkbmap -layout us -variant colemak")
 	, ((myModMask, xK_x),                        spawn "setxkbmap -layout us")
+	, ((myModMask, xK_v),                        spawn "iwctl station wlan0 connect Atheer")
+	, ((myModMask, xK_b),                        spawn "iwctl station wlan0 disconnect")
 	]
 	++
 	-- Monitor movement
