@@ -88,7 +88,7 @@ alias pkgclean="paru -c && paru -Sc && paccache -r"
 alias pp="prettyping"
 alias rick="curl -sL 'ascii.live/rick'"
 alias rm="rm -vI"
-alias s="doas "
+command -v doas &> /dev/null && alias s="doas " || alias s="sudo "
 alias sx="startx"
 alias t="touch"
 alias tp="htop"
@@ -118,10 +118,9 @@ function zle-line-init() {
 	zle -K viins
 	echo -ne "\e[5 q"
 }
-function preexec() { echo -ne "\e[5 q"; }
+function preexec() { echo -ne "\e[1 q"; }
 zle -N zle-keymap-select
 zle -N zle-line-init
-echo -ne "\e[5 q"
 
 # ZSH options
 setopt AUTO_CD
@@ -154,6 +153,10 @@ export RPROMPT="%F{8}%D %*%f"
 	. "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 [[ -f "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] &&
 	. "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+[[ -f "/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] &&
+	. "/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+[[ -f "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] &&
+	. "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # It's better than Neofetch (:
 command -v pfetch &> /dev/null && export PF_INFO="ascii title host kernel os shell uptime memory wm palette" && pfetch
