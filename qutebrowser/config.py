@@ -131,9 +131,6 @@ c.fonts.default_size = "10pt"
 c.hints.chars = "arstneio"
 c.hints.mode = "letter"
 c.spellcheck.languages = [ "en-US" ]
-c.url.default_page = "https://search.brave.com"
-c.url.searchengines = { "DEFAULT": "https://search.brave.com/search?q={}" }
-c.url.start_pages = "https://search.brave.com"
 c.window.hide_decoration = True
 
 # Don't load autoconfig
