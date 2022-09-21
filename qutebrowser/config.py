@@ -134,4 +134,4 @@ c.spellcheck.languages = [ "en-US" ]
 c.window.hide_decoration = True
 
 # Don't load autoconfig
-config.load_autoconfig(False)
+config.load_autoconfig(True)
