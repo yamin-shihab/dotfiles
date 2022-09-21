@@ -65,10 +65,11 @@ myKeys =
 	, ((myModMask .|. shiftMask, xK_apostrophe), spawn "slock systemctl suspend")
 	, ((myModMask, xK_equal),                    spawn "pulsemixer --change-volume +5")
 	, ((myModMask, xK_minus),                    spawn "pulsemixer --change-volume -5")
-	, ((myModMask, xK_c),                        spawn "setxkbmap -layout us -variant colemak")
-	, ((myModMask, xK_x),                        spawn "setxkbmap -layout us")
-	, ((myModMask, xK_v),                        spawn "iwctl station wlan0 connect Atheer")
-	, ((myModMask, xK_b),                        spawn "iwctl station wlan0 disconnect")
+	, ((myModMask, xK_0),                        spawn "pulsemixer --toggle-mute")
+	, ((myModMask, xK_z),                        spawn "setxkbmap -layout us -variant colemak")
+	, ((myModMask .|. shiftMask, xK_z),          spawn "setxkbmap -layout us")
+	, ((myModMask, xK_x),                        spawn "iwctl station wlan0 connect Atheer")
+	, ((myModMask .|. shiftMask, xK_x),          spawn "iwctl station wlan0 disconnect")
 	]
 	++
 	-- Monitor movement
