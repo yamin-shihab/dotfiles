@@ -4,12 +4,9 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
-export CABAL_CONFIG="$XDG_CONFIG_HOME/cabal/config"
-export CABAL_DIR="$XDG_CACHE_HOME/cabal"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export ELINKS_CONFDIR="$XDG_CONFIG_HOME/elinks"
-export GHCUP_USE_XDG_DIRS="true"
 export GOPATH="$XDG_DATA_HOME/go"
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
@@ -20,7 +17,6 @@ export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
 
 pupdate() { case ":${PATH:=$1}:" in *:"$1":*) ;; *) PATH="$1:$PATH" ;; esac; }
 pupdate "$HOME/.local/bin"
-pupdate "$CABAL_DIR/bin"
 pupdate "$CARGO_HOME/bin"
 pupdate "$GOPATH/bin"
 pupdate "/usr/local/games"
@@ -91,13 +87,13 @@ alias rm="rm -vI"
 command -v doas &> /dev/null && alias s="doas " || alias s="sudo "
 alias sx="startx"
 alias t="touch"
-alias tp="btop"
+alias tp="htop"
 alias v="$EDITOR"
 crypto() { curl -sL "rate.sx/$1"; }
 dict() { curl -sL "dict://dict.org/d:$1"; }
 gitignore() { curl -sL "gitignore.io/api/$1"; }
 pubip() { curl -sL "ifconfig.co/$1"; }
-wttr() { curl -sL "wttr.in/$1"; }
+weather() { curl -sL "wttr.in/$1"; }
 
 # ZSH keybinds
 bindkey -v

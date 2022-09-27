@@ -1,5 +1,5 @@
 /* Settings */
-static char *font = "JetBrains Mono NL:pixelsize=16:antialias=true:autohint=true";
+static char *font = "JetBrains Mono NL:size=12:antialias=true:autohint=true";
 static int borderpx = 2;
 static char *shell = "/bin/sh";
 char *utmp = NULL;
