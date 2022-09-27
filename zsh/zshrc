@@ -91,13 +91,13 @@ alias rm="rm -vI"
 command -v doas &> /dev/null && alias s="doas " || alias s="sudo "
 alias sx="startx"
 alias t="touch"
-alias tp="htop"
+alias tp="btop"
 alias v="$EDITOR"
 crypto() { curl -sL "rate.sx/$1"; }
 dict() { curl -sL "dict://dict.org/d:$1"; }
 gitignore() { curl -sL "gitignore.io/api/$1"; }
 pubip() { curl -sL "ifconfig.co/$1"; }
-weather() { curl -sL "wttr.in/$1"; }
+wttr() { curl -sL "wttr.in/$1"; }
 
 # ZSH keybinds
 bindkey -v

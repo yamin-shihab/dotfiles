@@ -70,8 +70,6 @@ myKeys =
 	, ((myModMask .|. shiftMask, xK_v),          spawn "setxkbmap -layout us")
 	, ((myModMask, xK_i),                        spawn "iwctl station wlan0 connect Atheer")
 	, ((myModMask .|. shiftMask, xK_i),          spawn "iwctl station wlan0 disconnect")
-	, ((myModMask, xK_g),                        spawn "picom --experimental-backends")
-	, ((myModMask .|. shiftMask, xK_g),          spawn "killall picom")
 	]
 	++
 	-- Monitor movement
