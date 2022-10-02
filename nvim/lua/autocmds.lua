@@ -6,10 +6,3 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
 		vim.opt.relativenumber = false
 	end,
 })
-
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPre" }, {
-	pattern = "*.{md,txt}",
-	callback = function()
-		vim.opt.spell = true
-	end,
-})
