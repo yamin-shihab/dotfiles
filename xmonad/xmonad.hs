@@ -1,3 +1,5 @@
+import System.Exit
+import qualified Data.Map as M
 import XMonad
 import XMonad.Actions.UpdatePointer
 import XMonad.Hooks.EwmhDesktops
@@ -9,8 +11,6 @@ import XMonad.Util.EZConfig
 import XMonad.Util.SpawnOnce
 import qualified XMonad.Layout.Dwindle as Dwindle
 import qualified XMonad.StackSet as W
-import System.Exit
-import qualified Data.Map as M
 
 -- Settings
 myBorderWidth = 2
@@ -21,7 +21,7 @@ myFocusedBorderColor = "#6272a4"
 myModMask = mod4Mask
 myNormalBorderColor  = "#44475a"
 myTerminal = "st"
-myWorkspaces = [ "main", "term", "web", "chat", "hide" ]
+myWorkspaces = [ "primary", "secondary", "tertiary" ]
 
 -- Startup hook
 myStartupHook = do

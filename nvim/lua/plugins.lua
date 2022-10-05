@@ -50,12 +50,6 @@ require("packer").startup({
 				require("configs/colorizer")
 			end,
 		})
-		use({
-			"sunjon/shade.nvim",
-			config = function()
-				require("configs/shade")
-			end,
-		})
 		use("tversteeg/registers.nvim")
 		use("yamatsum/nvim-cursorline")
 		use("mhinz/vim-startify")
@@ -94,7 +88,6 @@ require("packer").startup({
 		use("https://gitlab.com/yorickpeterse/nvim-window.git")
 		use("jghauser/mkdir.nvim")
 		use("sindrets/winshift.nvim")
-		use("andweeb/presence.nvim")
 	end,
 	config = {
 		display = {
