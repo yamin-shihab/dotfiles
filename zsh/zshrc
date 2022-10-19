@@ -6,7 +6,6 @@ export XDG_STATE_HOME="$HOME/.local/state"
 
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
-export ELINKS_CONFDIR="$XDG_CONFIG_HOME/elinks"
 export GOPATH="$XDG_DATA_HOME/go"
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
@@ -16,16 +15,17 @@ export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
 
 pupdate() { case ":${PATH:=$1}:" in *:"$1":*) ;; *) PATH="$1:$PATH" ;; esac; }
-pupdate "$HOME/.local/bin"
 pupdate "$CARGO_HOME/bin"
 pupdate "$GOPATH/bin"
-pupdate "/usr/local/games"
+pupdate "$HOME/.local/bin"
 pupdate "/usr/games"
+pupdate "/usr/local/bin"
+pupdate "/usr/local/games"
 
 command -v bat &> /dev/null && export BAT_THEME="Dracula" && export PAGER="bat -p"
 command -v clang &> /dev/null && export CC="clang"
 command -v clang++ &> /dev/null && export CXX="clang++"
-command -v ldlld &> /dev/null && export LD="ld.lld"
+command -v ld.lld &> /dev/null && export LD="ld.lld"
 command -v ninja &> /dev/null && export CMAKE_GENERATOR="Ninja"
 command -v nvim &> /dev/null && export EDITOR="nvim" && export VISUAL="nvim"
 

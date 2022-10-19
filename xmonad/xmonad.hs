@@ -21,21 +21,7 @@ myFocusedBorderColor = "#6272a4"
 myModMask = mod4Mask
 myNormalBorderColor  = "#44475a"
 myTerminal = "st"
-myWorkspaces = [ "primary", "secondary", "tertiary" ]
-
--- Startup hook
-myStartupHook = do
-	spawnOnce "$HOME/.config/polybar/launch.sh"
-	spawnOnce "/usr/lib/geoclue-2.0/demos/agent"
-	spawnOnce "dunst"
-	spawnOnce "echo 10 | canvas -S 1920x1080 -B -n -a"
-	spawnOnce "picom --experimental-backends"
-	spawnOnce "setxkbmap -layout us -variant colemak"
-	spawnOnce "xautolock -time 5 -locker slock"
-	spawnOnce "xbanish"
-	spawnOnce "xset r 66"
-	spawnOnce "xset r rate 300 40"
-	spawnOnce "xsetroot -cursor_name left_ptr"
+myWorkspaces = [ "main", "term", "web", "chat", "hide" ]
 
 -- Log hook
 myLogHook = updatePointer (0.5, 0.5) (0, 0)
@@ -61,8 +47,8 @@ myKeys =
 	[ ((myModMask, xK_semicolon),                spawn "rofi -1 -show drun")
 	, ((myModMask, xK_s),                        spawn "flameshot gui")
 	, ((myModMask .|. shiftMask, xK_s),          spawn "flameshot full")
-	, ((myModMask, xK_apostrophe),               spawn "slock")
-	, ((myModMask .|. shiftMask, xK_apostrophe), spawn "slock systemctl suspend")
+	, ((myModMask, xK_apostrophe),               spawn "i3lock-conf")
+	, ((myModMask .|. shiftMask, xK_apostrophe), spawn "i3lock-conf & systemctl suspend")
 	, ((myModMask, xK_equal),                    spawn "pulsemixer --change-volume +5")
 	, ((myModMask, xK_minus),                    spawn "pulsemixer --change-volume -5")
 	, ((myModMask, xK_0),                        spawn "pulsemixer --toggle-mute")
@@ -88,7 +74,6 @@ myConfig = def
 	, manageHook = myManageHook
 	, modMask = myModMask
 	, normalBorderColor = myNormalBorderColor
-	, startupHook = myStartupHook
 	, terminal = myTerminal
 	, workspaces = myWorkspaces
 	} `additionalKeys` myKeys

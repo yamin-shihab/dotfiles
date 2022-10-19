@@ -29,5 +29,18 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 	unset f
 fi
 
+# Autostart
+$HOME/.config/polybar/launch.sh &
+/usr/lib/geoclue-2.0/demos/agent &
+dunst &
+echo 10 | canvas -S 1920x1080 -B -n -a &
+picom --experimental-backends &
+setxkbmap -layout us -variant colemak &
+xautolock -time 5 -locker i3lock-conf &
+xbanish &
+xset r 66 &
+xset r rate 300 40 &
+xsetroot -cursor_name left_ptr &
+
 # Start window manager
-exec xmonad
+exec leftwm

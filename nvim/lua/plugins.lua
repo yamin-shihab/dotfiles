@@ -85,6 +85,12 @@ require("packer").startup({
 				require("configs/autopairs")
 			end,
 		})
+		use({
+			"gaoDean/autolist.nvim",
+			config = function()
+				require("configs/autolist")
+			end,
+		})
 		use("https://gitlab.com/yorickpeterse/nvim-window.git")
 		use("jghauser/mkdir.nvim")
 		use("sindrets/winshift.nvim")
