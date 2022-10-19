@@ -35,6 +35,7 @@ fi
 [ -f /usr/libexec/geoclue-2.0/demos/agent ] && /usr/libexec/geoclue-2.0/demos/agent &
 dunst &
 echo 10 | canvas -S 1920x1080 -B -n -a &
+picom --experimental-backends &
 setxkbmap -layout us -variant colemak &
 status &
 xautolock -time 5 -locker i3lock-conf &
