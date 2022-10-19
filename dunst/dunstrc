@@ -3,7 +3,7 @@
 	width = 400
 	height = 400
 	origin = bottom-right
-	frame_width = 3
+	frame_width = 2
 	frame_color = "#6272a4"
 	font = JetBrains Mono NL 12
 

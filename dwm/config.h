@@ -30,6 +30,7 @@ static const int resizehints    = 0;
 static const Layout layouts[] = { { "[]=", tile } };
 
 // Keybinds
+// If on chromebook: #define MODKEY Mod1Mask
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
@@ -42,6 +43,7 @@ static const Key keys[] = {
 	//modifier                      key            function          argument
 	{ MODKEY|ShiftMask,             XK_Return,     spawn,            SHCMD("st") },
 	{ MODKEY,                       XK_0,          spawn,            SHCMD("pulsemixer --toggle-mute") },
+	{ MODKEY,                       XK_BackSpace,  spawn,            SHCMD("croutoncycle cros") },
 	{ MODKEY,                       XK_apostrophe, spawn,            SHCMD("i3lock-conf") },
 	{ MODKEY|ShiftMask,             XK_apostrophe, spawn,            SHCMD("i3lock-conf & systemctl suspend") },
 	{ MODKEY,                       XK_equal,      spawn,            SHCMD("pulsemixer --change-volume +5") },

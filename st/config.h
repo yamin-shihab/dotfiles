@@ -78,7 +78,7 @@ static unsigned int tripleclicktimeout = 600;
 int allowaltscreen = 1;
 
 // Insecure window operations
-int allowwindowops = 0;
+int allowwindowops = 1;
 
 // Latency (ms)
 static double minlatency = 8;
@@ -91,9 +91,9 @@ static unsigned int blinktimeout = 800;
 static unsigned int cursorthickness = 2;
 
 // Boxdraw
-const int boxdraw         = 0;
-const int boxdraw_bold    = 0;
-const int boxdraw_braille = 0;
+const int boxdraw         = 1;
+const int boxdraw_bold    = 1;
+const int boxdraw_braille = 1;
 
 // Bell
 static int bellvolume = 0;
@@ -114,6 +114,7 @@ static uint forcemousemod = ShiftMask;
 // Mouse shortcuts
 static MouseShortcut mshortcuts[] = {
 	//mask                  button   function        argument       release
+	{ XK_ANY_MOD,           Button4, kscrollup,      {.i = 1},		0, -1 },
 	{ XK_ANY_MOD,           Button5, kscrolldown,    {.i = 1},		0, -1 },
 	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
 	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
