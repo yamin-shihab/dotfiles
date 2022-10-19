@@ -1,0 +1,29 @@
+[alias]
+	dad = !curl https://icanhazdadjoke.com/ && git add
+
+[user]
+	name = Yamin Shihab
+	email = yaminshihab123@gmail.com
+
+[core]
+	pager = delta
+	editor = nvim
+
+[interactive]
+	diffFilter = delta --color-only
+
+[add.interactive]
+	useBuiltin = false
+
+[delta]
+	navigate = true
+	light = false
+
+[merge]
+	conflictstyle = diff3
+
+[diff]
+	colorMoved = default
+
+[init]
+	defaultBranch = main

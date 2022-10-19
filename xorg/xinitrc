@@ -39,8 +39,10 @@ setxkbmap -layout us -variant colemak &
 status &
 xautolock -time 5 -locker i3lock-conf &
 xbanish &
-xmodmap -e "keycode 133 = BackSpace" &
-xset r 133 &
+# For chromebook
+# xmodmap -e "keycode 133 = BackSpace" &
+# xset r 133 &
+xset r 66 &
 xset r rate 300 40 &
 xsetroot -cursor_name left_ptr &
 
