@@ -27,7 +27,11 @@ static const float mfact        = 0.55;
 static const int lockfullscreen = 0;
 static const int nmaster        = 1;
 static const int resizehints    = 0;
-static const Layout layouts[] = { { "[]=", tile } };
+static const Layout layouts[] = {
+	//symbol arrange function
+	{ "[]=", tile },
+	{ "><>", NULL },
+};
 
 // Keybinds
 // If on chromebook: #define MODKEY Mod1Mask
@@ -69,12 +73,14 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask, XK_c,          killclient,       { 0 } },
 	{ MODKEY,           XK_f,          togglefloating,   { 0 } },
 	{ MODKEY,           XK_space,      togglefullscreen, { 0 } },
+	{ MODKEY,           XK_t,          setlayout,        {.v = &layouts[0]} },
+	{ MODKEY|ShiftMask, XK_f,          setlayout,        {.v = &layouts[1]} },
 	{ MODKEY,           XK_0,          view,             { .ui = ~0 } },
 	{ MODKEY|ShiftMask, XK_0,          tag,              { .ui = ~0 } },
-	{ MODKEY,           XK_comma,      focusnthmon,      { .i = 0 } },
-	{ MODKEY,           XK_period,     focusnthmon,      { .i = 1 } },
-	{ MODKEY|ShiftMask, XK_comma,      tagnthmon,        { .i = 0 } },
-	{ MODKEY|ShiftMask, XK_period,     tagnthmon,        { .i = 1 } },
+	{ MODKEY,           XK_comma,      focusmon,         { .i = -1 } },
+	{ MODKEY,           XK_period,     focusmon,         { .i = +1 } },
+	{ MODKEY|ShiftMask, XK_comma,      tagmon,           { .i = -1 } },
+	{ MODKEY|ShiftMask, XK_period,     tagmon,           { .i = +1 } },
 	TAGKEYS(            XK_1,                            0)
 	TAGKEYS(            XK_2,                            1)
 	TAGKEYS(            XK_3,                            2)

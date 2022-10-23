@@ -1,0 +1,75 @@
+From f67d4db0bcef0eb4f601cd25995fd964d60b2a2d Mon Sep 17 00:00:00 2001
+From: aleks <aleks.stier@icloud.com>
+Date: Wed, 27 Jan 2021 16:52:55 +0100
+Subject: [PATCH] [dwm][patch] apply singularbordersbar
+
+`singularbordersbar` changes the way DWM handles the borders. Firstly,
+borders against the left, right, top and bottom screen-edges are removed
+(they are placed off-screen) and secondly, borders between clients now
+overlap eachother. A border between the clients and the bar is also
+created.
+---
+ dwm.c | 24 +++++++++++++++++++-----
+ 1 file changed, 19 insertions(+), 5 deletions(-)
+
+diff --git a/dwm.c b/dwm.c
+index 4465af1..d359d0a 100644
+--- a/dwm.c
++++ b/dwm.c
+@@ -205,6 +205,7 @@ static void setup(void);
+ static void seturgent(Client *c, int urg);
+ static void showhide(Client *c);
+ static void sigchld(int unused);
++static int singularborder_baradjustment(Client *c);
+ static void spawn(const Arg *arg);
+ static void tag(const Arg *arg);
+ static void tagmon(const Arg *arg);
+@@ -1112,7 +1113,8 @@ monocle(Monitor *m)
+ 	if (n > 0) /* override layout symbol */
+ 		snprintf(m->ltsymbol, sizeof m->ltsymbol, "[%d]", n);
+ 	for (c = nexttiled(m->clients); c; c = nexttiled(c->next))
+-		resize(c, m->wx, m->wy, m->ww - 2 * c->bw, m->wh - 2 * c->bw, 0);
++		resize(c, m->wx - c->bw, m->wy - singularborder_baradjustment(c),
++			m->ww, m->wh - c->bw * m->showbar, False);
+ }
+ 
+ void
+@@ -1636,6 +1638,12 @@ sigchld(int unused)
+ 	while (0 < waitpid(-1, NULL, WNOHANG));
+ }
+ 
++int
++singularborder_baradjustment(Client *c)
++{
++	return c->bw * !(c->mon->showbar && topbar);
++}
++
+ void
+ spawn(const Arg *arg)
+ {
+@@ -1687,12 +1695,18 @@ tile(Monitor *m)
+ 	for (i = my = ty = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
+ 		if (i < m->nmaster) {
+ 			h = (m->wh - my) / (MIN(n, m->nmaster) - i);
+-			resize(c, m->wx, m->wy + my, mw - (2*c->bw), h - (2*c->bw), 0);
+-			my += HEIGHT(c);
++			if (n == 1)
++				resize(c, m->wx - c->bw, m->wy - singularborder_baradjustment(c),
++					m->ww, m->wh - c->bw * m->showbar, False);
++			else
++				resize(c, m->wx - c->bw, m->wy + my - singularborder_baradjustment(c),
++					mw - c->bw, h - c->bw * m->showbar, False);
++			my += HEIGHT(c) - c->bw;
+ 		} else {
+ 			h = (m->wh - ty) / (n - i);
+-			resize(c, m->wx + mw, m->wy + ty, m->ww - mw - (2*c->bw), h - (2*c->bw), 0);
+-			ty += HEIGHT(c);
++			resize(c, m->wx + mw - c->bw, m->wy + ty - singularborder_baradjustment(c),
++				m->ww - mw, h - c->bw * m->showbar, False);
++			ty += HEIGHT(c) - c->bw;
+ 		}
+ }
+ 
+-- 
+2.30.0
+
