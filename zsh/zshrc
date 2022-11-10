@@ -61,7 +61,7 @@ command -v zoxide &> /dev/null && eval "$(zoxide init zsh)"
 # Aliases/functions
 alias bc="bc -ql"
 alias c="$PAGER"
-alias cn="croutoncycle next"
+alias co="cargo"
 alias connect="iwctl station wlan0 connect Atheer"
 alias cp="cp -iv"
 alias ctl="systemctl"
