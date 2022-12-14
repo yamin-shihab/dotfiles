@@ -10,6 +10,33 @@ require("packer").startup({
 		})
 		use("wbthomason/packer.nvim")
 
+		-- LSP
+		use({
+			"neovim/nvim-lspconfig",
+			config = function()
+				require("configs/lspconfig")
+			end,
+		})
+		use({
+			"glepnir/lspsaga.nvim",
+			config = function()
+				require("configs/lspconfig")
+			end,
+		})
+		use({
+			"ms-jpq/coq_nvim",
+			config = function()
+				require("configs/coq")
+			end,
+		})
+		use({
+			"ms-jpq/chadtree",
+			config = function()
+				require("configs/chadtree")
+			end,
+		})
+		use("ms-jpq/coq.artifacts")
+
 		-- Treesitter
 		use({
 			"p00f/nvim-ts-rainbow",
@@ -50,7 +77,12 @@ require("packer").startup({
 				require("configs/colorizer")
 			end,
 		})
-		use("tversteeg/registers.nvim")
+		use({
+			"tversteeg/registers.nvim",
+			config = function()
+				require("configs/registers")
+			end,
+		})
 		use("yamatsum/nvim-cursorline")
 		use("mhinz/vim-startify")
 

@@ -6,3 +6,9 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
 		vim.opt.relativenumber = false
 	end,
 })
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	pattern = "text,markdown",
+	callback = function()
+		vim.opt.spell = true
+	end,
+})

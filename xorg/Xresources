@@ -1,4 +1,3 @@
-*.size: 32
 *.antialias: true
 *.font: xft:JetBrains Mono NL:size=16
 *.foreground: #F8F8F2
