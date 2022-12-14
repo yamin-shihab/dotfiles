@@ -1,32 +1,32 @@
 [alias]
-	dad = !curl https://icanhazdadjoke.com/ && git add
+    dad = !curl https://icanhazdadjoke.com/ && git add
 
 [user]
-	name = Yamin Shihab
-	email = yaminshihab123@gmail.com
+    name = Yamin Shihab
+    email = yaminshihab123@gmail.com
 
 [core]
-	pager = delta
-	editor = nvim
+    pager = delta
+    editor = nvim
 
 [interactive]
-	diffFilter = delta --color-only
+    diffFilter = delta --color-only
 
 [add.interactive]
-	useBuiltin = false
+    useBuiltin = false
 
 [delta]
-	navigate = true
-	light = false
+    navigate = true
+    light = false
 
 [merge]
-	conflictstyle = diff3
+    conflictstyle = diff3
 
 [diff]
-	colorMoved = default
+    colorMoved = default
 
 [init]
-	defaultBranch = main
+    defaultBranch = main
 
 [pull]
-	ff = only
+    ff = only

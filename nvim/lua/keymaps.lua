@@ -6,7 +6,7 @@ vim.keymap.set("", "<Leader>t", ":TSUpdate<CR>")
 -- Window management
 vim.keymap.set("", "<Leader><S-w>", ":WinShift<CR>")
 vim.keymap.set("", "<Leader>w", function()
-	require("nvim-window").pick()
+    require("nvim-window").pick()
 end)
 -- LSP
 vim.keymap.set("", "<Leader>f", ":Lspsaga lsp_finder<CR>")

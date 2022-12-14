@@ -41,4 +41,3 @@ set recolor-lightcolor          "#282a36"
 set recolor-darkcolor           "#f8f8f2"
 
 set adjust-open width
-set recolor true

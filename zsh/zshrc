@@ -35,25 +35,25 @@ export LS_COLORS="rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;
 
 # Dracula theme for Linux TTY
 if [[ "$TERM" = "linux" ]]; then
-	printf %b "\e[40m" "\e[8]"
-	printf %b "\e[37m" "\e[8]"
-	printf %b "\e]P0282a36"
-	printf %b "\e]P86272a4"
-	printf %b "\e]P1ff5555"
-	printf %b "\e]P9ff7777"
-	printf %b "\e]P250fa7b"
-	printf %b "\e]PA70fa9b"
-	printf %b "\e]P3f1fa8c"
-	printf %b "\e]PBffb86c"
-	printf %b "\e]P4bd93f9"
-	printf %b "\e]PCcfa9ff"
-	printf %b "\e]P5ff79c6"
-	printf %b "\e]PDff88e8"
-	printf %b "\e]P68be9fd"
-	printf %b "\e]PE97e2ff"
-	printf %b "\e]P7f8f8f2"
-	printf %b "\e]PFffffff"
-	clear
+    printf %b "\e[40m" "\e[8]"
+    printf %b "\e[37m" "\e[8]"
+    printf %b "\e]P0282a36"
+    printf %b "\e]P86272a4"
+    printf %b "\e]P1ff5555"
+    printf %b "\e]P9ff7777"
+    printf %b "\e]P250fa7b"
+    printf %b "\e]PA70fa9b"
+    printf %b "\e]P3f1fa8c"
+    printf %b "\e]PBffb86c"
+    printf %b "\e]P4bd93f9"
+    printf %b "\e]PCcfa9ff"
+    printf %b "\e]P5ff79c6"
+    printf %b "\e]PDff88e8"
+    printf %b "\e]P68be9fd"
+    printf %b "\e]PE97e2ff"
+    printf %b "\e]P7f8f8f2"
+    printf %b "\e]PFffffff"
+    clear
 fi
 
 # Programs and stuff
@@ -107,14 +107,14 @@ export KEYTIMEOUT=1
 
 # ZSH change cursor shape according to VI mode
 function zle-keymap-select() {
-	case "$KEYMAP" in
-		vicmd) echo -ne "\e[2 q";;
-		viins|main) echo -ne "\e[6 q";;
-	esac
+    case "$KEYMAP" in
+        vicmd) echo -ne "\e[2 q";;
+        viins|main) echo -ne "\e[6 q";;
+    esac
 }
 function zle-line-init() {
-	zle -K viins
-	echo -ne "\e[6 q"
+    zle -K viins
+    echo -ne "\e[6 q"
 }
 function preexec() { echo -ne "\e[2 q"; }
 zle -N zle-keymap-select
@@ -148,13 +148,13 @@ export RPROMPT="%F{8}%D %*%f"
 
 # ZSH plugins (be sure to use the right paths to your installation and to also use zsh-completions)
 [[ -f "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] &&
-	. "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+    . "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 [[ -f "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] &&
-	. "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+    . "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 [[ -f "/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] &&
-	. "/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+    . "/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 [[ -f "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] &&
-	. "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+    . "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # It's better than Neofetch (:
 command -v pfetch &> /dev/null && export PF_INFO="ascii title host kernel os shell uptime memory wm palette" && pfetch
