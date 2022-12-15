@@ -124,7 +124,6 @@ blood(c, {
 c.auto_save.session = True
 c.colors.webpage.preferred_color_scheme = "dark"
 c.content.javascript.can_access_clipboard = True
-c.content.pdfjs = True
 c.downloads.location.directory = "$HOME/dl"
 c.fonts.default_family = "JetBrains Mono NL"
 c.fonts.default_size = "10pt"

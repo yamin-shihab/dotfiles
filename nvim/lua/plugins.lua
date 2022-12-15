@@ -37,6 +37,7 @@ require("packer").startup({
         })
         use("ms-jpq/coq.artifacts")
 
+
         -- Treesitter
         use({
             "p00f/nvim-ts-rainbow",
