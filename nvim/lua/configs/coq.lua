@@ -6,8 +6,4 @@ vim.g.coq_settings = {
         icons = { mode = "none" },
         pum = { ellipsis = "...", source_context = { "<", ">" } },
     },
-    keymap = {
-        manual_complete = "<Leader><Space>",
-        jump_to_mark = "<Leader>h",
-    },
 }

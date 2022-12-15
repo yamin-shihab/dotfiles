@@ -15,4 +15,4 @@ vim.keymap.set("", "<Leader>r", ":Lspsaga rename<CR>")
 vim.keymap.set("", "<Leader>j", ":Lspsaga diagnostic_jump_prev<CR>")
 vim.keymap.set("", "<Leader>k", ":Lspsaga diagnostic_jump_next<CR>")
 -- File manager
-vim.keymap.set("", "<Leader>o", ":CHADopen<CR>")
+vim.keymap.set("", "<Leader>o", ":CHADopen --always-focus<CR>")
