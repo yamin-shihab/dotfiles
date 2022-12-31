@@ -15,7 +15,7 @@ static const char *colors[][3]     = {
 };
 
 // Tags
-static const char *tags[] = { "main", "term", "web", "chat", "hide" };
+static const char *tags[] = { "primary", "secondary", "tertiary" };
 
 // Rules
 static const Rule rules[] = { { NULL, NULL, NULL, 0, 0, -1 } };
