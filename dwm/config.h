@@ -42,7 +42,7 @@ static const Layout layouts[] = {
 #include "movestack.c"
 static const Key keys[] = {
     //modifier          key            function          argument
-    { MODKEY|ShiftMask, XK_Return,     spawn,            SHCMD("st") },
+    { MODKEY|ShiftMask, XK_Return,     spawn,            SHCMD("alacritty") },
     { MODKEY,           XK_apostrophe, spawn,            SHCMD("i3lock-conf") },
     { MODKEY|ShiftMask, XK_apostrophe, spawn,            SHCMD("i3lock-conf & systemctl suspend") },
     { MODKEY,           XK_equal,      spawn,            SHCMD("pulsemixer --change-volume +5") },
@@ -89,7 +89,7 @@ static const Button buttons[] = {
     { ClkClientWin,  MODKEY,    Button2, togglefloating, { 0 } },
     { ClkClientWin,  MODKEY,    Button3, resizemouse,    { 0 } },
     { ClkLtSymbol,   0,         Button1, setlayout,      { 0 } },
-    { ClkStatusText, 0,         Button2, spawn,          SHCMD("st") },
+    { ClkStatusText, 0,         Button2, spawn,          SHCMD("alacritty") },
     { ClkTagBar,     0,         Button1, view,           { 0 } },
     { ClkTagBar,     0,         Button3, toggleview,     { 0 } },
     { ClkTagBar,     MODKEY,    Button1, tag,            { 0 } },

@@ -6,9 +6,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
-export GOPATH="$XDG_DATA_HOME/go"
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
-export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
 export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
@@ -16,16 +14,12 @@ export XINITRC="$XDG_CONFIG_HOME/xorg/xinitrc"
 
 pupdate() { case ":${PATH:=$1}:" in *:"$1":*) ;; *) PATH="$1:$PATH" ;; esac; }
 pupdate "$CARGO_HOME/bin"
-pupdate "$GOPATH/bin"
 pupdate "$HOME/.local/bin"
 pupdate "/usr/games"
 pupdate "/usr/local/bin"
 pupdate "/usr/local/games"
 
 command -v bat &> /dev/null && export BAT_THEME="Dracula" && export PAGER="bat -p"
-command -v clang &> /dev/null && export CC="clang"
-command -v clang++ &> /dev/null && export CXX="clang++"
-command -v ld.lld &> /dev/null && export LD="ld.lld"
 command -v ninja &> /dev/null && export CMAKE_GENERATOR="Ninja"
 command -v nvim &> /dev/null && export EDITOR="nvim" && export VISUAL="nvim"
 
@@ -61,16 +55,18 @@ command -v mcfly &> /dev/null && export MCFLY_FUZZY="2" && export MCFLY_KEY_SCHE
 command -v zoxide &> /dev/null && eval "$(zoxide init zsh)"
 
 # Aliases/functions
-alias bc="bc -ql"
 alias c="$PAGER"
 alias co="cargo"
 alias connect="iwctl station wlan0 connect Atheer"
 alias cp="cp -iv"
+crypto() { curl -sL "rate.sx/$1"; }
 alias ctl="systemctl"
+alias d="delta"
 alias dad="curl -sL 'icanhazdadjoke.com'"
-alias diff="diff --color=auto"
+dict() { curl -sL "dict://dict.org/d:$1"; }
 alias disconnect="iwctl station wlan0 disconnect"
 alias g="git"
+gignore() { curl -sL "gitignore.io/api/$1"; }
 alias ip="ip --color=auto"
 alias ka="killall"
 alias l="exa --git -Fa -s='Name' --group-directories-first"
@@ -79,22 +75,17 @@ alias m="batman"
 alias mk="make"
 alias mkd="mkdir -pv"
 alias mv="mv -iv"
-alias nyan="curl -sL 'ascii.live/nyan'"
 alias p="paru"
 alias parrot="curl -sL 'parrot.live'"
 alias pkgclean="paru -c && paru -Sc && paccache -r"
 alias pp="prettyping"
-alias rick="curl -sL 'ascii.live/rick'"
+pubip() { curl -sL "ifconfig.co/$1"; }
 alias rm="rm -vI"
 command -v doas &> /dev/null && alias s="doas " || alias s="sudo "
 alias sx="startx"
 alias t="touch"
 alias tp="btop"
 alias v="$EDITOR"
-crypto() { curl -sL "rate.sx/$1"; }
-dict() { curl -sL "dict://dict.org/d:$1"; }
-gitignore() { curl -sL "gitignore.io/api/$1"; }
-pubip() { curl -sL "ifconfig.co/$1"; }
 wttr() { curl -sL "wttr.in/$1"; }
 
 # ZSH keybinds
@@ -122,38 +113,38 @@ zle -N zle-line-init
 # ZSH options
 setopt AUTO_CD
 setopt CHASE_DOTS
-setopt MENU_COMPLETE
 setopt CORRECT
 setopt CORRECT_ALL
+setopt MENU_COMPLETE
 setopt NO_AUTO_REMOVE_SLASH
 
 # ZSH completion
 zstyle ":completion:*" cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
+zstyle ":completion:*" completer _complete _match _approximate
+zstyle ":completion:*" list-suffixes zstyle ":completion:*" expand prefix suffix 
+zstyle ":completion:*" matcher-list "m:{[:lower:][:upper:]}={[:upper:][:lower:]}" "m:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*" "m:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*" "m:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*"
 zstyle ":completion:*" menu select
 zstyle ":completion:*" squeeze-slashes true
-zstyle ":completion:*" matcher-list "m:{[:lower:][:upper:]}={[:upper:][:lower:]}" "m:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*" "m:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*" "m:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*"
-zstyle ":completion:*" list-suffixes zstyle ":completion:*" expand prefix suffix 
-zstyle ":completion:*" completer _complete _match _approximate
-zstyle ":completion:*:match:*" original only
 zstyle ":completion:*:approximate:*" max-errors 1 numeric
+zstyle ":completion:*:match:*" original only
 autoload -Uz compinit && compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 _comp_options+=(globdots)
 
 # ZSH export variables
-export SAVEHIST="10000"
 export HISTSIZE="10000"
 export PROMPT="%B%F{5}[%F{2}%n%F{5}@%F{3}%~%F{5}] %F{1}%?%F{6}%# %b%f"
 export RPROMPT="%F{8}%D %*%f"
+export SAVEHIST="10000"
 
 # ZSH plugins (be sure to use the right paths to your installation and to also use zsh-completions)
-[[ -f "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] &&
-    . "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-[[ -f "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] &&
-    . "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 [[ -f "/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] &&
     . "/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 [[ -f "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] &&
     . "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+[[ -f "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] &&
+    . "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+[[ -f "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] &&
+    . "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # It's better than Neofetch (:
 command -v pfetch &> /dev/null && export PF_INFO="ascii title host kernel os shell uptime memory wm palette" && pfetch
