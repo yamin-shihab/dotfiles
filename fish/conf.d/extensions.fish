@@ -1,7 +1,9 @@
+# Stuff that adds to the shell
 command -v mcfly &> /dev/null && mcfly init fish | source
 command -v zoxide &> /dev/null && zoxide init fish | source
 
 if test "$TERM" = "linux"
+    and test "$TERM_DRACULA" != "true"
     printf %b "\e[40m" "\e[8]"
     printf %b "\e[37m" "\e[8]"
     printf %b "\e]P0282a36"
@@ -21,4 +23,5 @@ if test "$TERM" = "linux"
     printf %b "\e]P7f8f8f2"
     printf %b "\e]PFffffff"
     clear
+    set -x TERM_DRACULA "true"
 end

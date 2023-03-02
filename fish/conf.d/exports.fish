@@ -1,3 +1,4 @@
+# Export variables for programs and the system
 command -v bat &> /dev/null && set -x PAGER "bat -p"
 command -v ninja &> /dev/null && set -x CMAKE_GENERATOR "Ninja"
 command -v nvim &> /dev/null && set -x EDITOR "nvim" && set -x VISUAL "nvim"

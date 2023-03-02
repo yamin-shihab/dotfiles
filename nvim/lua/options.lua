@@ -1,6 +1,5 @@
 -- Neovim options
 vim.opt.breakindent = true
-vim.opt.colorcolumn = "99"
 vim.opt.cursorline = true
 vim.opt.expandtab = true
 vim.opt.guicursor = ""
