@@ -4,6 +4,7 @@ vim.g.coq_settings = {
     display = {
         ghost_text = { context = { "  ", "  " } },
         icons = { mode = "none" },
+        preview = { border = "single" },
         pum = { ellipsis = "...", source_context = { "<", ">" } },
     },
 }
