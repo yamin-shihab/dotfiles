@@ -1,141 +1,177 @@
--- Packer plugins to install
-require("packer").startup({
-    function(use)
-        -- To be loaded first
-        use({
-            "lewis6991/impatient.nvim",
-            config = function()
-                require("configs/impatient")
-            end,
-        })
-        use("wbthomason/packer.nvim")
+-- Lazy plugins to install
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable",
+        lazypath,
+    })
+end
+vim.opt.rtp:prepend(lazypath)
 
-        -- LSP
-        use({
-            "neovim/nvim-lspconfig",
-            config = function()
-                require("configs/lspconfig")
-            end,
-        })
-        use({
-            "glepnir/lspsaga.nvim",
-            config = function()
-                require("configs/lspconfig")
-            end,
-        })
-        use({
-            "ms-jpq/coq_nvim",
-            config = function()
-                require("configs/coq")
-            end,
-        })
-        use({
-            "ms-jpq/chadtree",
-            config = function()
-                require("configs/chadtree")
-            end,
-        })
-        use("ms-jpq/coq.artifacts")
+local function config(name)
+    return function()
+        require("configs/" .. name)
+    end
+end
 
+require("lazy").setup({
+    -- LSP
+    {
+        "neovim/nvim-lspconfig",
+        config = config("lspconfig"),
+    },
+    {
+        "glepnir/lspsaga.nvim",
+        config = config("lspsaga"),
+    },
+    {
+        "ms-jpq/coq_nvim",
+        config = config("coq"),
+    },
+    {
+        "ms-jpq/coq.artifacts",
+        dependencies = { "ms-jpq/coq_nvim" },
+    },
 
-        -- Treesitter
-        use({
-            "p00f/nvim-ts-rainbow",
-            config = function()
-                require("configs/treesitter")
-            end,
-        })
-        use("nvim-treesitter/nvim-treesitter")
+    -- Treesitter
+    {
+        "p00f/nvim-ts-rainbow",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        config = config("ts-rainbow"),
+    },
+    {
+        "nvim-treesitter/nvim-treesitter",
+        config = config("treesitter"),
+    },
 
-        -- Appearance
-        use({
-            "nvim-lualine/lualine.nvim",
-            config = function()
-                require("configs/lualine")
-            end,
-        })
-        use({
-            "Mofiqul/dracula.nvim",
-            config = function()
-                require("configs/dracula")
-            end,
-        })
-        use({
-            "lewis6991/gitsigns.nvim",
-            config = function()
-                require("configs/gitsigns")
-            end,
-        })
-        use({
-            "lukas-reineke/indent-blankline.nvim",
-            config = function()
-                require("configs/indent-blankline")
-            end,
-        })
-        use({
-            "norcalli/nvim-colorizer.lua",
-            config = function()
-                require("configs/colorizer")
-            end,
-        })
-        use({
-            "tversteeg/registers.nvim",
-            config = function()
-                require("configs/registers")
-            end,
-        })
-        use("yamatsum/nvim-cursorline")
-        use("mhinz/vim-startify")
+    -- Appearance
+    {
+        "nvim-lualine/lualine.nvim",
+        config = config("lualine"),
+    },
+    {
+        "Mofiqul/dracula.nvim",
+        priority = 9001, -- For the memes...
+        config = config("dracula"),
+    },
+    {
+        "lewis6991/gitsigns.nvim",
+        config = config("gitsigns"),
+    },
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        config = config("indent-blankline"),
+    },
+    {
+        "norcalli/nvim-colorizer.lua",
+        config = config("colorizer"),
+    },
+    {
+        "tversteeg/registers.nvim",
+        keys = {
+            { '"', mode = { "n", "x" } },
+            { "<C-R>", mode = "i" },
+        },
+        cmd = "Registers",
+        config = config("registers"),
+    },
+    "yamatsum/nvim-cursorline",
+    "mhinz/vim-startify",
 
-        -- Functionality
-        use({
-            "ethanholz/nvim-lastplace",
-            config = function()
-                require("configs/lastplace")
-            end,
-        })
-        use({
-            "mcauley-penney/tidy.nvim",
-            config = function()
-                require("configs/tidy")
-            end,
-        })
-        use({
-            "nacro90/numb.nvim",
-            config = function()
-                require("configs/numb")
-            end,
-        })
-        use({
-            "numToStr/Comment.nvim",
-            config = function()
-                require("configs/comment")
-            end,
-        })
-        use({
-            "windwp/nvim-autopairs",
-            config = function()
-                require("configs/autopairs")
-            end,
-        })
-        use({
-            "gaoDean/autolist.nvim",
-            config = function()
-                require("configs/autolist")
-            end,
-        })
-        use("https://gitlab.com/yorickpeterse/nvim-window.git")
-        use("jghauser/mkdir.nvim")
-        use("sindrets/winshift.nvim")
-    end,
-    config = {
-        display = {
-            done_sym = "*",
-            error_sym = "!",
-            header_sym = "-",
-            moved_sym = "@",
-            removed_sym = "-",
-            working_sym = "%",
+    -- Functionality
+    {
+        "ms-jpq/chadtree",
+        cmd = "CHADopen",
+        config = config("chadtree"),
+    },
+    {
+        "ethanholz/nvim-lastplace",
+        config = config("lastplace"),
+    },
+    {
+        "mcauley-penney/tidy.nvim",
+        event = "BufWritePre",
+        config = config("tidy"),
+    },
+    {
+        "nacro90/numb.nvim",
+        event = "CmdlineChanged",
+        config = config("numb"),
+    },
+    {
+        "numToStr/Comment.nvim",
+        keys = {
+            "gcc",
+            "gbc",
+            "gcO",
+            "gco",
+            "gcA",
+            { "gc", mode = { "n", "x" } },
+            { "gb", mode = { "n", "x" } },
+        },
+        config = config("comment"),
+    },
+    {
+        "windwp/nvim-autopairs",
+        keys = {
+            { "{", mode = "i" },
+            { "(", mode = "i" },
+            { "[", mode = "i" },
+        },
+        config = config("autopairs"),
+    },
+    {
+        "gaoDean/autolist.nvim",
+        ft = {
+            "markdown",
+            "text",
+            "tex",
+            "plaintex",
+        },
+        config = config("autolist"),
+    },
+    {
+        "https://gitlab.com/yorickpeterse/nvim-window.git",
+        lazy = true,
+        config = config("window"),
+    },
+    {
+        "jghauser/mkdir.nvim",
+        event = "BufWritePre",
+    },
+    {
+        "sindrets/winshift.nvim",
+        cmd = "WinShift",
+    },
+}, {
+    ui = {
+        border = "single",
+        icons = {
+            cmd = "",
+            config = "",
+            event = "",
+            ft = "",
+            init = "",
+            import = "",
+            keys = "",
+            lazy = "",
+            loaded = "",
+            not_loaded = "",
+            plugin = "",
+            runtime = "",
+            source = "",
+            start = "",
+            task = "",
+            list = {
+                "1",
+                "2",
+                "3",
+                "4",
+            },
         },
     },
 })

@@ -7,6 +7,9 @@ for _, server in ipairs(servers) do
 end
 lsp.lua_ls.setup({
     settings = {
+        diagnostics = {
+            disable = { "lowercase-global" },
+        },
         Lua = {
             diagnostics = { globals = { "vim" } },
         },
