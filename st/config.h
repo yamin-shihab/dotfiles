@@ -57,7 +57,7 @@ static unsigned int defaultattr = 11;
 static unsigned int cursorshape = 2;
 
 // Program running
-static char *shell = "/bin/sh";
+static char *shell = "/bin/fish";
 char *utmp         = NULL;
 
 // Scrolling
