@@ -2,6 +2,7 @@
 static const char *fonts[]         = { "JetBrains Mono NL:size=10" };
 static const int showbar           = 1;
 static const int topbar            = 1;
+static const int swallowfloating   = 0;
 static const unsigned int borderpx = 2;
 static const unsigned int snap     = 32;
 static const char bg[]             = "#282a36";
@@ -18,7 +19,10 @@ static const char *colors[][3]     = {
 static const char *tags[] = { "primary", "secondary", "tertiary" };
 
 // Rules
-static const Rule rules[] = { { NULL, NULL, NULL, 0, 0, -1 } };
+static const Rule rules[] = {
+    { "Alacritty", NULL, NULL, 0, 0, 1, 0, -1 },
+    { NULL, NULL, "Event Tester", 0, 0, 0, 1, -1 },
+};
 
 // Layout(s)
 static const float mfact        = 0.55;
