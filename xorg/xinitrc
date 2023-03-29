@@ -32,8 +32,9 @@ fi
 # Autostart
 dunst &
 echo 10 | canvas -S 1920x1080 -B -n -a &
+picom &
+redshift -PO 6000 &
 setxkbmap -layout us -variant colemak &
-status &
 xautolock -time 5 -locker i3lock-conf &
 xbanish &
 xset r 66 &
@@ -41,4 +42,4 @@ xset r rate 300 30 &
 xsetroot -cursor_name left_ptr &
 
 # Start window manager
-exec dwm
+exec spectrwm
