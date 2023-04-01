@@ -1,2 +1,2 @@
-#!/usr/bin/sh
+#!/usr/bin/env sh
 i3lock -k -c 282a36 --inside-color 44475a --ring-color 6272a4 --insidever-color 44475a --ringver-color 50fa7b --insidewrong-color ff5555 --ringwrong-color ff5555 --line-color 282a36 --keyhl-color bd93f9 --bshl-color ff5555 --separator-color 282a36 --verif-color f8f8f2 --wrong-color f8f8f2 --modif-color f8f8f2 --layout-color f8f8f2 --time-color f8f8f2 --date-color f8f8f2 --greeter-color f8f8f2 --date-str %F --time-font "JetBrains Mono NL" --date-font "JetBrains Mono NL" --layout-font "JetBrains Mono NL" --verif-font "JetBrains Mono NL" --wrong-font "JetBrains Mono NL"
