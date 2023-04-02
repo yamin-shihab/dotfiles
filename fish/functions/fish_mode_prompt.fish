@@ -1,3 +1,3 @@
-function fish_mode_prompt -d "Displays the current mode"
+function fish_mode_prompt --description "Displays the current mode"
 
 end
