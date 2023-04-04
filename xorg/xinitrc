@@ -10,7 +10,7 @@ done
 
 # Autostart
 dunst &
-echo 10 | canvas -S 1920x1080 -B -n -a &
+echo 10 | canvas -S 1920x1080 -B -a &
 picom &
 redshift -PO 6000 &
 setxkbmap -layout us -variant colemak &

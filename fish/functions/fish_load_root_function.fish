@@ -1,4 +1,4 @@
-function fish_load_root_alias --description "Loads a doas/sudo function with alias/function expansion"
+function fish_load_root_function --description "Loads a doas/sudo function with alias/function expansion"
     function s --description "doas/sudo with alias/function expansion"
         set root "$(command -v doas &> /dev/null && echo doas || echo sudo)"
         if functions -q -- "$argv[1]"
