@@ -1,1 +1,0 @@
-fish_load_root_function

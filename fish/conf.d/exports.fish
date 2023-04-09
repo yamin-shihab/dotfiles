@@ -15,6 +15,7 @@ set -x GTK2_RC_FILES "$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 set -x HISTFILE "$XDG_STATE_HOME/zsh/history"
 set -x RUSTUP_HOME "$XDG_DATA_HOME/rustup"
 set -x WINEPREFIX "$XDG_DATA_HOME/wineprefixes/default"
+set -x INPUTRC "$XDG_CONFIG_HOME/readline/inputrc"
 set -x XAUTHORITY "$XDG_RUNTIME_DIR/Xauthority"
 set -x XINITRC "$XDG_CONFIG_HOME/xorg/xinitrc"
 
