@@ -13,5 +13,3 @@ vim.keymap.set({ "n", "x" }, "<Leader>j", ":Lspsaga diagnostic_jump_prev<CR>")
 vim.keymap.set({ "n", "x" }, "<Leader>k", ":Lspsaga diagnostic_jump_next<CR>")
 vim.keymap.set({ "n", "x" }, "<Leader>r", ":Lspsaga rename<CR>")
 vim.keymap.set({ "n", "x" }, "<Leader>t", ":Lspsaga term_toggle<CR>")
--- File manager
-vim.keymap.set({ "n", "x" }, "<Leader>o", ":CHADopen<CR>")

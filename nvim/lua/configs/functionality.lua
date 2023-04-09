@@ -1,13 +1,6 @@
 -- Functionality plugins
 return {
     {
-        "ms-jpq/chadtree",
-        cmd = "CHADopen",
-        config = function()
-            vim.g.chadtree_settings = { view = { width = 35 }, theme = { icon_glyph_set = "ascii" } }
-        end,
-    },
-    {
         "ethanholz/nvim-lastplace",
         config = function()
             require("nvim-lastplace").setup()
