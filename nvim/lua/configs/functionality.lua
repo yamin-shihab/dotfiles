@@ -61,7 +61,7 @@ return {
         end,
     },
     {
-        "https://gitlab.com/yorickpeterse/nvim-window.git",
+        "yorickpeterse/nvim-window",
         lazy = true,
         config = function()
             require("nvim-window").setup({

@@ -5,10 +5,13 @@ return {
         config = function()
             local lsp = require("lspconfig")
             require("lspconfig.ui.windows").default_options.border = "single"
-            local servers = { "rust_analyzer", "clangd", "bashls", "pyright", "gdscript" }
+            local servers = { "rust_analyzer", "clangd", "bashls", "pyright", "gdscript", "denols" }
             for _, server in ipairs(servers) do
                 lsp[server].setup({})
             end
+            vim.g.markdown_fenced_languages = {
+                "ts=typescript",
+            }
             lsp.lua_ls.setup({
                 settings = {
                     diagnostics = {
