@@ -18,5 +18,6 @@ vim.opt.showtabline = 0
 vim.opt.smartcase = true
 vim.opt.tabstop = 4
 vim.opt.termguicolors = true
+vim.opt.timeoutlen = 500
 vim.opt.title = true
 vim.opt.ttimeoutlen = 0

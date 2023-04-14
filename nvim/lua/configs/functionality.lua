@@ -1,6 +1,16 @@
 -- Functionality plugins
 return {
     {
+        "phaazon/hop.nvim",
+        cmd = { "HopWord", "HopLineStart", "HopPattern" },
+        config = function()
+            require("hop").setup({
+                keys = "arstneio",
+                jump_on_sole_occurrence = false,
+            })
+        end,
+    },
+    {
         "ethanholz/nvim-lastplace",
         config = function()
             require("nvim-lastplace").setup()

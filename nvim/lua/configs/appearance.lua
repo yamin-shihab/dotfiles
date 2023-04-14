@@ -1,6 +1,35 @@
 -- Appearance plugins
 return {
     {
+        "j-hui/fidget.nvim",
+        config = function()
+            require("fidget").setup({
+                text = {
+                    spinner = "bouncing_bar",
+                    done = "Completed",
+                },
+                window = {
+                    border = "single",
+                },
+            })
+        end,
+    },
+    {
+        "folke/which-key.nvim",
+        config = function()
+            require("which-key").setup({
+                icons = {
+                    breadcrumb = ">>",
+                    group = "+",
+                    separator = "->",
+                },
+                window = {
+                    border = "single",
+                },
+            })
+        end,
+    },
+    {
         "nvim-lualine/lualine.nvim",
         config = function()
             require("lualine").setup({
@@ -40,22 +69,6 @@ return {
         "norcalli/nvim-colorizer.lua",
         config = function()
             require("colorizer").setup()
-        end,
-    },
-    {
-        "tversteeg/registers.nvim",
-        keys = {
-            { '"', mode = { "n", "x" } },
-            { "<C-R>", mode = "i" },
-        },
-        cmd = "Registers",
-        config = function()
-            require("registers").setup({
-                window = {
-                    border = "single",
-                    transparency = 0,
-                },
-            })
         end,
     },
     "yamatsum/nvim-cursorline",
