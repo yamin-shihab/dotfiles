@@ -4,18 +4,18 @@
     height = 400
     origin = bottom-right
     frame_width = 2
-    frame_color = "#6272a4"
+    frame_color = "#6272A4"
     font = JetBrains Mono NL 12
 
 [urgency_low]
-    background = "#282a36"
-    foreground = "#6272a4"
+    background = "#282A36"
+    foreground = "#6272A4"
 
 [urgency_normal]
-    background = "#282a36"
-    foreground = "#bd93f9"
+    background = "#282A36"
+    foreground = "#BD93F9"
 
 [urgency_critical]
-    background = "#ff5555"
-    foreground = "#f8f8f2"
-    frame_color = "#ff5555"
+    background = "#FF5555"
+    foreground = "#F8F8F2"
+    frame_color = "#FF5555"
