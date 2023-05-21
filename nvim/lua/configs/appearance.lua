@@ -1,20 +1,6 @@
 -- Appearance plugins
 return {
     {
-        "j-hui/fidget.nvim",
-        config = function()
-            require("fidget").setup({
-                text = {
-                    spinner = "bouncing_bar",
-                    done = "Completed",
-                },
-                window = {
-                    border = "single",
-                },
-            })
-        end,
-    },
-    {
         "folke/which-key.nvim",
         config = function()
             require("which-key").setup({
