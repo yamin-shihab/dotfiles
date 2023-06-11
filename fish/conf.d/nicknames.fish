@@ -21,6 +21,7 @@ function fish_load_root_function
     end
 end
 
+alias ahoythereapirateslifeformetimetosailthehighseasseriouslyiswearpiracyisethicalman "if [ ! -f wgcf-account.toml ]; wgcf register; end; wgcf generate && wg-quick up wgcf-profile.conf"
 alias c "cpz"
 alias ca "$PAGER"
 alias co "cargo"
@@ -38,6 +39,8 @@ alias ll "exa --git -Flas=Name --group-directories-first"
 alias m "batman"
 alias mk "colormake"
 alias mkd "mkdir -p"
+alias music "mpv --vo=null --vid=no --term-osd-bar --volume=45 --shuffle"
+alias oopsnvmthefedsareaftermedamnispcopyrighttrollsanddmcaletters "wg-quick down wgcf-profile.conf"
 alias p "paru"
 alias parrot "curl -sL parrot.live"
 alias pkgclean "paru -c && paru -Sc && paccache -r"
@@ -50,5 +53,6 @@ alias tp "btop"
 alias v "$EDITOR"
 alias wttr 'curl -sL "wttr.in/$argv"'
 alias x "xclip"
+alias ytm "yt-dlp --download-archive download-archive.txt --no-post-overwrites -iwx --audio-format opus -o '%(title)s.%(ext)s' 'https://youtube.com/playlist?list=PLycMymTUi1MAfwgu-0tZgBNMPh8Of3ht6'"
 
 fish_load_root_function
