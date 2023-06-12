@@ -1,4 +1,4 @@
-# Dracula
+# Dracula color scheme
 def blood(c, options = {}):
     palette = {
         "background": "#282A36",
@@ -122,15 +122,29 @@ blood(c, {
 
 # Options
 c.auto_save.session = True
+c.colors.webpage.bg = ""
 c.colors.webpage.preferred_color_scheme = "dark"
-c.content.javascript.can_access_clipboard = True
+c.completion.height = "33%"
+c.completion.timestamp_format = "%Y-%m-%d %H:%M:%S"
+c.content.blocking.hosts.lists = ["file:///etc/hosts"]
+c.content.blocking.method = "both"
+c.content.cookies.accept = "no-3rdparty"
+c.content.plugins = True
 c.downloads.location.directory = "$HOME/dl"
+c.editor.command = ["alacritty", "-e", "nvim", "+call cursor({line}, {column})", "{file}"]
 c.fonts.default_family = "JetBrains Mono NL"
-c.fonts.default_size = "10pt"
+c.fonts.default_size = "12pt"
 c.hints.chars = "arstneio"
 c.hints.mode = "letter"
+c.hints.radius = 0
+c.hints.scatter = False
+c.input.insert_mode.plugins = True
+c.keyhint.radius = 0
+c.prompt.radius = 0
+c.session.lazy_restore = True
 c.spellcheck.languages = [ "en-US" ]
+c.tabs.last_close = "default-page"
 c.window.hide_decoration = True
 
 # Don't load autoconfig
-config.load_autoconfig(True)
+config.load_autoconfig(False)
