@@ -39,7 +39,7 @@ alias ll "exa --git -Flas=Name --group-directories-first"
 alias m "batman"
 alias mk "colormake"
 alias mkd "mkdir -p"
-alias music "mpv --vo=null --vid=no --term-osd-bar --volume=45 --shuffle"
+alias music "mpv --vo=null --vid=no --term-osd-bar --volume=55 --shuffle"
 alias oopsnvmthefedsareaftermedamnispcopyrighttrollsanddmcaletters "wg-quick down wgcf-profile.conf"
 alias p "paru"
 alias parrot "curl -sL parrot.live"
@@ -53,6 +53,6 @@ alias tp "btop"
 alias v "$EDITOR"
 alias wttr 'curl -sL "wttr.in/$argv"'
 alias x "xclip"
-alias ytm "yt-dlp --download-archive download-archive.txt --no-post-overwrites -iwx --audio-format opus -o '%(title)s.%(ext)s' 'https://youtube.com/playlist?list=PLycMymTUi1MAfwgu-0tZgBNMPh8Of3ht6'"
+alias ytm "yt-dlp --download-archive download-archive.txt --no-post-overwrites -iwx --audio-format opus 'https://youtube.com/playlist?list=PLycMymTUi1MAfwgu-0tZgBNMPh8Of3ht6'"
 
 fish_load_root_function
