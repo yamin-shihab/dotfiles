@@ -1,11 +1,13 @@
 [global]
     follow = keyboard
-    width = 400
-    height = 400
-    origin = bottom-right
-    frame_width = 2
-    frame_color = "#6272A4"
     font = JetBrains Mono NL 12
+    frame_color = "#6272A4"
+    frame_width = 2
+    height = 400
+    history_length = 5
+    notification_limit = 5
+    origin = bottom-right
+    width = 400
 
 [urgency_low]
     background = "#282A36"
