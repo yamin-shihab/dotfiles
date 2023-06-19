@@ -144,7 +144,7 @@ c.keyhint.radius = 0
 c.prompt.radius = 0
 c.session.lazy_restore = True
 c.spellcheck.languages = [ "en-US" ]
-c.tabs.last_close = "default-page"
+c.tabs.last_close = "close"
 c.window.hide_decoration = True
 
 # Don't load autoconfig
