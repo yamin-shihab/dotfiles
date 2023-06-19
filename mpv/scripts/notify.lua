@@ -1,8 +1,26 @@
-local function notify_current_track()
+mp.observe_property("filename/no-ext", "native", function(_, filename)
+    if filename == nil then
+        return
+    end
+
+    os.execute(
+        string.format('dunstify -r 1 -I /usr/share/icons/hicolor/scalable/apps/mpv.svg "Now playing:" "%s"', filename)
+    )
+end)
+
+mp.observe_property("pause", "native", function(_, paused)
     local filename = mp.get_property_native("filename/no-ext")
-    if not filename then return end
+    if filename == nil then
+        return
+    end
 
-    os.execute(("dunstify -r 1 -I /usr/share/icons/hicolor/scalable/apps/mpv.svg \"Now playing:\" \"%s\""):format(filename))
-end
+    if paused then
+        paused = "Paused"
+    else
+        paused = "Resumed"
+    end
 
-mp.register_event("file-loaded", notify_current_track)
+    os.execute(
+        string.format('dunstify -r 2 -I /usr/share/icons/hicolor/scalable/apps/mpv.svg "%s:" "%s"', paused, filename)
+    )
+end)

@@ -129,6 +129,7 @@ c.completion.timestamp_format = "%Y-%m-%d %H:%M:%S"
 c.content.blocking.hosts.lists = ["file:///etc/hosts"]
 c.content.blocking.method = "both"
 c.content.cookies.accept = "no-3rdparty"
+c.content.javascript.clipboard = "access"
 c.content.plugins = True
 c.downloads.location.directory = "$HOME/dl"
 c.editor.command = ["alacritty", "-e", "nvim", "+call cursor({line}, {column})", "{file}"]
