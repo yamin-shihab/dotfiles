@@ -9,8 +9,8 @@ local function extract_art()
 end
 
 local function remove_art()
+    os.execute("rm -f /tmp/tmp_cover.png")
     os.execute("rm -f /tmp/cover.png")
-    os.execute("rm -f /tmp/square_cover.png")
 end
 
 mp.observe_property("filename/no-ext", "native", function(_, filename)

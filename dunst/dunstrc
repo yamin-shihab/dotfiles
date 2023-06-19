@@ -5,6 +5,8 @@
     frame_width = 2
     height = 400
     history_length = 5
+    max_icon_size = 64
+    min_icon_size = 64
     notification_limit = 5
     origin = bottom-right
     width = 400
