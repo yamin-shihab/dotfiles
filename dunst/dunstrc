@@ -1,9 +1,12 @@
 [global]
+    background = "#282A36"
     follow = keyboard
     font = JetBrains Mono NL 12
+    foreground = "#BD93F9"
     frame_color = "#6272A4"
     frame_width = 2
     height = 400
+    highlight = "#BD93F9"
     history_length = 5
     max_icon_size = 64
     min_icon_size = 64
@@ -12,14 +15,11 @@
     width = 400
 
 [urgency_low]
-    background = "#282A36"
     foreground = "#6272A4"
-
-[urgency_normal]
-    background = "#282A36"
-    foreground = "#BD93F9"
+    highlight = "#6272A4"
 
 [urgency_critical]
     background = "#FF5555"
     foreground = "#F8F8F2"
     frame_color = "#FF5555"
+    highlight = "#F8F8F2"
