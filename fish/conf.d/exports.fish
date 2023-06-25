@@ -28,3 +28,7 @@ set -x PF_INFO "ascii title host kernel os shell uptime memory wm palette"
 
 fish_add_path -P "$HOME/.local/bin", "$CARGO_HOME/bin" "/usr/local/games" "/usr/games"
 fish_config theme choose "Dracula Official"
+fish_hybrid_key_bindings
+bind -M insert \es "fish_commandline_prepend s"
+bind -M visual \es "fish_commandline_prepend s"
+bind \es "fish_commandline_prepend s"
