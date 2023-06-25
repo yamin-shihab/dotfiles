@@ -26,4 +26,5 @@ set -x MCFLY_FUZZY "2"
 set -x MCFLY_KEY_SCHEME "vim"
 set -x PF_INFO "ascii title host kernel os shell uptime memory wm palette"
 
-fish_add_path "$HOME/.local/bin", "$CARGO_HOME/bin" "/usr/local/games" "/usr/games"
+fish_add_path -P "$HOME/.local/bin", "$CARGO_HOME/bin" "/usr/local/games" "/usr/games"
+fish_config theme choose "Dracula Official"
