@@ -8,17 +8,25 @@ for f in /etc/X11/xinit/xinitrc.d/?*.sh; do
     [ -x "$f" ] && . "$f"
 done
 
+# The desktop
+DESKTOP="spectrwm"
+
+## Desktop export variables
+export DESKTOP_SESSION="$DESKTOP"
+export XDG_CURRENT_DSEKTOP="$DESKTOP"
+export XDG_SESSION_DESKTOP="$DESKTOP"
+
 # Autostart
 dunst &
-echo 10 | canvas -S 1920x1080 -B -a &
 picom &
 redshift -PO 6000 &
 setxkbmap -layout us -variant colemak &
+variety &
 xautolock -time 5 -locker i3lock-conf &
 xbanish &
 xset r 66 &
 xset r rate 300 30 &
 xsetroot -cursor_name left_ptr &
 
-# Window manager
-exec spectrwm
+# Execute the window manager
+exec "$DESKTOP"
