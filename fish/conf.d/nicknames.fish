@@ -30,7 +30,7 @@ alias crypto 'curl -sL "rate.sx/$argv"'
 alias ctl "systemctl"
 alias dad 'curl -sL "icanhazdadjoke.com/$argv"'
 alias dconnect "iwctl station wlan0 disconnect"
-alias g "gitui"
+alias g "git"
 alias gignore 'curl -sL "gitignore.io/api/$argv"'
 alias i "ip -c=auto"
 alias ka "killall"
@@ -39,7 +39,7 @@ alias ll "exa --git -Flas=Name --group-directories-first"
 alias m "batman"
 alias mk "colormake"
 alias mkd "mkdir -p"
-alias music "mpv --vo=null --vid=no --term-osd-bar --volume=50 --shuffle"
+alias music "mpv --vo=null --vid=no --term-osd-bar --volume=40 --shuffle"
 alias oopsnvmthefedsareaftermedamnispcopyrighttrollsanddmcaletters "wg-quick down wgcf-profile.conf"
 alias p "paru"
 alias parrot "curl -sL parrot.live"
@@ -51,7 +51,6 @@ alias r "rmz"
 alias sx "startx"
 alias tp "btop"
 alias v "$EDITOR"
-alias wttr 'curl -sL "wttr.in/$argv"'
 alias x "xclip"
 alias ytm "yt-dlp --embed-thumbnail --download-archive download-archive.txt --no-post-overwrites -iwx --audio-format opus -o '%(channel)s - %(title)s [%(id)s].%(ext)s' 'https://youtube.com/playlist?list=PLycMymTUi1MAfwgu-0tZgBNMPh8Of3ht6'"
 

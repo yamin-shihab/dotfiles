@@ -11,7 +11,7 @@ done
 # The desktop
 DESKTOP="spectrwm"
 
-## Desktop export variables
+# Desktop export variables
 export DESKTOP_SESSION="$DESKTOP"
 export XDG_CURRENT_DSEKTOP="$DESKTOP"
 export XDG_SESSION_DESKTOP="$DESKTOP"
