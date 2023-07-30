@@ -11,9 +11,11 @@ vim.keymap.set({ "n", "x" }, "<Leader>w", ":lua require('nvim-window').pick()<CR
 
 -- LSP
 vim.keymap.set({ "n", "x" }, "<Leader>d", ":Lspsaga hover_doc<CR>")
-vim.keymap.set({ "n", "x" }, "<Leader>f", ":Lspsaga lsp_finder<CR>")
+vim.keymap.set({ "n", "x" }, "<Leader>f", ":Lspsaga finder<CR>")
+vim.keymap.set({ "n", "x" }, "<Leader>g", ":Lspsaga goto_definition<CR>")
 vim.keymap.set({ "n", "x" }, "<Leader>j", ":Lspsaga diagnostic_jump_next<CR>")
 vim.keymap.set({ "n", "x" }, "<Leader>k", ":Lspsaga diagnostic_jump_prev<CR>")
+vim.keymap.set({ "n", "x" }, "<Leader>o", ":Lspsaga outline<CR>")
 vim.keymap.set({ "n", "x" }, "<Leader>r", ":Lspsaga rename<CR>")
 vim.keymap.set({ "n", "x" }, "<Leader>t", ":Lspsaga term_toggle<CR>")
 

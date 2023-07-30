@@ -6,8 +6,8 @@ return {
             require("which-key").setup({
                 icons = {
                     breadcrumb = ">>",
-                    group = "+",
                     separator = "->",
+                    group = "+ ",
                 },
                 window = {
                     border = "single",
