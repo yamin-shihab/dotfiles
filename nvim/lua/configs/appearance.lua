@@ -17,6 +17,7 @@ return {
     },
     {
         "nvim-lualine/lualine.nvim",
+        dependencies = { "mofiqul/dracula.nvim" },
         config = function()
             require("lualine").setup({
                 options = {
@@ -29,22 +30,26 @@ return {
         end,
     },
     {
-        "Mofiqul/dracula.nvim",
+        "mofiqul/dracula.nvim",
         priority = 9001, -- For the memes...
         config = function()
-            vim.g.dracula_show_end_of_buffer = true
-            vim.g.dracula_italic_comment = true
+            require("dracula").setup({
+                show_end_of_buffer = true,
+                italic_comment = true,
+            })
             vim.cmd("colorscheme dracula")
         end,
     },
     {
         "lewis6991/gitsigns.nvim",
+        dependencies = { "mofiqul/dracula.nvim" },
         config = function()
             require("gitsigns").setup()
         end,
     },
     {
         "lukas-reineke/indent-blankline.nvim",
+        dependencies = { "mofiqul/dracula.nvim" },
         config = function()
             require("indent_blankline").setup({
                 filetype_exclude = { "startify", "help" },

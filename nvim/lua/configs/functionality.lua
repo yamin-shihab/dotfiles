@@ -31,7 +31,7 @@ return {
         end,
     },
     {
-        "numToStr/Comment.nvim",
+        "numtostr/comment.nvim",
         keys = {
             "gcc",
             "gbc",
@@ -47,27 +47,11 @@ return {
     },
     {
         "windwp/nvim-autopairs",
-        keys = {
-            { "{", mode = "i" },
-            { "(", mode = "i" },
-            { "[", mode = "i" },
-        },
+        event = "InsertEnter",
         config = function()
             require("nvim-autopairs").setup({
                 check_ts = true,
             })
-        end,
-    },
-    {
-        "gaoDean/autolist.nvim",
-        ft = {
-            "markdown",
-            "text",
-            "tex",
-            "plaintex",
-        },
-        config = function()
-            require("autolist").setup()
         end,
     },
     {

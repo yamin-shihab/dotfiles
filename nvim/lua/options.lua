@@ -1,6 +1,7 @@
 -- Neovim options
 vim.opt.breakindent = true
 vim.opt.cursorline = true
+vim.opt.dictionary = "/usr/share/dict/american-english"
 vim.opt.expandtab = true
 vim.opt.guicursor = ""
 vim.opt.ignorecase = true
@@ -16,6 +17,7 @@ vim.opt.showbreak = " > "
 vim.opt.showmode = false
 vim.opt.showtabline = 0
 vim.opt.smartcase = true
+vim.opt.spelllang = "en_us"
 vim.opt.tabstop = 4
 vim.opt.termguicolors = true
 vim.opt.timeoutlen = 500
