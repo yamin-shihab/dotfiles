@@ -21,13 +21,13 @@ function fish_load_root_function
     end
 end
 
-alias ahoythereapirateslifeformetimetosailthehighseasseriouslyiswearpiracyisethicalman "if [ ! -f wgcf-account.toml ]; wgcf register; end; wgcf generate && wg-quick up wgcf-profile.conf"
 alias c "cpz"
 alias ca "$PAGER"
 alias co "cargo"
 alias connect "iwctl station wlan0 connect Atheer"
 alias crypto 'curl -sL "rate.sx/$argv"'
 alias ctl "systemctl"
+alias d "dict"
 alias dad 'curl -sL "icanhazdadjoke.com/$argv"'
 alias dconnect "iwctl station wlan0 disconnect"
 alias g "git"
@@ -40,7 +40,6 @@ alias m "batman"
 alias mk "colormake"
 alias mkd "mkdir -p"
 alias music "mpv --vo=null --vid=no --term-osd-bar --volume=40 --shuffle"
-alias oopsnvmthefedsareaftermedamnispcopyrighttrollsanddmcaletters "wg-quick down wgcf-profile.conf"
 alias p "paru"
 alias parrot "curl -sL parrot.live"
 alias pkgclean "paru -c && paru -Sc && paccache -r"
@@ -51,7 +50,9 @@ alias r "rmz"
 alias sx "startx"
 alias tp "btop"
 alias v "$EDITOR"
+alias warp-down "wg-quick down wgcf-profile.conf"
+alias warp-up "if [ ! -f wgcf-account.toml ]; wgcf register; end; wgcf generate && wg-quick up wgcf-profile.conf"
 alias x "xclip"
-alias ytm "yt-dlp --embed-thumbnail --download-archive download-archive.txt --no-post-overwrites -iwx --audio-format opus -o '%(channel)s - %(title)s [%(id)s].%(ext)s' 'https://youtube.com/playlist?list=PLycMymTUi1MAfwgu-0tZgBNMPh8Of3ht6'"
+alias ytm "yt-dlp --embed-thumbnail --download-archive download-archive.txt --no-post-overwrites -iwx --audio-format opus -o '%(channel)s - %(title)s [%(id)s].%(ext)s' 'https://www.youtube.com/playlist?list=PLycMymTUi1MAVImVNyHThM0aKvbtDxwCc'"
 
 fish_load_root_function
