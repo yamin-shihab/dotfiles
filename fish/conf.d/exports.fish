@@ -2,6 +2,7 @@
 command -v bat &> /dev/null && set -x PAGER "bat -p"
 command -v ninja &> /dev/null && set -x CMAKE_GENERATOR "Ninja"
 command -v nvim &> /dev/null && set -x EDITOR "nvim" && set -x VISUAL "nvim"
+command -v qutebrowser &> /dev/null && set -x BROWSER "qutebrowser"
 
 set -x XDG_CACHE_HOME "$HOME/.cache"
 set -x XDG_CONFIG_HOME "$HOME/.config"
