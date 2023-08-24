@@ -24,19 +24,12 @@ end)
 
 mp.observe_property("pause", "native", function(_, paused)
     local filename = mp.get_property_native("filename/no-ext")
-    if filename == nil then
+    if filename == nil or paused == true then
         return
     end
 
-    local percent_pos = mp.get_property_native("percent-pos")
-
-    if paused then
-        paused = "Paused"
-    else
-        paused = "Resumed"
-    end
-
     extract_art()
-    os.execute(string.format('dunstify -r 2 -I /tmp/cover.png -h int:value:%d "%s:" "%s"', percent_pos, paused, filename))
+    local percent_pos = mp.get_property_native("percent-pos")
+    os.execute(string.format('dunstify -r 2 -I /tmp/cover.png -h int:value:%d "Unpaused:" "%s"', percent_pos, filename))
     remove_art()
 end)

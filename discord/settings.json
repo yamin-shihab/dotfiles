@@ -9,10 +9,12 @@
   "IS_MAXIMIZED": false,
   "IS_MINIMIZED": false,
   "WINDOW_BOUNDS": {
-    "x": 2263,
-    "y": 247,
-    "width": 1099,
-    "height": 706
+    "x": 12,
+    "y": 30,
+    "width": 944,
+    "height": 1038
   },
-  "trayBalloonShown": true
+  "trayBalloonShown": true,
+  "OPEN_ON_STARTUP": false,
+  "MINIMIZE_TO_TRAY": false
 }
