@@ -17,10 +17,8 @@ bell:
   duration: 250
 
 cursor:
-  smooth_factor: 2
   style:
     blinking: Never
-  vi_mode_style: Block
 
 mouse:
   hide_when_typing: true
