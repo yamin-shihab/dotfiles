@@ -22,7 +22,7 @@ picom &
 redshift -PO 6000 &
 setxkbmap -layout us -variant colemak &
 variety -n &
-xautolock -notify 5 -notifier "dunstify -r 3 'Screen Locker' 'Screen will lock in 5 seconds'" -time 5 -locker i3lock-conf &
+xautolock -notify 10 -notifier "dunstify -r 3 'Screen Locker' 'Screen will lock in 5 seconds'" -time 5 -locker i3lock-conf &
 xbanish &
 xset r 66 &
 xset r rate 300 30 &
