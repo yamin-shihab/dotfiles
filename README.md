@@ -12,7 +12,6 @@
 
 This repository contains the numerous program configurations that I've worked on (and still am) over the time that I've been using Linux and open source software. In each subdirectory are the files for each program, as well as another `README.md` containing some information and notes about the program's configuration. For example:
 
-+ [Alacritty](alacritty/)
 + [Discord OpenAsar](discord-openasar/)
 + [Dunst](dunst/)
 + [Fontconfig](fontconfig/)
@@ -23,6 +22,7 @@ This repository contains the numerous program configurations that I've worked on
 + [Readline](readline/)
 + [Rofi](rofi/)
 + [Sudo](sudo/)
++ [WezTerm](wezterm/)
 + [X.Org](xorg/)
 + [fish](fish/)
 + [i3lock-color](i3lock-color/)

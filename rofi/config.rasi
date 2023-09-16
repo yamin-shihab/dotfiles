@@ -1,5 +1,5 @@
 * {
-    font:                       "JetBrains Mono NL 12";
+    font:                       "monospace 14";
     foreground:                 #F8F8F2;
     background-color:           #282A36;
     active-background:          #6272A4;

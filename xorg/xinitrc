@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # Xresources settings
-xrdb -merge "$HOME/.config/xorg/Xresources"
+xrdb -merge "$HOME/.config/xorg/xresources"
 
 # Scripts related to xinit
 for f in /etc/X11/xinit/xinitrc.d/?*.sh; do

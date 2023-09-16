@@ -1,7 +1,7 @@
 [global]
     background = "#282A36"
     follow = keyboard
-    font = JetBrains Mono NL 12
+    font = monospace 14
     foreground = "#BD93F9"
     frame_color = "#6272A4"
     frame_width = 2
