@@ -1,0 +1,15 @@
+# Environment variables
+Defaults env_keep = "*"
+
+# Access control
+%wheel ALL=(ALL:ALL) ALL
+root ALL=(ALL:ALL) ALL
+
+# Flags
+Defaults insults
+Defaults passwd_timeout=0
+Defaults pwfeedback
+Defaults timestamp_timeout=0
+
+# Extra stuff to load
+@includedir /etc/sudoers.d

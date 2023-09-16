@@ -1,22 +1,19 @@
 # Aliases that I use (it's called nicknames so that it gets evaluated after exports)
 function fish_load_root_function
     function s
-        set root "$(command -v doas &> /dev/null && printf doas || printf sudo)"
         if functions -q -- "$argv[1]"
             set cmdline (
                 for arg in $argv
                     printf "\"%s\" " $arg
                 end
             )
+
             set -x function_src (string join "\n" (string escape --style=var (functions "$argv[1]")))
             set argv fish -c 'string unescape --style=var (string split "\n" $function_src) | source; '$cmdline
-            if test $root = sudo
-                command sudo -E $argv
-            else
-                command doas $argv
-            end
+
+            command sudo -E $argv
         else
-            command $root $argv
+            command sudo $argv
         end
     end
 end
@@ -34,12 +31,12 @@ alias g "git"
 alias gignore 'curl -sL "gitignore.io/api/$argv"'
 alias i "ip -c=auto"
 alias ka "killall"
-alias l "exa --git -Fas=Name --group-directories-first"
-alias ll "exa --git -Flas=Name --group-directories-first"
+alias l "eza --git -Fas=Name --group-directories-first"
+alias ll "eza --git -Flas=Name --group-directories-first"
 alias m "batman"
 alias mk "colormake"
 alias mkd "mkdir -p"
-alias music "mpv --vo=null --vid=no --term-osd-bar --volume=40 --shuffle"
+alias msc "mpv --vo=null --vid=no --term-osd-bar --volume=60 --shuffle"
 alias p "paru"
 alias parrot "curl -sL parrot.live"
 alias pkgclean "paru -c && paru -Sc && paccache -r"
