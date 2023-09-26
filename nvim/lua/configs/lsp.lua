@@ -10,7 +10,7 @@ return {
                 client.server_capabilities.semanticTokensProvider = nil
             end
 
-            for _, server in ipairs({ "rust_analyzer", "clangd", "bashls", "pyright", "gdscript", "ltex" }) do
+            for _, server in ipairs({ "bashls", "clangd", "gdscript", "ltex", "pyright", "rust_analyzer", "zls" }) do
                 lsp[server].setup({
                     capabilities = capabilities,
                     on_attach = on_attach,
