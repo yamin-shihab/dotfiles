@@ -1,0 +1,11 @@
+Show avatar/people/profile button = Incognito and Guest
+Keep old history = Enabled
+Custom New Tab Page = https://start.duckduckgo.com
+Enable themes in Incognito mode = Enabled
+Force Dark Mode = Enabled
+Smooth Scrolling = Disabled
+Reading Mode = Enabled
+One time permission = Enabled
+Enable the multi-state option for Memory Saver Mode = Enabled With Recommended Badge
+Enable discarded tab treatment for Memory Saver Mode = Enabled With Ring and 30% Opacity
+Show memory usage in hovercards = Enabled

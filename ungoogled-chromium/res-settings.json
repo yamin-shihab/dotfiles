@@ -1,0 +1,329 @@
+{
+    "data": {
+        "RES.modulePrefs": {
+            "RESMenu": false,
+            "RESTips": false,
+            "about": false,
+            "accountSwitcher": true,
+            "announcements": true,
+            "autoHide": false,
+            "backupAndRestore": false,
+            "betteReddit": true,
+            "commandLine": true,
+            "commentDepth": false,
+            "commentHidePersistor": true,
+            "commentNavigator": false,
+            "commentPreview": true,
+            "commentQuickCollapse": true,
+            "commentSortBy": false,
+            "commentStyle": true,
+            "commentTools": true,
+            "context": false,
+            "contribute": false,
+            "customToggles": false,
+            "dashboard": false,
+            "disableChat": true,
+            "easterEgg": false,
+            "filteReddit": true,
+            "hideChildComments": false,
+            "hover": false,
+            "keyboardNav": false,
+            "localDate": true,
+            "logoLink": false,
+            "messageMenu": false,
+            "modHelper": false,
+            "multiredditNavbar": false,
+            "neverEndingComments": false,
+            "neverEndingReddit": true,
+            "newCommentCount": true,
+            "nightMode": true,
+            "noParticipation": true,
+            "notifications": true,
+            "onboarding": true,
+            "orangered": true,
+            "pageNavigator": true,
+            "penaltyBox": false,
+            "presets": false,
+            "profileNavigator": false,
+            "profileRedirect": false,
+            "quarantineHide": false,
+            "quickMessage": true,
+            "readComments": false,
+            "redditUserInfo": false,
+            "requestPermissions": false,
+            "saveComments": false,
+            "search": false,
+            "searchHelper": true,
+            "selectedEntry": true,
+            "settingsNavigation": false,
+            "showImages": true,
+            "showKarma": true,
+            "showParent": false,
+            "singleClick": false,
+            "sourceSnudown": false,
+            "spamButton": false,
+            "spoilerTags": true,
+            "styleTweaks": true,
+            "stylesheet": false,
+            "subRedditTagger": false,
+            "submitHelper": true,
+            "submitIssue": false,
+            "subredditInfo": true,
+            "subredditManager": false,
+            "subredditStyleToggle": false,
+            "tableTools": false,
+            "temporaryDropdownLinks": false,
+            "troubleshooter": false,
+            "userHighlight": true,
+            "userInfo": false,
+            "userTagger": false,
+            "userbarHider": false,
+            "usernameHider": false,
+            "version": false,
+            "voteEnhancements": true,
+            "wheelBrowse": false,
+            "xPostLinks": true
+        },
+        "RESoptions.RESTips": {
+            "dailyTip": {
+                "value": false
+            }
+        },
+        "RESoptions.accountSwitcher": {
+            "keepLoggedIn": {
+                "value": true
+            },
+            "reloadOtherTabs": {
+                "value": true
+            },
+            "showCurrentUserName": {
+                "value": true
+            }
+        },
+        "RESoptions.betteReddit": {
+            "hideLinkInstant": {
+                "value": false
+            },
+            "pinHeader": {
+                "value": "header"
+            },
+            "restrictScrollEvents": {
+                "value": true
+            },
+            "showTimestampComments": {
+                "value": true
+            },
+            "showTimestampModerationLog": {
+                "value": true
+            },
+            "showTimestampPosts": {
+                "value": true
+            },
+            "showTimestampSidebar": {
+                "value": true
+            },
+            "showTimestampWiki": {
+                "value": true
+            },
+            "videoViewed": {
+                "value": false
+            }
+        },
+        "RESoptions.commentQuickCollapse": {
+            "hideCollapseButton": {
+                "value": true
+            },
+            "toggleCommentsOnClickLeftEdge": {
+                "value": false
+            }
+        },
+        "RESoptions.commentStyle": {
+            "commentHoverBorder": {
+                "value": true
+            },
+            "continuity": {
+                "value": true
+            }
+        },
+        "RESoptions.hover": {
+            "instances": {
+                "value": [
+                    [
+                        "accountSwitcher",
+                        true
+                    ],
+                    [
+                        "messageMenu",
+                        true
+                    ],
+                    [
+                        "subredditInfo",
+                        true
+                    ],
+                    [
+                        "userInfo",
+                        true
+                    ],
+                    [
+                        "profileNavigator",
+                        true
+                    ],
+                    [
+                        "multiredditNavbar",
+                        true
+                    ]
+                ]
+            }
+        },
+        "RESoptions.neverEndingReddit": {
+            "autoLoad": {
+                "value": false
+            }
+        },
+        "RESoptions.newCommentCount": {
+            "notifyEditedPosts": {
+                "value": true
+            }
+        },
+        "RESoptions.nightMode": {
+            "coloredLinks": {
+                "value": true
+            },
+            "nightModeOn": {
+                "value": true
+            }
+        },
+        "RESoptions.notifications": {
+            "notificationTypes": {
+                "value": [
+                    [
+                        "permissions-Permission required",
+                        true,
+                        false
+                    ]
+                ]
+            }
+        },
+        "RESoptions.penaltyBox": {
+            "features": {
+                "value": [
+                    [
+                        "profileNavigator",
+                        "sectionMenu",
+                        true,
+                        0
+                    ],
+                    [
+                        "multiredditNavbar",
+                        "sectionMenu",
+                        true,
+                        0
+                    ],
+                    [
+                        "RESTips",
+                        "dailyTip",
+                        true,
+                        5
+                    ]
+                ]
+            }
+        },
+        "RESoptions.showImages": {
+            "galleryAsFilmstrip": {
+                "value": false
+            },
+            "markSelftextVisited": {
+                "value": true
+            },
+            "preferredImgurLink": {
+                "value": "direct"
+            },
+            "sfwHistory": {
+                "value": "none"
+            }
+        },
+        "RESoptions.showKarma": {
+            "showGold": {
+                "value": true
+            }
+        },
+        "RESoptions.styleTweaks": {
+            "colorBlindFriendly": {
+                "value": true
+            },
+            "highlightEditedTime": {
+                "value": true
+            },
+            "highlightTopLevel": {
+                "value": false
+            },
+            "visitedStyle": {
+                "value": true
+            }
+        },
+        "RESoptions.subredditInfo": {
+            "requireDirectLink": {
+                "value": false
+            }
+        },
+        "RESoptions.userHighlight": {
+            "autoColorUsernames": {
+                "value": true
+            },
+            "highlightFirstCommenter": {
+                "value": true
+            },
+            "highlightSelf": {
+                "value": true
+            }
+        },
+        "RESoptions.voteEnhancements": {
+            "colorCommentScore": {
+                "value": "automatic"
+            },
+            "colorLinkScore": {
+                "value": "automatic"
+            },
+            "userDefinedCommentColoration": {
+                "value": [
+                    [
+                        "0",
+                        "#5f99cf"
+                    ],
+                    [
+                        "10",
+                        "#f2b035"
+                    ],
+                    [
+                        "50",
+                        "#ff4500"
+                    ],
+                    [
+                        "100",
+                        "#d92b2b"
+                    ]
+                ]
+            },
+            "userDefinedLinkColoration": {
+                "value": [
+                    [
+                        "0",
+                        "#5f99cf"
+                    ],
+                    [
+                        "10",
+                        "#f2b035"
+                    ],
+                    [
+                        "50",
+                        "#ff4500"
+                    ],
+                    [
+                        "100",
+                        "#d92b2b"
+                    ]
+                ]
+            }
+        }
+    }
+}

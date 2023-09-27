@@ -28,9 +28,9 @@ This repository contains the numerous program configurations that I've worked on
 + [i3lock-color](i3lock-color/)
 + [mpv](mpv/)
 + [picom](picom/)
-+ [qutebrowser](qutebrowser/)
 + [spectrwm](spectrwm/)
 + [tmux](tmux/)
++ [ungoogled-chromium](ungoogled-chromium/)
 + [zathura](zathura/)
 
 Pull requests and issues are always welcome and encouraged!

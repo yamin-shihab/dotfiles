@@ -1,0 +1,8 @@
+Disable like/dislike submission = Disabld
+Re-format like numbers = Enabled
+Number format = 123K
+Colorize ratito bar = Enabled
+Colorize thumbs = Enabled
+Color theme = Classic
+Percentage in like/dislike bar tooltip = Enabled
+Percent mode = 190 / 10 - 95%
