@@ -3,8 +3,8 @@
         "colorBlindFriendly": true,
         "uiAccentCustom": true,
         "uiAccentCustom0": "#6272a4",
+        "uiTheme": "dark",
         "importedLists": [],
-        "popupPanelSections": 15,
         "suspendUntilListsAreLoaded": true
     },
     "selectedFilterLists": [
@@ -47,8 +47,8 @@
     "whitelist": [
         "about-scheme",
         "chrome-extension-scheme",
+        "chrome-scheme",
         "edge-scheme",
-        "extensions.chrome-scheme",
         "moz-extension-scheme",
         "opera-scheme",
         "vivaldi-scheme",
