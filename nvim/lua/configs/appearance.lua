@@ -50,9 +50,21 @@ return {
     {
         "lukas-reineke/indent-blankline.nvim",
         dependencies = { "mofiqul/dracula.nvim" },
+        main = "ibl",
         config = function()
-            require("indent_blankline").setup({
-                filetype_exclude = { "startify", "help" },
+            require("ibl").setup({
+                scope = {
+                    highlight = {
+                        "rainbowcol1",
+                        "rainbowcol2",
+                        "rainbowcol3",
+                        "rainbowcol4",
+                        "rainbowcol5",
+                        "rainbowcol6",
+                        "rainbowcol7",
+                    },
+                },
+                exclude = { filetypes = { "startify" } },
             })
         end,
     },
