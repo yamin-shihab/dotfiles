@@ -1,4 +1,4 @@
-*.font:       xft:monospace:size=16
+*.font:       xft:monospace:size=14
 *.antialias:  true
 *.foreground: #F8F8F2
 *.background: #282A36
