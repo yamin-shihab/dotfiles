@@ -19,27 +19,29 @@ function fish_load_root_function
 end
 
 alias c "cpz"
-alias ca "$PAGER"
 alias co "cargo"
 alias connect "iwctl station wlan0 connect Atheer"
 alias crypto 'curl -sL "rate.sx/$argv"'
+alias ct "$PAGER"
 alias ctl "systemctl"
-alias d "dict"
+alias d "duf -theme=ansi"
 alias dad 'curl -sL "icanhazdadjoke.com/$argv"'
-alias dconnect "iwctl station wlan0 disconnect"
+alias disconnect "iwctl station wlan0 disconnect"
+alias dt "dict"
 alias g "git"
-alias gignore 'curl -sL "gitignore.io/api/$argv"'
+alias gitignore 'curl -sL "gitignore.io/api/$argv"'
 alias i "ip -c=auto"
+alias imgcat "wezterm imgcat"
 alias ka "killall"
 alias l "eza -Fas=Name --git --group-directories-first --time-style long-iso"
 alias ll "eza -Flas=Name --git --group-directories-first --time-style long-iso"
 alias m "batman"
 alias mk "colormake"
 alias mkd "mkdir -p"
-alias msc "mpv --vo=null --vid=no --term-osd-bar --volume=60 --shuffle"
+alias music "mpv --vo=null --vid=no --term-osd-bar --volume=40 --shuffle"
 alias p "paru"
 alias parrot "curl -sL parrot.live"
-alias pkgclean "paru -c && paru -Sc && paccache -r"
+alias pkgclean "paru -c; paru -Sc; paccache -r -k 1"
 alias pm "pulsemixer"
 alias pp "prettyping"
 alias pubip 'curl -sL "ifconfig.co/$argv"'
