@@ -52,6 +52,6 @@ alias v "$EDITOR"
 alias warp-down "wg-quick down wgcf-profile.conf"
 alias warp-up "if [ ! -f wgcf-account.toml ]; wgcf register; end; wgcf generate && wg-quick up wgcf-profile.conf"
 alias x "xclip"
-alias ytm "yt-dlp --embed-thumbnail --download-archive download-archive.txt --no-post-overwrites -iwx --audio-format opus -o '%(title)s.%(ext)s' 'https://www.youtube.com/playlist?list=PLycMymTUi1MAVImVNyHThM0aKvbtDxwCc'"
+alias ytm "yt-dlp --embed-thumbnail --download-archive download-archive.txt --no-post-overwrites -iwx --audio-format opus -o '%(channel)s - %(title)s [%(id)s].%(ext)s' 'https://www.youtube.com/playlist?list=PLycMymTUi1MAVImVNyHThM0aKvbtDxwCc'"
 
 fish_load_root_function
