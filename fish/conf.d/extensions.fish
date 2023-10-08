@@ -1,5 +1,4 @@
 # Stuff that adds to the shell
-command -v mcfly &> /dev/null && mcfly init fish | source
 command -v zoxide &> /dev/null && zoxide init fish | source
 
 if test "$TERM" = "linux"
