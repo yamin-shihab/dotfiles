@@ -1,42 +1,37 @@
--- Lazy plugins to install
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable",
-        lazypath,
-    })
-end
-vim.opt.rtp:prepend(lazypath)
-
-require("lazy").setup("configs", {
-    ui = {
-        border = "single",
-        icons = {
-            cmd = "",
-            config = "",
-            event = "",
-            ft = "",
-            init = "",
-            import = "",
-            keys = "",
-            lazy = "",
-            loaded = "",
-            not_loaded = "",
-            plugin = "",
-            runtime = "",
-            source = "",
-            start = "",
-            task = "",
-            list = {
-                "1",
-                "2",
-                "3",
-                "4",
-            },
-        },
-    },
+-- Paq plugins to install and configure
+require("paq")({
+    "ethanholz/nvim-lastplace",
+    "folke/trouble.nvim",
+    "folke/which-key.nvim",
+    "hiphish/rainbow-delimiters.nvim",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-cmdline",
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-path",
+    "hrsh7th/nvim-cmp",
+    "jghauser/mkdir.nvim",
+    "l3mon4d3/luasnip",
+    "lewis6991/gitsigns.nvim",
+    "lukas-reineke/indent-blankline.nvim",
+    "mbbill/undotree",
+    "mcauley-penney/tidy.nvim",
+    "mhinz/vim-startify",
+    "mofiqul/dracula.nvim",
+    "nacro90/numb.nvim",
+    "neovim/nvim-lspconfig",
+    "norcalli/nvim-colorizer.lua",
+    "numtostr/comment.nvim",
+    "nvim-lualine/lualine.nvim",
+    "rafamadriz/friendly-snippets",
+    "rrethy/vim-illuminate",
+    "saadparwaiz1/cmp_luasnip",
+    "savq/paq-nvim",
+    "smoka7/hop.nvim",
+    "windwp/nvim-autopairs",
+    "nvim-treesitter/nvim-treesitter",
 })
+
+require("configs.appearance")
+require("configs.functionality")
+require("configs.lsp")
+require("configs.treesitter")
