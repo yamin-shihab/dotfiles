@@ -6,8 +6,8 @@ return {
             require("which-key").setup({
                 icons = {
                     breadcrumb = ">>",
-                    separator = "->",
                     group = "+ ",
+                    separator = "->",
                 },
                 window = {
                     border = "single",
@@ -21,10 +21,19 @@ return {
         config = function()
             require("lualine").setup({
                 options = {
-                    icons_enabled = false,
                     component_separators = { left = "", right = "" },
-                    section_separators = { left = "", right = "" },
                     globalstatus = true,
+                    icons_enabled = false,
+                    section_separators = { left = "", right = "" },
+                },
+                tabline = {
+                    lualine_a = {
+                        {
+                            "windows",
+                            symbols = { modified = " [+]" },
+                        },
+                    },
+                    lualine_z = { "tabs" },
                 },
             })
         end,
@@ -34,8 +43,8 @@ return {
         priority = 9001, -- For the memes...
         config = function()
             require("dracula").setup({
-                show_end_of_buffer = true,
                 italic_comment = true,
+                show_end_of_buffer = true,
             })
             vim.cmd("colorscheme dracula")
         end,
@@ -48,32 +57,19 @@ return {
         end,
     },
     {
-        "lukas-reineke/indent-blankline.nvim",
-        dependencies = { "mofiqul/dracula.nvim" },
-        main = "ibl",
-        config = function()
-            require("ibl").setup({
-                scope = {
-                    highlight = {
-                        "rainbowcol1",
-                        "rainbowcol2",
-                        "rainbowcol3",
-                        "rainbowcol4",
-                        "rainbowcol5",
-                        "rainbowcol6",
-                        "rainbowcol7",
-                    },
-                },
-                exclude = { filetypes = { "startify" } },
-            })
-        end,
-    },
-    {
         "norcalli/nvim-colorizer.lua",
         config = function()
             require("colorizer").setup()
         end,
     },
-    "yamatsum/nvim-cursorline",
+    {
+        "rrethy/vim-illuminate",
+        config = function()
+            require("illuminate").configure({
+                delay = 0,
+                providers = { "regex" },
+            })
+        end,
+    },
     "mhinz/vim-startify",
 }
