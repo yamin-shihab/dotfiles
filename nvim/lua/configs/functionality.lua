@@ -1,20 +1,32 @@
 -- Functionality plugins
 return {
     {
-        "phaazon/hop.nvim",
-        cmd = { "HopWord", "HopLineStart", "HopPattern" },
-        config = function()
-            require("hop").setup({
-                keys = "arstneio",
-                jump_on_sole_occurrence = false,
-            })
-        end,
-    },
-    {
         "ethanholz/nvim-lastplace",
         config = function()
             require("nvim-lastplace").setup()
         end,
+    },
+    {
+        "folke/trouble.nvim",
+        config = function()
+            require("trouble").setup({
+                fold_closed = ">",
+                fold_open = "v",
+                icons = false,
+                signs = {
+                    error = "e",
+                    hint = "h",
+                    information = "i",
+                    other = "o",
+                    warning = "w",
+                },
+                use_diagnostic_signs = false,
+            })
+        end,
+    },
+    {
+        "jghauser/mkdir.nvim",
+        event = "BufWritePre",
     },
     {
         "mcauley-penney/tidy.nvim",
@@ -46,6 +58,20 @@ return {
         end,
     },
     {
+        "sindrets/winshift.nvim",
+        cmd = "WinShift",
+    },
+    {
+        "smoka7/hop.nvim",
+        cmd = { "HopWord", "HopLineStart", "HopPattern" },
+        config = function()
+            require("hop").setup({
+                keys = "arstneio",
+                jump_on_sole_occurrence = false,
+            })
+        end,
+    },
+    {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
         config = function()
@@ -72,12 +98,5 @@ return {
             })
         end,
     },
-    {
-        "jghauser/mkdir.nvim",
-        event = "BufWritePre",
-    },
-    {
-        "sindrets/winshift.nvim",
-        cmd = "WinShift",
-    },
+    "mbbill/undotree",
 }

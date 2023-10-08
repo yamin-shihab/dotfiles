@@ -30,71 +30,13 @@ return {
                 },
             })
 
-            require("lspconfig.ui.windows").default_options.border = "single"
-        end,
-    },
-    {
-        "nvimdev/lspsaga.nvim",
-        dependencies = { "neovim/nvim-lspconfig", "mofiqul/dracula.nvim" },
-        event = "LspAttach",
-        config = function()
-            require("lspsaga").setup({
-                symbol_in_winbar = {
-                    separator = " > ",
-                },
-                lightbulb = {
-                    sign = false,
-                    virtual_text = false,
-                },
-                ui = {
-                    devicon = false,
-                    expand = "+",
-                    collapse = "-",
-                    code_action = "!",
-                    actionfix = "",
-                    imp_sign = "",
-                    kind = {
-                        Array = { "# ", "Type" },
-                        Boolean = { "# ", "Boolean" },
-                        Class = { "# ", "Include" },
-                        Constant = { "# ", "Constant" },
-                        Constructor = { "# ", "@constructor" },
-                        Enum = { "# ", "@number" },
-                        EnumMember = { "# ", "Number" },
-                        Event = { "# ", "Constant" },
-                        Field = { "# ", "@field" },
-                        File = { "# ", "Tag" },
-                        Folder = { "# ", "Title" },
-                        Function = { "# ", "Function" },
-                        Interface = { "# ", "Type" },
-                        Key = { "# ", "Constant" },
-                        Macro = { "# ", "Macro" },
-                        Method = { "# ", "Function" },
-                        Module = { "# ", "Exception" },
-                        Namespace = { "# ", "Include" },
-                        Null = { "# ", "Constant" },
-                        Number = { "# ", "Number" },
-                        Object = { "# ", "Type" },
-                        Operator = { "# ", "Operator" },
-                        Package = { "# ", "Label" },
-                        Parameter = { "# ", "@parameter" },
-                        Property = { "# ", "@property" },
-                        Snippet = { "# ", "@variable" },
-                        StaticMethod = { "# ", "Function" },
-                        String = { "# ", "String" },
-                        Struct = { "# ", "Type" },
-                        Text = { "# ", "String" },
-                        TypeAlias = { "# ", "Type" },
-                        TypeParameter = { "# ", "Type" },
-                        Unit = { "# ", "Number" },
-                        Value = { "# ", "@variable" },
-                        Variable = { "# ", "@variable" },
-                    },
-                },
-                beacon = {
-                    enable = false,
-                },
+            vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+                border = "single",
             })
+            vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+                border = "single",
+            })
+            require("lspconfig.ui.windows").default_options.border = "single"
         end,
     },
     {

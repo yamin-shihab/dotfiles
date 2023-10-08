@@ -1,25 +1,38 @@
--- Neovim keybinds
+-- Vim
 vim.keymap.set({ "n", "x" }, "<Esc>", ":noh<CR><Esc>")
 
 -- Updating
-vim.keymap.set({ "n", "x" }, "<Leader>l", ":Lazy sync<CR>")
-vim.keymap.set({ "n", "x" }, "<Leader>u", ":TSUpdate<CR>")
+vim.keymap.set({ "n", "x" }, "<Leader>l", function()
+    require("lazy").sync()
+end)
+vim.keymap.set({ "n", "x" }, "<Leader>u", vim.cmd.TSUpdate)
 
 -- Window management
-vim.keymap.set({ "n", "x" }, "<Leader><S-w>", ":WinShift<CR>")
-vim.keymap.set({ "n", "x" }, "<Leader>w", ":lua require('nvim-window').pick()<CR>")
-
--- LSP
-vim.keymap.set({ "n", "x" }, "<Leader>d", ":Lspsaga hover_doc<CR>")
-vim.keymap.set({ "n", "x" }, "<Leader>f", ":Lspsaga finder<CR>")
-vim.keymap.set({ "n", "x" }, "<Leader>g", ":Lspsaga goto_definition<CR>")
-vim.keymap.set({ "n", "x" }, "<Leader>j", ":Lspsaga diagnostic_jump_next<CR>")
-vim.keymap.set({ "n", "x" }, "<Leader>k", ":Lspsaga diagnostic_jump_prev<CR>")
-vim.keymap.set({ "n", "x" }, "<Leader>o", ":Lspsaga outline<CR>")
-vim.keymap.set({ "n", "x" }, "<Leader>r", ":Lspsaga rename<CR>")
-vim.keymap.set({ "n", "x" }, "<Leader>t", ":Lspsaga term_toggle<CR>")
+vim.keymap.set({ "n", "x" }, "<Leader>p", function()
+    require("nvim-window").pick()
+end)
+vim.keymap.set({ "n", "x" }, "<Leader>w", function()
+    require("winshift").cmd_winshift()
+end)
 
 -- Hopping around
-vim.keymap.set({ "n", "x" }, "<Leader><S-h>", ":HopLineStart<CR>")
-vim.keymap.set({ "n", "x" }, "<Leader>h", ":HopWord<CR>")
-vim.keymap.set({ "n", "x" }, "<Leader>s", ":HopPattern<CR>")
+vim.keymap.set({ "n", "x" }, "<Leader>h", function()
+    require("hop").hint_words()
+end)
+vim.keymap.set({ "n", "x" }, "<Leader>s", function()
+    require("hop").hint_patterns()
+end)
+
+-- Chad undotree
+vim.keymap.set({ "n", "x" }, "<Leader>t", ":UndotreeToggle | UndotreeFocus<CR>")
+
+-- LSP shenanigans
+vim.keymap.set({ "n", "x" }, "<Leader>d", function()
+    vim.lsp.buf.hover()
+end)
+vim.keymap.set({ "n", "x" }, "<Leader>e", function()
+    require("trouble").toggle()
+end)
+vim.keymap.set({ "n", "x" }, "<Leader>r", function()
+    require("trouble").open("lsp_references")
+end)
