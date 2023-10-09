@@ -1,12 +1,8 @@
-<div align=center>
-
 # dotfiles
 
 *My collection of program configs for the Arch Linux desktop that I use*
 
 ![Screenshot of the configured desktop](screenshot.png)
-
-</div>
 
 ---
 
