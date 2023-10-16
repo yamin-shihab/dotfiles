@@ -1,37 +1,21 @@
 -- Paq plugins to install and configure
 require("paq")({
-    "ethanholz/nvim-lastplace",
-    "folke/trouble.nvim",
-    "folke/which-key.nvim",
+    "brenoprata10/nvim-highlight-colors",
     "hiphish/rainbow-delimiters.nvim",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-cmdline",
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-path",
-    "hrsh7th/nvim-cmp",
-    "jghauser/mkdir.nvim",
-    "l3mon4d3/luasnip",
-    "lewis6991/gitsigns.nvim",
     "lukas-reineke/indent-blankline.nvim",
-    "mbbill/undotree",
-    "mcauley-penney/tidy.nvim",
-    "mhinz/vim-startify",
     "mofiqul/dracula.nvim",
-    "nacro90/numb.nvim",
-    "neovim/nvim-lspconfig",
-    "norcalli/nvim-colorizer.lua",
     "numtostr/comment.nvim",
     "nvim-lualine/lualine.nvim",
-    "rafamadriz/friendly-snippets",
-    "rrethy/vim-illuminate",
-    "saadparwaiz1/cmp_luasnip",
+    "nvim-treesitter/nvim-treesitter",
     "savq/paq-nvim",
     "smoka7/hop.nvim",
+    "sontungexpt/stcursorword",
     "windwp/nvim-autopairs",
-    "nvim-treesitter/nvim-treesitter",
 })
 
 require("configs.appearance")
 require("configs.functionality")
-require("configs.lsp")
-require("configs.treesitter")
+
+vim.keymap.set("n", "<Leader>p", function()
+    require("paq"):sync()
+end)

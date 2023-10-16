@@ -1,17 +1,10 @@
--- Appearance plugins
-require("colorizer").setup()
+-- Neovim appearance plugins
+require("dracula").setup({ italic_comment = true, show_end_of_buffer = true })
+vim.cmd([[colorscheme dracula]])
 
-require("dracula").setup({
-    italic_comment = true,
-    show_end_of_buffer = true,
-})
-vim.cmd("colorscheme dracula")
-
-require("gitsigns").setup()
-
-require("illuminate").configure({
-    delay = 0,
-    providers = { "regex" },
+require("ibl").setup({
+    indent = { char = "│" },
+    scope = { enabled = false },
 })
 
 require("lualine").setup({
@@ -21,24 +14,34 @@ require("lualine").setup({
         icons_enabled = false,
         section_separators = { left = "", right = "" },
     },
-    tabline = {
-        lualine_a = {
-            {
-                "windows",
-                symbols = { modified = " [+]" },
-            },
-        },
-        lualine_z = { "tabs" },
+    sections = {
+        lualine_b = { "filename" },
+        lualine_c = { "filesize" },
+    },
+    inactive_sections = { nil },
+})
+
+require("nvim-highlight-colors").setup({ enable_tailwind = true })
+
+require("nvim-treesitter.configs").setup({
+    ensure_installed = "all",
+    highlight = { enable = true },
+    indent = { enable = true },
+})
+vim.keymap.set("n", "<Leader>t", function()
+    require("nvim-treesitter.install").update()()
+end)
+
+require("rainbow-delimiters.setup").setup({
+    highlight = {
+        "rainbowcol1",
+        "rainbowcol2",
+        "rainbowcol3",
+        "rainbowcol4",
+        "rainbowcol5",
+        "rainbowcol6",
+        "rainbowcol7",
     },
 })
 
-require("which-key").setup({
-    icons = {
-        breadcrumb = ">>",
-        group = "+ ",
-        separator = "->",
-    },
-    window = {
-        border = "single",
-    },
-})
+require("stcursorword").setup({ min_word_length = 1 })

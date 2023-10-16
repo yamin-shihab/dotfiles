@@ -1,31 +1,14 @@
--- Functionality plugins
-require("Comment").setup()
-
-require("hop").setup({
-    keys = "arstneio",
-    jump_on_sole_occurrence = false,
+-- Neovim functionality plugins
+require("Comment").setup({
+    padding = false,
+    toggler = { line = "<Leader>cc", block = "<Leader>bb" },
+    opleader = { line = "<Leader>c", block = "<Leader>b" },
+    mappings = { basic = true, extra = false },
 })
 
-require("numb").setup()
+require("hop").setup({ create_hl_autocmd = false, keys = "arstneio" })
+vim.keymap.set("", "<Leader>w", function()
+    require("hop").hint_words()
+end)
 
-require("nvim-autopairs").setup({
-    check_ts = true,
-})
-
-require("nvim-lastplace").setup()
-
-require("tidy").setup()
-
-require("trouble").setup({
-    fold_closed = ">",
-    fold_open = "v",
-    icons = false,
-    signs = {
-        error = "e",
-        hint = "h",
-        information = "i",
-        other = "o",
-        warning = "w",
-    },
-    use_diagnostic_signs = false,
-})
+require("nvim-autopairs").setup({ check_ts = true })

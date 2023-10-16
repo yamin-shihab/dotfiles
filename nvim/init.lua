@@ -1,4 +1,4 @@
--- My Neovim config in Lua!
+-- Set up all parts of the Neovim config
+require("autocmds")
 require("options")
-require("keymaps")
 require("plugins")
