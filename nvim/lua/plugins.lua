@@ -1,6 +1,7 @@
 -- Paq plugins to install and configure
 require("paq")({
     "brenoprata10/nvim-highlight-colors",
+    "goolord/alpha-nvim",
     "hiphish/rainbow-delimiters.nvim",
     "lukas-reineke/indent-blankline.nvim",
     "mofiqul/dracula.nvim",
@@ -13,9 +14,9 @@ require("paq")({
     "windwp/nvim-autopairs",
 })
 
-require("configs.appearance")
-require("configs.functionality")
-
 vim.keymap.set("n", "<Leader>p", function()
     require("paq"):sync()
 end)
+
+require("configs.appearance")
+require("configs.functionality")
