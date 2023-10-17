@@ -37,7 +37,23 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
     end,
 })
 
--- Automatically clean up whitespace upon writing the buffer
+-- Automatically reopen buffers at the last known position, with exceptions
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+    callback = function()
+        local ignore_buftype = { "quickfix", "nofile", "help" }
+        local ignore_filetype = { "gitcommit", "gitrebase", "svn", "hgcommit" }
+        if
+            vim.tbl_contains(ignore_buftype, vim.bo.buftype)
+            or vim.tbl_contains(ignore_filetype, vim.bo.filetype)
+            or vim.fn.line(".") > 1
+        then
+            return
+        end
+        vim.cmd([[silent! normal! g`"zz]])
+    end,
+})
+
+-- Automatically clean up whitespace upon writing a buffer
 vim.api.nvim_create_autocmd("BufWrite", {
     callback = function()
         save_cursor = vim.fn.getpos(".")
@@ -48,21 +64,13 @@ vim.api.nvim_create_autocmd("BufWrite", {
     end,
 })
 
--- Automatically create any needed directories upon writing the buffer
+-- Automatically create any needed directories upon writing to a file
 vim.api.nvim_create_autocmd("BufWrite", {
     callback = function()
         local dir = vim.fn.expand("<afile>:p:h")
         if vim.fn.isdirectory(dir) == 0 then
             vim.fn.mkdir(dir, "p")
         end
-    end,
-})
-
--- Change the number line cursor color depending on the current Vim mode
-vim.api.nvim_create_autocmd({ "ModeChanged", "BufEnter" }, {
-    callback = function()
-        local mode_highlight = "lualine_a" .. require("lualine.highlight").get_mode_suffix()
-        vim.api.nvim_set_hl(0, "CursorLineNr", { link = mode_highlight })
     end,
 })
 
@@ -109,7 +117,12 @@ require("dracula").setup({ italic_comment = true, show_end_of_buffer = true })
 vim.cmd([[colorscheme dracula]])
 
 -- Faster movement
-require("hop").setup({ create_hl_autocmd = false, keys = "arstneio" })
+require("hop").setup({ keys = "arstneio" })
+local colors = require("dracula").colors()
+vim.api.nvim_set_hl(0, "HopNextKey", { fg = colors.red })
+vim.api.nvim_set_hl(0, "HopNextKey1", { fg = colors.purple })
+vim.api.nvim_set_hl(0, "HopNextKey2", { fg = colors.green })
+vim.api.nvim_set_hl(0, "HopUnmatched", { fg = colors.selection })
 vim.keymap.set("", "<Leader>w", function()
     require("hop").hint_words()
 end)
@@ -120,7 +133,7 @@ require("ibl").setup({
     scope = { enabled = false },
 })
 
--- Nicer statusline
+-- Nicer statusline and cursor line number mode color
 require("lualine").setup({
     options = {
         component_separators = { left = "", right = "" },
@@ -134,12 +147,18 @@ require("lualine").setup({
     },
     inactive_sections = { nil },
 })
+vim.api.nvim_create_autocmd({ "ModeChanged", "BufEnter" }, {
+    callback = function()
+        local mode_highlight = "lualine_a" .. require("lualine.highlight").get_mode_suffix()
+        vim.api.nvim_set_hl(0, "CursorLineNr", { link = mode_highlight })
+    end,
+})
 
 -- Automatically pair delimiters
 require("nvim-autopairs").setup({ check_ts = true })
 
 -- Highlight color codes with the color they represent
-require("nvim-highlight-colors").setup({ enable_tailwind = true })
+require("nvim-highlight-colors").setup({ enable_named_colors = false })
 
 -- Better syntax highlighting and some other useful language utilities
 require("nvim-treesitter.configs").setup({
