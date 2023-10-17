@@ -17,6 +17,7 @@ vim.opt.showmode = false
 vim.opt.showtabline = 0
 vim.opt.sidescrolloff = 3
 vim.opt.smartcase = true
+vim.opt.spell = true
 vim.opt.tabstop = 4
 vim.opt.termguicolors = true
 vim.opt.timeout = false
@@ -27,12 +28,9 @@ vim.keymap.set("n", "<Esc>", function()
     vim.cmd([[noh]])
 end)
 
--- Modify some options for specific filetypes
+-- Modify some options per buffer
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
     callback = function()
-        if vim.tbl_contains({ "markdown", "text" }, vim.opt.filetype:get()) then
-            vim.opt.spell = true
-        end
         vim.opt.formatoptions = ""
     end,
 })
@@ -40,16 +38,12 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 -- Automatically reopen buffers at the last known position, with exceptions
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
     callback = function()
-        local ignore_buftype = { "quickfix", "nofile", "help" }
-        local ignore_filetype = { "gitcommit", "gitrebase", "svn", "hgcommit" }
         if
-            vim.tbl_contains(ignore_buftype, vim.bo.buftype)
-            or vim.tbl_contains(ignore_filetype, vim.bo.filetype)
-            or vim.fn.line(".") > 1
+            not vim.tbl_contains({ "gitcommit", "gitrebase" }, vim.opt.filetype:get())
+            or vim.fn.line(".") == 1
         then
-            return
+            vim.cmd([[silent! normal! g`"zz]])
         end
-        vim.cmd([[silent! normal! g`"zz]])
     end,
 })
 
