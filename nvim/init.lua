@@ -96,12 +96,6 @@ end)
 -- Sexy startup screen
 local startify = require("alpha.themes.startify")
 startify.nvim_web_devicons.enabled = false
-local fortune = vim.fn.system("fortune -s | cowsay -f vader")
-local lines = {}
-for l in fortune:gmatch("(.-)\n") do
-    table.insert(lines, l)
-end
-startify.section.header.val = lines
 require("alpha").setup(startify.config)
 
 -- Smart comment toggling
