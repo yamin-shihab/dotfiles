@@ -1,3 +1,33 @@
+# Options
+c.auto_save.session = True
+c.colors.webpage.bg = ""
+c.colors.webpage.preferred_color_scheme = "dark"
+c.completion.height = "33%"
+c.completion.timestamp_format = "%Y-%m-%d %H:%M:%S"
+c.content.blocking.hosts.lists = ["file:///etc/hosts"]
+c.content.blocking.method = "both"
+c.content.cookies.accept = "no-3rdparty"
+c.content.javascript.clipboard = "access"
+c.content.plugins = True
+c.downloads.location.directory = "$HOME/dl"
+c.editor.command = ["wezterm", "start", "nvim", "+call cursor({line}, {column})", "{file}"]
+c.fonts.default_family = "monospace"
+c.fonts.default_size = "12pt"
+c.hints.chars = "arstneio"
+c.hints.mode = "letter"
+c.hints.radius = 0
+c.hints.scatter = False
+c.input.insert_mode.plugins = True
+c.keyhint.radius = 0
+c.prompt.radius = 0
+c.session.lazy_restore = True
+c.spellcheck.languages = [ "en-US" ]
+c.tabs.last_close = "close"
+c.window.hide_decoration = True
+
+# Custom keybinds
+config.bind("z", "spawn --userscript view_in_mpv")
+
 # Dracula color scheme
 palette = {
     "background": "#282A36",
@@ -99,32 +129,5 @@ c.tabs.favicons.scale = 1
 c.tabs.indicator.width = 1
 c.tabs.padding = padding
 
-# Options
-c.auto_save.session = True
-c.colors.webpage.bg = ""
-c.colors.webpage.preferred_color_scheme = "dark"
-c.completion.height = "33%"
-c.completion.timestamp_format = "%Y-%m-%d %H:%M:%S"
-c.content.blocking.hosts.lists = ["file:///etc/hosts"]
-c.content.blocking.method = "both"
-c.content.cookies.accept = "no-3rdparty"
-c.content.javascript.clipboard = "access"
-c.content.plugins = True
-c.downloads.location.directory = "$HOME/dl"
-c.editor.command = ["wezterm", "start", "nvim", "+call cursor({line}, {column})", "{file}"]
-c.fonts.default_family = "monospace"
-c.fonts.default_size = "12pt"
-c.hints.chars = "arstneio"
-c.hints.mode = "letter"
-c.hints.radius = 0
-c.hints.scatter = False
-c.input.insert_mode.plugins = True
-c.keyhint.radius = 0
-c.prompt.radius = 0
-c.session.lazy_restore = True
-c.spellcheck.languages = [ "en-US" ]
-c.tabs.last_close = "close"
-c.window.hide_decoration = True
-
-# Don't load autoconfig
+# Don't load autoconfig.yml
 config.load_autoconfig(False)
