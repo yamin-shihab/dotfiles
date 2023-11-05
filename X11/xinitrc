@@ -15,15 +15,16 @@ DESKTOP="spectrwm"
 export DESKTOP_SESSION="$DESKTOP"
 export XDG_CURRENT_DSEKTOP="$DESKTOP"
 export XDG_SESSION_DESKTOP="$DESKTOP"
+export XDG_SESSION_TYPE="x11"
 
 # Autostart
 dunst &
+echo 15 | canvas -B -a &
 nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings --load-config-only &
 openrgb -p default &
 picom &
 redshift -PO 6000 &
 setxkbmap -layout us -variant colemak &
-variety -n &
 xbanish &
 xset r 66 &
 xset r rate 300 30 &

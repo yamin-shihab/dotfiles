@@ -1,6 +1,3 @@
-# Environment variables
-Defaults env_keep = "*"
-
 # Access control
 %wheel ALL=(ALL:ALL) ALL
 root ALL=(ALL:ALL) ALL
