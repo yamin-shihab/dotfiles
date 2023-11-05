@@ -75,6 +75,7 @@ end
 # Abbreviations that I use
 abbr connect "iwctl station wlan0 connect Atheer"
 abbr cp "cp -iv"
+abbr df "df -h"
 abbr diff "diff --color=auto"
 abbr disconnect "iwctl station wlan0 disconnect"
 abbr gitignore "curl -Lfs https://gitignore.io/api/"
