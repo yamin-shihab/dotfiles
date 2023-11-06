@@ -42,30 +42,20 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
     end,
 })
 
--- Automatically create any needed directories upon writing to a file
-vim.api.nvim_create_autocmd("BufWrite", {
-    callback = function()
-        local dir = vim.fn.expand("<afile>:p:h")
-        if dir:find("%l+://") == 1 then
-            return
-        end
-        if vim.fn.isdirectory(dir) == 0 then
-            vim.fn.mkdir(dir, "p")
-        end
-    end,
-})
-
 -- Update mini.nvim package
 vim.keymap.set("n", "<Leader>p", function()
     local path = vim.fn.stdpath("data") .. "/site/pack/plugins/start"
     if vim.fn.isdirectory(path .. "/mini.nvim") == 1 then
-        vim.fn.jobstart("git pull --recurse-submodules", { cwd = path .. "/mini.nvim" })
+        vim.fn.jobstart("git pull --recurse-submodules", {
+            cwd = path .. "/mini.nvim",
+        })
+        print("Pulling updates for mini.nvim")
     else
         vim.fn.mkdir(path, "p")
-        vim.fn.jobstart(
-            "git clone --recurse-submodules https://github.com/echasnovski/mini.nvim",
-            { cwd = path }
-        )
+        vim.fn.jobstart("git clone --recurse-submodules https://github.com/echasnovski/mini.nvim", {
+            cwd = path,
+        })
+        print("Cloning mini.nvim as package")
     end
     vim.cmd("helptags ALL")
 end)
