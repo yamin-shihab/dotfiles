@@ -2,7 +2,9 @@
 vim.loader.enable()
 vim.opt.breakindent = true
 vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number"
 vim.opt.expandtab = true
+vim.opt.fillchars = "eob: "
 vim.opt.guicursor = ""
 vim.opt.ignorecase = true
 vim.opt.laststatus = 3
@@ -13,17 +15,22 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 3
 vim.opt.shiftwidth = 4
+vim.opt.showbreak = " > "
 vim.opt.showmode = false
 vim.opt.showtabline = 0
 vim.opt.sidescrolloff = 3
 vim.opt.smartcase = true
+vim.opt.smartindent = true
+vim.opt.softtabstop = 4
 vim.opt.spell = true
 vim.opt.tabstop = 4
 vim.opt.termguicolors = true
 vim.opt.timeout = false
 vim.opt.title = true
 vim.opt.ttimeout = false
+vim.opt.undofile = true
 vim.opt.virtualedit = "block"
+vim.opt.wrap = true
 vim.keymap.set("n", "<Esc>", function()
     vim.cmd([[noh]])
 end)
@@ -35,141 +42,166 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
     end,
 })
 
--- Automatically reopen buffers at the last known position, with exceptions
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-    callback = function()
-        if
-            not vim.tbl_contains({ "gitcommit", "gitrebase" }, vim.opt.filetype:get())
-            or vim.fn.line(".") == 1
-        then
-            vim.cmd([[silent! normal! g`"zz]])
-        end
-    end,
-})
-
--- Automatically clean up whitespace upon writing a buffer
-vim.api.nvim_create_autocmd("BufWrite", {
-    callback = function()
-        save_cursor = vim.fn.getpos(".")
-        vim.cmd([[silent! %s/\s\+$//e]])
-        vim.cmd([[silent! %s/\%^\_\s*\n//]])
-        vim.cmd([[silent! %s#\($\n\s*\)\+\%$##]])
-        vim.fn.setpos(".", save_cursor)
-    end,
-})
-
 -- Automatically create any needed directories upon writing to a file
 vim.api.nvim_create_autocmd("BufWrite", {
     callback = function()
         local dir = vim.fn.expand("<afile>:p:h")
+        if dir:find("%l+://") == 1 then
+            return
+        end
         if vim.fn.isdirectory(dir) == 0 then
             vim.fn.mkdir(dir, "p")
         end
     end,
 })
 
--- Neovim plugins to install with Paq
-require("paq")({
-    "brenoprata10/nvim-highlight-colors",
-    "goolord/alpha-nvim",
-    "hiphish/rainbow-delimiters.nvim",
-    "lukas-reineke/indent-blankline.nvim",
-    "mofiqul/dracula.nvim",
-    "numtostr/comment.nvim",
-    "nvim-lualine/lualine.nvim",
-    "nvim-treesitter/nvim-treesitter",
-    "savq/paq-nvim",
-    "smoka7/hop.nvim",
-    "sontungexpt/stcursorword",
-    "windwp/nvim-autopairs",
-})
+-- Update mini.nvim package
 vim.keymap.set("n", "<Leader>p", function()
-    require("paq"):sync()
+    local path = vim.fn.stdpath("data") .. "/site/pack/plugins/start"
+    if vim.fn.isdirectory(path .. "/mini.nvim") == 1 then
+        vim.fn.jobstart("git pull --recurse-submodules", { cwd = path .. "/mini.nvim" })
+    else
+        vim.fn.mkdir(path, "p")
+        vim.fn.jobstart(
+            "git clone --recurse-submodules https://github.com/echasnovski/mini.nvim",
+            { cwd = path }
+        )
+    end
 end)
 
--- Sexy startup screen
-local startify = require("alpha.themes.startify")
-startify.nvim_web_devicons.enabled = false
-require("alpha").setup(startify.config)
+-- Automatic Base16 color scheme generator
+local palette = {
+    base00 = "#282A36",
+    base01 = "#44475A",
+    base02 = "#44475A",
+    base03 = "#6272A4",
+    base04 = "#F8F8F2",
+    base05 = "#F8F8F2",
+    base06 = "#44475A",
+    base07 = "#282A36",
+    base08 = "#FFB86C",
+    base09 = "#BD93F9",
+    base0A = "#8BE9FD",
+    base0B = "#F1FA8c",
+    base0C = "#FF5555",
+    base0D = "#50FA7B",
+    base0E = "#FF79C6",
+    base0F = "#F8F8F2",
+}
+require("mini.base16").setup({ palette = palette })
+vim.api.nvim_set_hl(0, "Comment", { fg = palette.base03, italic = true })
+vim.api.nvim_set_hl(0, "CursorLineNr", { bg = palette.base00, bold = true, italic = true })
+vim.api.nvim_set_hl(0, "LineNr", { fg = palette.base03 })
+vim.api.nvim_set_hl(0, "LineNrAbove", { fg = palette.base03 })
+vim.api.nvim_set_hl(0, "LineNrBelow", { fg = palette.base03 })
+vim.api.nvim_set_hl(0, "SpecialComment", { fg = palette.base0C, italic = true })
+vim.api.nvim_set_hl(0, "WinSeparator", { fg = palette.base03, bg = palette.base00 })
 
--- Smart comment toggling
-require("Comment").setup({
-    padding = false,
-    toggler = { line = "<Leader>cc", block = "<Leader>bb" },
-    opleader = { line = "<Leader>c", block = "<Leader>b" },
-    mappings = { basic = true, extra = false },
-})
-
--- The best color scheme ever
-require("dracula").setup({ italic_comment = true, show_end_of_buffer = true })
-vim.cmd([[colorscheme dracula]])
-
--- Faster movement
-require("hop").setup({ keys = "arstneio" })
-local colors = require("dracula").colors()
-vim.api.nvim_set_hl(0, "HopNextKey", { fg = colors.red })
-vim.api.nvim_set_hl(0, "HopNextKey1", { fg = colors.purple })
-vim.api.nvim_set_hl(0, "HopNextKey2", { fg = colors.green })
-vim.api.nvim_set_hl(0, "HopUnmatched", { fg = colors.selection })
-vim.keymap.set("", "<Leader>w", function()
-    require("hop").hint_words()
-end)
-
--- Show visual indent guides
-require("ibl").setup({
-    indent = { char = "│" },
-    scope = { enabled = false },
-})
-
--- Nicer statusline and cursor line number mode color
-require("lualine").setup({
-    options = {
-        component_separators = { left = "", right = "" },
-        globalstatus = true,
-        icons_enabled = false,
-        section_separators = { left = "", right = "" },
+-- Comment lines with automatic string detection
+require("mini.comment").setup({
+    mappings = {
+        comment = "<Leader>c",
+        comment_line = "<Leader>cc",
+        comment_visual = "<Leader>c",
+        textobject = "<Leader>c",
     },
-    sections = {
-        lualine_b = { "filename" },
-        lualine_c = { "filesize" },
-    },
-    inactive_sections = { nil },
 })
-vim.api.nvim_create_autocmd({ "ModeChanged", "BufEnter" }, {
+
+-- Automatic completion
+require("mini.completion").setup({
+    delay = { completion = 0, info = 0, signature = 0 },
+})
+vim.keymap.set("i", "<Tab>", [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
+vim.keymap.set("i", "<S-Tab>", [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr = true })
+
+-- Automatically highlight words matching word under cursor
+require("mini.cursorword").setup({ delay = 0 })
+
+-- Highlight hexadecimal color codes
+local hipatterns = require("mini.hipatterns")
+hipatterns.setup({
+    delay = { text_change = 0, scroll = 0 },
+    highlighters = { hex_color = hipatterns.gen_highlighter.hex_color() },
+})
+
+--- Quickly jump within visible lines
+local jump2d = require("mini.jump2d")
+require("mini.jump2d").setup({
+    labels = "arstneio",
+    mappings = { start_jumping = "<Leader>j" },
+    silent = true,
+    spotter = jump2d.gen_pattern_spotter(),
+    view = { n_steps_ahead = 2 },
+})
+
+-- Miscellaneous functionality
+require("mini.misc").setup_restore_cursor()
+
+-- Automatically pair certain characters together
+require("mini.pairs").setup({
+    mappings = {
+        ["'"] = {
+            action = "closeopen",
+            pair = "''",
+            neigh_pattern = "[^%a\\&].",
+            register = { cr = false },
+        },
+    },
+})
+
+-- Helpful start screen
+local starter = require("mini.starter")
+starter.setup({
+    content_hooks = {
+        starter.gen_hook.adding_bullet(""),
+        starter.gen_hook.indexing("all", { "Builtin actions" }),
+        starter.gen_hook.padding(3, 1),
+    },
+    evaluate_single = true,
+    footer = vim.api.nvim_exec2([[version]], { output = true }).output:match("(.*)Compilation:"),
+    header = [[
+            _
+ _ ____   _(_)_ __ ___
+| '_ \ \ / / | '_ ` _ \
+| | | \ V /| | | | | | |
+|_| |_|\_/ |_|_| |_| |_|
+    ]],
+    items = {
+        starter.sections.builtin_actions(),
+        starter.sections.recent_files(5, false),
+        starter.sections.recent_files(5, true),
+    },
+    silent = true,
+})
+
+-- Better status line
+require("mini.statusline").setup({
+    content = {
+        active = function()
+            local mode, mode_hl = MiniStatusline.section_mode({})
+            local filename = MiniStatusline.section_filename({})
+            local fileinfo = MiniStatusline.section_fileinfo({})
+            local location = MiniStatusline.section_location({})
+            return MiniStatusline.combine_groups({
+                { hl = mode_hl, strings = { mode } },
+                "%<",
+                { hl = "MiniStatuslineFileinfo", strings = { filename } },
+                "%=",
+                { hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
+                { hl = mode_hl, strings = { location } },
+            })
+        end,
+    },
+    use_icons = false,
+    set_vim_settings = false,
+})
+
+-- Highlight and remove trailing space and lines
+local trailspace = require("mini.trailspace")
+trailspace.setup()
+vim.api.nvim_create_autocmd("BufWrite", {
     callback = function()
-        local mode_highlight = "lualine_a" .. require("lualine.highlight").get_mode_suffix()
-        vim.api.nvim_set_hl(0, "CursorLineNr", { link = mode_highlight })
+        trailspace.trim()
+        trailspace.trim_last_lines()
     end,
 })
-
--- Automatically pair delimiters
-require("nvim-autopairs").setup({ check_ts = true })
-
--- Highlight color codes with the color they represent
-require("nvim-highlight-colors").setup({ enable_named_colors = false })
-
--- Better syntax highlighting and some other useful language utilities
-require("nvim-treesitter.configs").setup({
-    ensure_installed = "all",
-    highlight = { enable = true },
-    indent = { enable = true },
-})
-vim.keymap.set("n", "<Leader>t", function()
-    require("nvim-treesitter.install").update()()
-end)
-
--- Make delimiter colors different per scope level
-require("rainbow-delimiters.setup").setup({
-    highlight = {
-        "rainbowcol1",
-        "rainbowcol2",
-        "rainbowcol3",
-        "rainbowcol4",
-        "rainbowcol5",
-        "rainbowcol6",
-        "rainbowcol7",
-    },
-})
-
--- Underline similar words under cursor
-require("stcursorword").setup({ min_word_length = 1 })
