@@ -32,7 +32,7 @@ vim.opt.undofile = true
 vim.opt.virtualedit = "block"
 vim.opt.wrap = true
 vim.keymap.set("n", "<Esc>", function()
-    vim.cmd([[noh]])
+    vim.cmd("noh")
 end)
 
 -- Modify some options per buffer
@@ -67,6 +67,7 @@ vim.keymap.set("n", "<Leader>p", function()
             { cwd = path }
         )
     end
+    vim.cmd("helptags ALL")
 end)
 
 -- Automatic Base16 color scheme generator
