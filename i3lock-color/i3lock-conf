@@ -1,2 +1,15 @@
 #!/usr/bin/env sh
-exec i3lock -n -k -c 282A36 --inside-color 44475A --ring-color 6272A4 --insidever-color 44475A --ringver-color 50FA7B --insidewrong-color FF5555 --ringwrong-color FF5555 --line-color 282A36 --keyhl-color BD93F9 --bshl-color FF5555 --separator-color 282A36 --verif-color F8F8F2 --wrong-color F8F8F2 --modif-color F8F8F2 --time-color F8F8F2 --date-color F8F8F2 --greeter-color F8F8F2 --date-str %F --time-font "monospace" --date-font "monospace" --verif-font "monospace" --wrong-font "monospace"
+
+# Colors
+foreground="F8F8F2"
+background="282A36"
+select="44475A"
+comment="6272A4"
+red="FF5555"
+green="50FA7B"
+purple="BD93F9"
+
+# Lock screen, screen saver, and power management
+xset s on +dpms
+i3lock -n -k -c $background --inside-color $select --ring-color $comment --insidever-color $select --ringver-color $green --insidewrong-color $red --ringwrong-color $red --line-color $background --keyhl-color $purple --bshl-color $red --separator-color $background --verif-color $foreground --wrong-color $foreground --modif-color $foreground --time-color $foreground --date-color $foreground --greeter-color $foreground --date-str %F --time-font "monospace" --date-font "monospace" --verif-font "monospace" --wrong-font "monospace"
+xset s off -dpms

@@ -49,7 +49,7 @@ set -x XAUTHORITY "$XDG_RUNTIME_DIR/Xauthority"
 set -x XINITRC "$XDG_CONFIG_HOME/X11/xinitrc"
 
 # TTY color scheme
-if test "$TERM_DRACULA" != "true"
+if test "$TERM" = "linux"
     printf %b "\e[40m" "\e[8]"
     printf %b "\e[37m" "\e[8]"
     printf %b "\e]P0282A36"
@@ -69,7 +69,6 @@ if test "$TERM_DRACULA" != "true"
     printf %b "\e]P7F8F8F2"
     printf %b "\e]PFFFFFFF"
     clear
-    set -x TERM_DRACULA "true"
 end
 
 # Abbreviations that I use
