@@ -12,6 +12,7 @@ config.color_scheme = "Dracula (Official)"
 config.enable_tab_bar = false
 config.font = wezterm.font_with_fallback({ "monospace" })
 config.font_size = 14
+config.hide_mouse_cursor_when_typing = false
 config.term = "wezterm"
 config.visual_bell = {
     fade_in_duration_ms = 100,
