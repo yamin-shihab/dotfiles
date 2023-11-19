@@ -26,7 +26,6 @@ vim.opt.spell = true
 vim.opt.tabstop = 4
 vim.opt.termguicolors = true
 vim.opt.timeout = false
-vim.opt.title = true
 vim.opt.ttimeout = false
 vim.opt.undofile = true
 vim.opt.virtualedit = "block"

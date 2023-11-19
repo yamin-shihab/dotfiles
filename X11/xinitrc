@@ -1,8 +1,5 @@
 #!/usr/bin/env sh
 
-# Xresources settings
-xrdb -merge "$HOME/.config/xorg/xresources"
-
 # Scripts related to xinit
 for f in /etc/X11/xinit/xinitrc.d/?*.sh; do
     [ -x "$f" ] && . "$f"
@@ -18,16 +15,15 @@ export XDG_SESSION_DESKTOP="$DESKTOP"
 export XDG_SESSION_TYPE="x11"
 
 # Autostart
-dunst &
-echo 15 | canvas -B -a &
-nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings --load-config-only &
-openrgb -p default &
-redshift -PO 6000 &
-setxkbmap -layout us -variant colemak &
-xset r 66 &
-xset r rate 300 30 &
-xset s off -dpms &
-xsetroot -cursor_name left_ptr &
+command -v dunst &> /dev/null && dunst &
+command -v nvidia-settings &> /dev/null && nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings --load-config-only &
+command -v openrgb &> /dev/null && openrgb -p default &
+command -v redshift &> /dev/null && redshift -PO 6000 &
+command -v setxkbmap &> /dev/null && setxkbmap -layout us -variant colemak &
+command -v xset &> /dev/null && xset r 66 &
+command -v xset &> /dev/null && xset r rate 300 30 &
+command -v xset &> /dev/null && xset s off -dpms &
+if test -f "$HOME/.fehbg"; then "$HOME/.fehbg"; fi &
 
 # Execute the window manager
 exec "$DESKTOP"

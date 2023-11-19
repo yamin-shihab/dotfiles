@@ -26,3 +26,5 @@ set visible-stats on
 
 set echo-control-characters off
 set show-all-if-ambiguous on
+
+TAB: menu-complete
