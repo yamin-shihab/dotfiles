@@ -4,37 +4,57 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
-# Zsh options
-bindkey '^R' history-incremental-search-backward
-setopt autocd nobeep notify
-stty stop undef
+# Directory environment variables
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export CRAWL_DIR="$XDG_DATA_HOME/crawl"
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
+export HISTFILE="$XDG_STATE_HOME/zsh/history"
+export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
+export PARALLEL_HOME="$XDG_CONFIG_HOME/parallel"
+export RANDFILE="$XDG_CACHE_HOME/openssl/rnd"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
+export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
+
+# Zsh environment variables
+export HISTSIZE=1000000
+export KEYTIMEOUT=1
+export PATH="$CARGO_HOME/bin:$HOME/bin:$HOME/.local/bin:/usr/local/games:/usr/games:/usr/local/sbin:/usr/sbin:/usr/local/bin:/usr/bin"
+export PROMPT="%B%F{5}[%F{2}%n%F{5}@%F{4}%M %F{3}%~%F{5}] %F{1}%?%F{6}%#%b%f "
+export RPROMPT="%B%F{8}%D{%F %T%z}%b%f"
+export SAVEHIST=1000000
+setopt autocd correct globdots histignoredups nobeep noflowcontrol notify
 
 # Zsh completion
-_comp_options+=(globdots)
 autoload -Uz compinit
 compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 zmodload zsh/complist
 zstyle ":completion:*" cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
 zstyle ":completion:*" complete-options true
-zstyle ":completion:*" completer _complete _extensions
+zstyle ":completion:*" completer _extensions _complete _approximate
 zstyle ":completion:*" list-colors "${(s.:.)LS_COLORS}"
+zstyle ":completion:*" matcher-list "m:{a-z}={A-Za-z}"
 zstyle ":completion:*" menu select
 zstyle ":completion:*" rehash true
 zstyle ":completion:*" use-cache on
+
+# Zsh keybinds
+autoload -Uz down-line-or-beginning-search
+autoload -Uz up-line-or-beginning-search
+bindkey "$key[Down]" down-line-or-beginning-search
+bindkey "$key[Up]" up-line-or-beginning-search
+bindkey "^R" history-incremental-search-backward
 bindkey -M menuselect "^M" .accept-line
 bindkey -M menuselect "^[[Z" reverse-menu-complete
-
-# Zsh environment variables
-export HISTSIZE=1000000
-export KEYTIMEOUT=1
-export PROMPT="%B%F{5}[%F{2}%n%F{5}@%F{4}%M %F{3}%~%F{5}] %F{1}%?%F{6}%#%b%f "
-export RPROMPT="%B%F{8}%D{%F %T%z}%b%f"
-export SAVEHIST=1000000
+zle -N down-line-or-beginning-search
+zle -N up-line-or-beginning-search
 
 # Program environment variables
 command -v ninja &> /dev/null && export CMAKE_GENERATOR="Ninja"
 command -v nvim &> /dev/null && export EDITOR="nvim" && export VISUAL="nvim"
 command -v qutebrowser &> /dev/null && export BROWSER="qutebrowser"
+command -v wezterm &> /dev/null && export TERMINAL_PROG="wezterm"
 
 # Option environment variables
 export FZF_DEFAULT_COMMAND="find /"
@@ -50,20 +70,6 @@ export LESS_TERMCAP_us=$'\e[01;36m'
 export LS_COLORS="rs=0:di=01;38;2;189;147;249:ln=01;38;2;139;233;253:mh=00:pi=48;2;33;34;44;38;2;241;250;140:so=01;38;2;255;121;198:do=01;38;2;255;121;198:bd=48;2;33;34;44;38;2;241;250;140;01:cd=48;2;33;34;44;38;2;241;250;140;01:or=48;2;33;34;44;38;2;255;85;85;01:mi=00:su=38;2;248;248;242;48;2;255;85;85:sg=38;2;33;34;44;48;2;241;250;140:ca=00:tw=38;2;33;34;44;48;2;80;250;123:ow=38;2;189;147;249;48;2;80;250;123:st=38;2;248;248;242;48;2;189;147;249:ex=01;38;2;80;250;123:*.tar=01;38;2;255;85;85:*.tgz=01;38;2;255;85;85:*.arc=01;38;2;255;85;85:*.arj=01;38;2;255;85;85:*.taz=01;38;2;255;85;85:*.lha=01;38;2;255;85;85:*.lz4=01;38;2;255;85;85:*.lzh=01;38;2;255;85;85:*.lzma=01;38;2;255;85;85:*.tlz=01;38;2;255;85;85:*.txz=01;38;2;255;85;85:*.tzo=01;38;2;255;85;85:*.t7z=01;38;2;255;85;85:*.zip=01;38;2;255;85;85:*.z=01;38;2;255;85;85:*.dz=01;38;2;255;85;85:*.gz=01;38;2;255;85;85:*.lrz=01;38;2;255;85;85:*.lz=01;38;2;255;85;85:*.lzo=01;38;2;255;85;85:*.xz=01;38;2;255;85;85:*.zst=01;38;2;255;85;85:*.tzst=01;38;2;255;85;85:*.bz2=01;38;2;255;85;85:*.bz=01;38;2;255;85;85:*.tbz=01;38;2;255;85;85:*.tbz2=01;38;2;255;85;85:*.tz=01;38;2;255;85;85:*.deb=01;38;2;255;85;85:*.rpm=01;38;2;255;85;85:*.jar=01;38;2;255;85;85:*.war=01;38;2;255;85;85:*.ear=01;38;2;255;85;85:*.sar=01;38;2;255;85;85:*.rar=01;38;2;255;85;85:*.alz=01;38;2;255;85;85:*.ace=01;38;2;255;85;85:*.zoo=01;38;2;255;85;85:*.cpio=01;38;2;255;85;85:*.7z=01;38;2;255;85;85:*.rz=01;38;2;255;85;85:*.cab=01;38;2;255;85;85:*.wim=01;38;2;255;85;85:*.swm=01;38;2;255;85;85:*.dwm=01;38;2;255;85;85:*.esd=01;38;2;255;85;85:*.avif=01;38;2;255;121;198:*.jpg=01;38;2;255;121;198:*.jpeg=01;38;2;255;121;198:*.mjpg=01;38;2;255;121;198:*.mjpeg=01;38;2;255;121;198:*.gif=01;38;2;255;121;198:*.bmp=01;38;2;255;121;198:*.pbm=01;38;2;255;121;198:*.pgm=01;38;2;255;121;198:*.ppm=01;38;2;255;121;198:*.tga=01;38;2;255;121;198:*.xbm=01;38;2;255;121;198:*.xpm=01;38;2;255;121;198:*.tif=01;38;2;255;121;198:*.tiff=01;38;2;255;121;198:*.png=01;38;2;255;121;198:*.svg=01;38;2;255;121;198:*.svgz=01;38;2;255;121;198:*.mng=01;38;2;255;121;198:*.pcx=01;38;2;255;121;198:*.mov=01;38;2;255;121;198:*.mpg=01;38;2;255;121;198:*.mpeg=01;38;2;255;121;198:*.m2v=01;38;2;255;121;198:*.mkv=01;38;2;255;121;198:*.webm=01;38;2;255;121;198:*.webp=01;38;2;255;121;198:*.ogm=01;38;2;255;121;198:*.mp4=01;38;2;255;121;198:*.m4v=01;38;2;255;121;198:*.mp4v=01;38;2;255;121;198:*.vob=01;38;2;255;121;198:*.qt=01;38;2;255;121;198:*.nuv=01;38;2;255;121;198:*.wmv=01;38;2;255;121;198:*.asf=01;38;2;255;121;198:*.rm=01;38;2;255;121;198:*.rmvb=01;38;2;255;121;198:*.flc=01;38;2;255;121;198:*.avi=01;38;2;255;121;198:*.fli=01;38;2;255;121;198:*.flv=01;38;2;255;121;198:*.gl=01;38;2;255;121;198:*.dl=01;38;2;255;121;198:*.xcf=01;38;2;255;121;198:*.xwd=01;38;2;255;121;198:*.yuv=01;38;2;255;121;198:*.cgm=01;38;2;255;121;198:*.emf=01;38;2;255;121;198:*.ogv=01;38;2;255;121;198:*.ogx=01;38;2;255;121;198:*.aac=00;38;2;139;233;253:*.au=00;38;2;139;233;253:*.flac=00;38;2;139;233;253:*.m4a=00;38;2;139;233;253:*.mid=00;38;2;139;233;253:*.midi=00;38;2;139;233;253:*.mka=00;38;2;139;233;253:*.mp3=00;38;2;139;233;253:*.mpc=00;38;2;139;233;253:*.ogg=00;38;2;139;233;253:*.ra=00;38;2;139;233;253:*.wav=00;38;2;139;233;253:*.oga=00;38;2;139;233;253:*.opus=00;38;2;139;233;253:*.spx=00;38;2;139;233;253:*.xspf=00;38;2;139;233;253:*~=00;38;2;98;114;164:*#=00;38;2;98;114;164:*.bak=00;38;2;98;114;164:*.crdownload=00;38;2;98;114;164:*.dpkg-dist=00;38;2;98;114;164:*.dpkg-new=00;38;2;98;114;164:*.dpkg-old=00;38;2;98;114;164:*.dpkg-tmp=00;38;2;98;114;164:*.old=00;38;2;98;114;164:*.orig=00;38;2;98;114;164:*.part=00;38;2;98;114;164:*.rej=00;38;2;98;114;164:*.rpmnew=00;38;2;98;114;164:*.rpmorig=00;38;2;98;114;164:*.rpmsave=00;38;2;98;114;164:*.swp=00;38;2;98;114;164:*.tmp=00;38;2;98;114;164:*.ucf-dist=00;38;2;98;114;164:*.ucf-new=00;38;2;98;114;164:*.ucf-old=00;38;2;98;114;164:"
 export PF_INFO="ascii title host kernel os shell uptime memory wm palette"
 export SUDO_PROMPT="$(tput setab 1 setaf 7 bold)[sudo]$(tput sgr0) $(tput setaf 6)password for$(tput sgr0) $(tput setaf 5)%p$(tput sgr0): "
-
-# Directory environment variables
-export CARGO_HOME="$XDG_DATA_HOME/cargo"
-export CRAWL_DIR="$XDG_DATA_HOME/crawl"
-export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
-export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
-export HISTFILE="$XDG_STATE_HOME/zsh/history"
-export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
-export PARALLEL_HOME="$XDG_CONFIG_HOME/parallel"
-export RANDFILE="$XDG_CACHE_HOME/openssl/rnd"
-export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
-export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
-export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
-export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
 
 # TTY color scheme
 if [ "$TERM" = "linux" ]; then
@@ -88,23 +94,27 @@ if [ "$TERM" = "linux" ]; then
 	clear
 fi
 
-# Aliases that I use
+# Aliases and functions that I use
+function gitignore()
+    curl -Lfs "https://gitignore.io/api/$@"
+end
+function pubip()
+    curl -Lfs "https://ifconfig.co/$@"
+end
+function wttr()
+    curl -Lfs "https://wttr.in/$@"
+end
 alias cp="cp -iv"
 alias df="df -h"
 alias diff="diff --color=auto"
-alias grep="grep --color=auto"
+alias grep="grep -n --color=auto"
 alias ip="ip --color=auto"
 alias ls="ls -AFGNhqv --color=auto --group-directories-first --time-style long-iso"
 alias mkdir="mkdir -pv"
 alias music="mpv --vo=null --term-osd-bar --volume=40 --shuffle"
 alias mv="mv -iv"
-alias pkgclean="paru -c; paru -Sc; paccache -r -k 1"
-alias pubip="curl -Lfs https://ifconfig.co/json"
 alias rm="rm -Iv"
 alias sudo="sudo "
-alias warp-down="wg-quick down wgcf-profile.conf"
-alias warp-up="if test ! -f wgcf-account.toml; wgcf register; end; wgcf generate && wg-quick up wgcf-profile.conf"
-alias wttr="curl -Lfs https://wttr.in"
 alias ytm="yt-dlp --embed-thumbnail --download-archive download-archive.txt --no-post-overwrites -iwx --audio-format opus -o '%(channel)s - %(title)s [%(id)s].%(ext)s' 'https://www.youtube.com/playlist?list=PLycMymTUi1MAVImVNyHThM0aKvbtDxwCc'"
 
 # Something to print on every terminal start
