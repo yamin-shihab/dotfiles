@@ -42,9 +42,9 @@ zstyle ":completion:*" use-cache on
 # Zsh keybinds
 autoload -Uz down-line-or-beginning-search
 autoload -Uz up-line-or-beginning-search
-bindkey "$key[Down]" down-line-or-beginning-search
-bindkey "$key[Up]" up-line-or-beginning-search
 bindkey "^R" history-incremental-search-backward
+bindkey "^[[A" up-line-or-beginning-search
+bindkey "^[[B" down-line-or-beginning-search
 bindkey -M menuselect "^M" .accept-line
 bindkey -M menuselect "^[[Z" reverse-menu-complete
 zle -N down-line-or-beginning-search
@@ -95,15 +95,15 @@ if [ "$TERM" = "linux" ]; then
 fi
 
 # Aliases and functions that I use
-function gitignore()
+function gitignore() {
     curl -Lfs "https://gitignore.io/api/$@"
-end
-function pubip()
+}
+function pubip() {
     curl -Lfs "https://ifconfig.co/$@"
-end
-function wttr()
+}
+function wttr() {
     curl -Lfs "https://wttr.in/$@"
-end
+}
 alias cp="cp -iv"
 alias df="df -h"
 alias diff="diff --color=auto"
