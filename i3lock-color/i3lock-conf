@@ -9,7 +9,5 @@ red="FF5555"
 green="50FA7B"
 purple="BD93F9"
 
-# Lock screen, screen saver, and power management
-xset s on +dpms
+# Lock screen
 i3lock -n -k -c $background --inside-color $select --ring-color $comment --insidever-color $select --ringver-color $green --insidewrong-color $red --ringwrong-color $red --line-color $background --keyhl-color $purple --bshl-color $red --separator-color $background --verif-color $foreground --wrong-color $foreground --modif-color $foreground --time-color $foreground --date-color $foreground --greeter-color $foreground --date-str %F --time-font "monospace" --date-font "monospace" --verif-font "monospace" --wrong-font "monospace"
-xset s off -dpms
