@@ -1,11 +1,12 @@
--- Built-in stuff
+-- Faster loading
 vim.loader.enable()
+
+-- Vim options
 vim.opt.breakindent = true
 vim.opt.cursorline = true
-vim.opt.cursorlineopt = "number"
+vim.opt.cursorlineopt = { "number" }
 vim.opt.expandtab = true
-vim.opt.fillchars = "eob: "
-vim.opt.guicursor = ""
+vim.opt.guicursor = {}
 vim.opt.ignorecase = true
 vim.opt.laststatus = 3
 vim.opt.lazyredraw = true
@@ -18,7 +19,6 @@ vim.opt.shiftwidth = 4
 vim.opt.showbreak = " > "
 vim.opt.showmode = false
 vim.opt.showtabline = 0
-vim.opt.sidescrolloff = 3
 vim.opt.smartcase = true
 vim.opt.smartindent = true
 vim.opt.softtabstop = 4
@@ -26,49 +26,36 @@ vim.opt.spell = true
 vim.opt.tabstop = 4
 vim.opt.termguicolors = true
 vim.opt.timeout = false
-vim.opt.ttimeout = false
 vim.opt.undofile = true
-vim.opt.virtualedit = "block"
-vim.opt.wrap = true
-vim.keymap.set("n", "<Esc>", function()
-    vim.cmd("noh")
-end)
+vim.opt.virtualedit = { "block" }
+vim.opt.wildoptions = { "fuzzy", "pum", "tagfile" }
 
--- Modify some options per buffer
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
+-- Modify some options per buffer restore last cursor position
+vim.api.nvim_create_autocmd("BufWinEnter", {
     callback = function()
-        vim.opt.formatoptions = ""
+        vim.opt.formatoptions = {}
     end,
 })
 
--- Update mini.nvim package
-vim.keymap.set("n", "<Leader>p", function()
-    local path = vim.fn.stdpath("data") .. "/site/pack/plugins/start"
-    if vim.fn.isdirectory(path .. "/mini.nvim") == 1 then
-        vim.fn.jobstart("git pull --recurse-submodules", {
-            cwd = path .. "/mini.nvim",
-        })
-        print("Pulling updates for mini.nvim")
-    else
-        vim.fn.mkdir(path, "p")
-        vim.fn.jobstart("git clone --recurse-submodules https://github.com/echasnovski/mini.nvim", {
-            cwd = path,
-        })
-        print("Cloning mini.nvim as package")
-    end
-    vim.cmd("helptags ALL")
-end)
+-- Paq for managing plugins
+require("paq")({
+    "echasnovski/mini.nvim",
+    "neovim/nvim-lspconfig",
+    "nvim-treesitter/nvim-treesitter",
+    "savq/paq-nvim",
+})
+vim.keymap.set("n", "<Leader>p", ":PaqSync<CR>")
 
 -- Automatic Base16 color scheme generator
 local palette = {
     base00 = "#282A36",
-    base01 = "#44475A",
+    base01 = "#21222C",
     base02 = "#44475A",
     base03 = "#6272A4",
     base04 = "#F8F8F2",
     base05 = "#F8F8F2",
-    base06 = "#44475A",
-    base07 = "#282A36",
+    base06 = "#6272A4",
+    base07 = "#F8F8F2",
     base08 = "#FFB86C",
     base09 = "#BD93F9",
     base0A = "#8BE9FD",
@@ -76,16 +63,9 @@ local palette = {
     base0C = "#FF5555",
     base0D = "#50FA7B",
     base0E = "#FF79C6",
-    base0F = "#F8F8F2",
+    base0F = "#FF5555",
 }
 require("mini.base16").setup({ palette = palette })
-vim.api.nvim_set_hl(0, "Comment", { fg = palette.base03, italic = true })
-vim.api.nvim_set_hl(0, "CursorLineNr", { bg = palette.base00, bold = true, italic = true })
-vim.api.nvim_set_hl(0, "LineNr", { fg = palette.base03 })
-vim.api.nvim_set_hl(0, "LineNrAbove", { fg = palette.base03 })
-vim.api.nvim_set_hl(0, "LineNrBelow", { fg = palette.base03 })
-vim.api.nvim_set_hl(0, "SpecialComment", { fg = palette.base0C, italic = true })
-vim.api.nvim_set_hl(0, "WinSeparator", { fg = palette.base03, bg = palette.base00 })
 
 -- Comment lines with automatic string detection
 require("mini.comment").setup({
@@ -100,6 +80,10 @@ require("mini.comment").setup({
 -- Automatic completion
 require("mini.completion").setup({
     delay = { completion = 0, info = 0, signature = 0 },
+    window = {
+        info = { border = "single" },
+        signature = { border = "single" },
+    },
 })
 vim.keymap.set("i", "<Tab>", [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
 vim.keymap.set("i", "<S-Tab>", [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr = true })
@@ -118,7 +102,7 @@ hipatterns.setup({
 local jump2d = require("mini.jump2d")
 require("mini.jump2d").setup({
     labels = "arstneio",
-    mappings = { start_jumping = "<Leader>j" },
+    mappings = { start_jumping = "<Leader>h" },
     silent = true,
     spotter = jump2d.gen_pattern_spotter(),
     view = { n_steps_ahead = 2 },
@@ -165,17 +149,20 @@ starter.setup({
 })
 
 -- Better status line
-require("mini.statusline").setup({
+local statusline = require("mini.statusline")
+statusline.setup({
     content = {
         active = function()
-            local mode, mode_hl = MiniStatusline.section_mode({})
-            local filename = MiniStatusline.section_filename({})
-            local fileinfo = MiniStatusline.section_fileinfo({})
-            local location = MiniStatusline.section_location({})
-            return MiniStatusline.combine_groups({
+            local mode, mode_hl = statusline.section_mode({})
+            local filename = statusline.section_filename({})
+            local diagnostics = statusline.section_diagnostics({})
+            local fileinfo = statusline.section_fileinfo({})
+            local location = statusline.section_location({})
+            return statusline.combine_groups({
                 { hl = mode_hl, strings = { mode } },
                 "%<",
-                { hl = "MiniStatuslineFileinfo", strings = { filename } },
+                { hl = "MiniStatuslineFilename", strings = { filename } },
+                { hl = "MiniStatuslineDevinfo", strings = { diagnostics } },
                 "%=",
                 { hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
                 { hl = mode_hl, strings = { location } },
@@ -195,3 +182,26 @@ vim.api.nvim_create_autocmd("BufWrite", {
         trailspace.trim_last_lines()
     end,
 })
+
+-- LSP functionality
+local lsp = require("lspconfig")
+for _, server in pairs({ "ccls", "gdscript", "lua_ls", "rust_analyzer" }) do
+    lsp[server].setup({
+        on_attach = function(client)
+            client.server_capabilities.semanticTokensProvider = nil
+        end,
+    })
+end
+vim.keymap.set("n", "<Leader>g", vim.lsp.buf.definition)
+vim.keymap.set("n", "<Leader>d", vim.lsp.buf.hover)
+vim.keymap.set("n", "<Leader>j", vim.diagnostic.goto_next)
+vim.keymap.set("n", "<Leader>k", vim.diagnostic.goto_prev)
+vim.keymap.set("n", "<Leader>r", vim.lsp.buf.rename)
+
+-- Better syntax highlighting and some other useful language utilities
+require("nvim-treesitter.configs").setup({
+    ensure_installed = "all",
+    highlight = { enable = true },
+    indent = { enable = true },
+})
+vim.keymap.set("n", "<Leader>t", ":TSUpdateSync<CR>")
