@@ -1,0 +1,84 @@
+# Basic game options
+OPTIONS=name:Shamin Yihab
+OPTIONS=gender:male
+OPTIONS=fruit:strawberry elephant
+
+OPTIONS=catname:Nyan
+OPTIONS=dogname:Doge
+OPTIONS=horsename:Brony
+
+# Interface options
+OPTIONS=dark_room
+OPTIONS=mouse_support
+OPTIONS=perm_invent
+OPTIONS=popup_dialog
+OPTIONS=statuslines:3
+OPTIONS=windowtype:curses
+
+# Inventory colors
+OPTIONS=menucolors
+MENUCOLOR=" blessed "=green
+MENUCOLOR=" holy "=blue
+MENUCOLOR=" cursed "=red
+MENUCOLOR=" unholy "=red
+MENUCOLOR=" cursed .* (being worn)"=red&underline
+
+MENUCOLOR="(food |cram |K-|C-)ration|gunyoki"=green&bold
+MENUCOLOR="lembas wafer|melon|carrot|tin .* spinach"=green&bold
+MENUCOLOR=" oranges?( named.*)?$"=green&bold
+MENUCOLOR=" pears?( named.*)?$"=green&bold
+MENUCOLOR=" apple|banana|kelp|eucalyptus|garlic|wolfsbane"=green&bold
+MENUCOLOR=" muffin"=green&bold
+MENUCOLOR="(tin of )?(gelatinous cube|acid blob|quivering blob)( corpse)?"=green&bold
+MENUCOLOR="(tin of )?(blue|spotted|ochre) jelly( corpse)?"=green&bold
+MENUCOLOR="(tin of )?lichen|shrieker|violet fungus|(brown|yellow|green|red) mold( corpse)?"=green&bold
+
+MENUCOLOR=" lamp"=yellow
+MENUCOLOR=" candle"=yellow
+MENUCOLOR=" magic lamp|lamp .* magic"=yellow&bold
+MENUCOLOR=" gold piece"=yellow
+
+MENUCOLOR=" cursed.* bag .* holding"=orange&underline
+MENUCOLOR=" bag .* tricks"=orange&underline
+MENUCOLOR=" wand of [Cc]ancel.*"=orange&underline
+MENUCOLOR=" wand called [Cc]ancel.*"=orange&underline
+MENUCOLOR=" wand .* van"=orange&underline
+MENUCOLOR=" wand called .* vanish( .*)?$"=orange&underline
+
+MENUCOLOR="[Ll]oadstone"=orange&underline
+MENUCOLOR=" cursed.* luck(stone)?($| )"=orange&bold
+MENUCOLOR=" cursed.* (Bell of Opening|silver bell|Candelabrum of Invocation|candelabrum|Book of the Dead|papyrus spellbook)"=orange&bold
+MENUCOLOR=" cursed.* unicorn horn"=orange&bold
+
+# Interface colors
+OPTIONS=statushilites
+
+OPTIONS=hitpointbar
+OPTIONS=hilite_status:hitpoints/100%/grey&normal
+OPTIONS=hilite_status:hitpoints/<100%/green&normal
+OPTIONS=hilite_status:hitpoints/<66%/yellow&normal
+OPTIONS=hilite_status:hitpoints/<50%/orange&normal
+OPTIONS=hilite_status:hitpoints/<33%/red&bold
+OPTIONS=hilite_status:hitpoints/<15%/red&inverse
+
+OPTIONS=hilite_status:power/100%/grey&normal
+OPTIONS=hilite_status:power/<100%/green&normal
+OPTIONS=hilite_status:power/<66%/yellow&normal
+OPTIONS=hilite_status:power/<50%/orange&normal
+OPTIONS=hilite_status:power/<33%/red&bold
+
+OPTIONS=hilite_status:cap/burdened/yellow/stressed/orange/strained/red&bold/overtaxed/red&inverse/overloaded/red&inverse&blink
+
+OPTIONS=hilite_status:hunger/satiated/yellow/hungry/orange/weak/red&bold/fainting/red&inverse/fainted/red&inverse&blink
+
+OPTIONS=hilite_status:condition/hallu/yellow
+OPTIONS=hilite_status:condition/conf/orange
+OPTIONS=hilite_status:condition/stun/red&bold
+
+OPTIONS=hilite_status:condition/termill/red&inverse
+OPTIONS=hilite_status:condition/foodpois/red&inverse
+OPTIONS=hilite_status:condition/slime/red&inverse
+
+OPTIONS=hilite_status:characteristics/up/green/down/red
+
+OPTIONS=hilite_status: gold/up/yellow/down/brown
