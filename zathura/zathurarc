@@ -1,14 +1,7 @@
-set font "monospace 14"
-
-set window-title-basename "true"
+set adjust-open width
+set font "monospace 12"
 set selection-clipboard "clipboard"
-
-set notification-error-bg       "#FF5555"
-set notification-error-fg       "#F8F8F2"
-set notification-warning-bg     "#FFB86C"
-set notification-warning-fg     "#44475A"
-set notification-bg             "#282A36"
-set notification-fg             "#F8F8F2"
+set window-title-basename "true"
 
 set completion-bg               "#282A36"
 set completion-fg               "#6272A4"
@@ -16,28 +9,26 @@ set completion-group-bg         "#282A36"
 set completion-group-fg         "#6272A4"
 set completion-highlight-bg     "#44475A"
 set completion-highlight-fg     "#F8F8F2"
-
-set index-bg                    "#282A36"
-set index-fg                    "#F8F8F2"
-set index-active-bg             "#44475A"
-set index-active-fg             "#F8F8F2"
-
-set inputbar-bg                 "#282A36"
-set inputbar-fg                 "#F8F8F2"
-set statusbar-bg                "#282A36"
-set statusbar-fg                "#F8F8F2"
-
-set highlight-color             "#FFB86C"
-set highlight-active-color      "#FF79C6"
-
 set default-bg                  "#282A36"
 set default-fg                  "#F8F8F2"
-
-set render-loading              true
-set render-loading-fg           "#282A36"
-set render-loading-bg           "#F8F8F2"
-
-set recolor-lightcolor          "#282A36"
+set highlight-active-color      "#FF79C6"
+set highlight-color             "#FFB86C"
+set index-active-bg             "#44475A"
+set index-active-fg             "#F8F8F2"
+set index-bg                    "#282A36"
+set index-fg                    "#F8F8F2"
+set inputbar-bg                 "#282A36"
+set inputbar-fg                 "#F8F8F2"
+set notification-bg             "#282A36"
+set notification-error-bg       "#FF5555"
+set notification-error-fg       "#F8F8F2"
+set notification-fg             "#F8F8F2"
+set notification-warning-bg     "#FFB86C"
+set notification-warning-fg     "#44475A"
 set recolor-darkcolor           "#F8F8F2"
-
-set adjust-open width
+set recolor-lightcolor          "#282A36"
+set render-loading              true
+set render-loading-bg           "#F8F8F2"
+set render-loading-fg           "#282A36"
+set statusbar-bg                "#282A36"
+set statusbar-fg                "#F8F8F2"
