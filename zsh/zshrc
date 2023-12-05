@@ -115,7 +115,7 @@ alias ls="ls -AFGNhqv --color=auto --group-directories-first --time-style long-i
 alias mkdir="mkdir -pv"
 alias music="mpv --vo=null --term-osd-bar --volume=40 --shuffle"
 alias mv="mv -iv"
-alias rm="rm -Iv"
+alias rm="rm -Irv"
 alias sudo="sudo "
 alias webcam="ffmpeg -i /dev/video0 -frames 1"
 alias ytm="yt-dlp --embed-thumbnail --download-archive download-archive.txt --no-post-overwrites -iwx --audio-format opus -o '%(channel)s - %(title)s [%(id)s].%(ext)s' 'https://www.youtube.com/playlist?list=PLycMymTUi1MAVImVNyHThM0aKvbtDxwCc'"

@@ -80,10 +80,6 @@ require("mini.comment").setup({
 -- Automatic completion
 require("mini.completion").setup({
     delay = { completion = 0, info = 0, signature = 0 },
-    window = {
-        info = { border = "single" },
-        signature = { border = "single" },
-    },
 })
 vim.keymap.set("i", "<Tab>", [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
 vim.keymap.set("i", "<S-Tab>", [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr = true })
@@ -155,14 +151,12 @@ statusline.setup({
         active = function()
             local mode, mode_hl = statusline.section_mode({})
             local filename = statusline.section_filename({})
-            local diagnostics = statusline.section_diagnostics({})
             local fileinfo = statusline.section_fileinfo({})
             local location = statusline.section_location({})
             return statusline.combine_groups({
                 { hl = mode_hl, strings = { mode } },
                 "%<",
-                { hl = "MiniStatuslineFilename", strings = { filename } },
-                { hl = "MiniStatuslineDevinfo", strings = { diagnostics } },
+                { hl = "MiniStatuslineFileinfo", strings = { filename } },
                 "%=",
                 { hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
                 { hl = mode_hl, strings = { location } },
@@ -200,7 +194,27 @@ vim.keymap.set("n", "<Leader>r", vim.lsp.buf.rename)
 
 -- Better syntax highlighting and some other useful language utilities
 require("nvim-treesitter.configs").setup({
-    ensure_installed = "all",
+    ensure_installed = {
+        "bash",
+        "c",
+        "comment",
+        "diff",
+        "gdscript",
+        "gitcommit",
+        "godot_resource",
+        "ini",
+        "json",
+        "lua",
+        "luap",
+        "make",
+        "markdown",
+        "markdown_inline",
+        "python",
+        "regex",
+        "rust",
+        "toml",
+        "vimdoc",
+    },
     highlight = { enable = true },
     indent = { enable = true },
 })
