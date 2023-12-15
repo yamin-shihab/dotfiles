@@ -24,7 +24,8 @@ export PATH="$CARGO_HOME/bin:$HOME/bin:$HOME/.local/bin:/usr/local/games:/usr/ga
 export PROMPT="%B%F{5}[%F{2}%n%F{5}@%F{4}%M %F{3}%~%F{5}] %F{1}%?%F{6}%#%b%f "
 export RPROMPT="%B%F{8}%D{%F %T%z}%b%f"
 export SAVEHIST=1000000
-setopt autocd correct globdots histignoredups nobeep noflowcontrol notify
+export WLR_NO_HARDWARE_CURSORS=1
+setopt autocd globdots histignoredups nobeep noflowcontrol notify
 
 # Zsh completion
 autoload -Uz compinit
@@ -113,7 +114,7 @@ alias grep="grep -n --color=auto"
 alias ip="ip --color=auto"
 alias ls="ls -AFGNhqv --color=auto --group-directories-first --time-style long-iso"
 alias mkdir="mkdir -pv"
-alias music="mpv --vo=null --term-osd-bar --volume=40 --shuffle"
+alias music="mpv --vo=null --no-video --term-osd-bar --volume=60 --shuffle"
 alias mv="mv -iv"
 alias rm="rm -Irv"
 alias sudo="sudo "

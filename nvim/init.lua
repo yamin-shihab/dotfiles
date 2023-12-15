@@ -26,6 +26,7 @@ vim.opt.spell = true
 vim.opt.tabstop = 4
 vim.opt.termguicolors = true
 vim.opt.timeout = false
+vim.opt.title = true
 vim.opt.undofile = true
 vim.opt.virtualedit = { "block" }
 vim.opt.wildoptions = { "fuzzy", "pum", "tagfile" }
@@ -218,4 +219,4 @@ require("nvim-treesitter.configs").setup({
     highlight = { enable = true },
     indent = { enable = true },
 })
-vim.keymap.set("n", "<Leader>t", ":TSUpdateSync<CR>")
+vim.keymap.set("n", "<Leader>t", ":TSUpdate<CR>")
