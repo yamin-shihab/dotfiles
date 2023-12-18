@@ -92,7 +92,14 @@ require("mini.cursorword").setup({ delay = 0 })
 local hipatterns = require("mini.hipatterns")
 hipatterns.setup({
     delay = { text_change = 0, scroll = 0 },
-    highlighters = { hex_color = hipatterns.gen_highlighter.hex_color() },
+    highlighters = {
+        fixme = { pattern = "%f[%w]()FIXME()%f[%W]", group = "MiniHipatternsFixme" },
+        hack = { pattern = "%f[%w]()HACK()%f[%W]", group = "MiniHipatternsHack" },
+        note = { pattern = "%f[%w]()NOTE()%f[%W]", group = "MiniHipatternsNote" },
+        todo = { pattern = "%f[%w]()TODO()%f[%W]", group = "MiniHipatternsTodo" },
+
+        hex_color = hipatterns.gen_highlighter.hex_color(),
+    },
 })
 
 --- Quickly jump within visible lines
@@ -180,7 +187,7 @@ vim.api.nvim_create_autocmd("BufWrite", {
 
 -- LSP functionality
 local lsp = require("lspconfig")
-for _, server in pairs({ "ccls", "gdscript", "lua_ls", "rust_analyzer" }) do
+for _, server in pairs({ "ccls", "gdscript", "lua_ls", "pyright", "rust_analyzer" }) do
     lsp[server].setup({
         on_attach = function(client)
             client.server_capabilities.semanticTokensProvider = nil
@@ -198,7 +205,6 @@ require("nvim-treesitter.configs").setup({
     ensure_installed = {
         "bash",
         "c",
-        "comment",
         "diff",
         "gdscript",
         "gitcommit",
