@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+for f in /etc/X11/xinit/xinitrc.d/?*.sh; do
+    test -x "$f" && source "$f"
+done
+
+export XDG_CURRENT_DSEKTOP="qtile"
+export XDG_SESSION_DESKTOP="qtile"
+
+openrgb -p default &
+exec qtile start
