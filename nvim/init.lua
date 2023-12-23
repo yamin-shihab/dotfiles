@@ -1,7 +1,5 @@
--- Faster loading
 vim.loader.enable()
 
--- Vim options
 vim.opt.breakindent = true
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = { "number" }
@@ -31,14 +29,12 @@ vim.opt.undofile = true
 vim.opt.virtualedit = { "block" }
 vim.opt.wildoptions = { "fuzzy", "pum", "tagfile" }
 
--- Modify some options per buffer restore last cursor position
 vim.api.nvim_create_autocmd("BufWinEnter", {
     callback = function()
         vim.opt.formatoptions = {}
     end,
 })
 
--- Paq for managing plugins
 require("paq")({
     "echasnovski/mini.nvim",
     "neovim/nvim-lspconfig",
@@ -47,7 +43,6 @@ require("paq")({
 })
 vim.keymap.set("n", "<Leader>p", ":PaqSync<CR>")
 
--- Automatic Base16 color scheme generator
 local palette = {
     base00 = "#282A36",
     base01 = "#21222C",
@@ -68,7 +63,6 @@ local palette = {
 }
 require("mini.base16").setup({ palette = palette })
 
--- Comment lines with automatic string detection
 require("mini.comment").setup({
     mappings = {
         comment = "<Leader>c",
@@ -78,17 +72,14 @@ require("mini.comment").setup({
     },
 })
 
--- Automatic completion
 require("mini.completion").setup({
     delay = { completion = 0, info = 0, signature = 0 },
 })
 vim.keymap.set("i", "<Tab>", [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
 vim.keymap.set("i", "<S-Tab>", [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr = true })
 
--- Automatically highlight words matching word under cursor
 require("mini.cursorword").setup({ delay = 0 })
 
--- Highlight hexadecimal color codes
 local hipatterns = require("mini.hipatterns")
 hipatterns.setup({
     delay = { text_change = 0, scroll = 0 },
@@ -102,7 +93,6 @@ hipatterns.setup({
     },
 })
 
---- Quickly jump within visible lines
 local jump2d = require("mini.jump2d")
 require("mini.jump2d").setup({
     labels = "arstneio",
@@ -112,10 +102,8 @@ require("mini.jump2d").setup({
     view = { n_steps_ahead = 2 },
 })
 
--- Miscellaneous functionality
 require("mini.misc").setup_restore_cursor()
 
--- Automatically pair certain characters together
 require("mini.pairs").setup({
     mappings = {
         ["'"] = {
@@ -127,7 +115,6 @@ require("mini.pairs").setup({
     },
 })
 
--- Helpful start screen
 local starter = require("mini.starter")
 starter.setup({
     content_hooks = {
@@ -152,7 +139,6 @@ starter.setup({
     silent = true,
 })
 
--- Better status line
 local statusline = require("mini.statusline")
 statusline.setup({
     content = {
@@ -175,7 +161,6 @@ statusline.setup({
     set_vim_settings = false,
 })
 
--- Highlight and remove trailing space and lines
 local trailspace = require("mini.trailspace")
 trailspace.setup()
 vim.api.nvim_create_autocmd("BufWrite", {
@@ -185,7 +170,6 @@ vim.api.nvim_create_autocmd("BufWrite", {
     end,
 })
 
--- LSP functionality
 local lsp = require("lspconfig")
 for _, server in pairs({ "ccls", "gdscript", "lua_ls", "pyright", "rust_analyzer" }) do
     lsp[server].setup({
@@ -200,7 +184,6 @@ vim.keymap.set("n", "<Leader>j", vim.diagnostic.goto_next)
 vim.keymap.set("n", "<Leader>k", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "<Leader>r", vim.lsp.buf.rename)
 
--- Better syntax highlighting and some other useful language utilities
 require("nvim-treesitter.configs").setup({
     ensure_installed = {
         "bash",

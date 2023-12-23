@@ -1,4 +1,3 @@
-# Basic game options
 OPTIONS=name:Shamin Yihab
 OPTIONS=gender:male
 OPTIONS=fruit:strawberry elephant
@@ -7,7 +6,6 @@ OPTIONS=catname:Nyan
 OPTIONS=dogname:Doge
 OPTIONS=horsename:Brony
 
-# Interface options
 OPTIONS=dark_room
 OPTIONS=mouse_support
 OPTIONS=perm_invent
@@ -15,7 +13,6 @@ OPTIONS=popup_dialog
 OPTIONS=statuslines:3
 OPTIONS=windowtype:curses
 
-# Inventory colors
 OPTIONS=menucolors
 MENUCOLOR=" blessed "=green
 MENUCOLOR=" holy "=blue
@@ -50,7 +47,6 @@ MENUCOLOR=" cursed.* luck(stone)?($| )"=orange&bold
 MENUCOLOR=" cursed.* (Bell of Opening|silver bell|Candelabrum of Invocation|candelabrum|Book of the Dead|papyrus spellbook)"=orange&bold
 MENUCOLOR=" cursed.* unicorn horn"=orange&bold
 
-# Interface colors
 OPTIONS=statushilites
 
 OPTIONS=hitpointbar

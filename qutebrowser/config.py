@@ -1,4 +1,3 @@
-# Options
 c.auto_save.session = True
 c.colors.webpage.bg = ""
 c.colors.webpage.preferred_color_scheme = "dark"
@@ -23,10 +22,8 @@ c.spellcheck.languages = [ "en-US" ]
 c.tabs.last_close = "close"
 c.window.hide_decoration = True
 
-# Custom keybinds
 config.bind("z", "spawn --userscript view_in_mpv")
 
-# Dracula color scheme
 palette = {
     "background": "#282A36",
     "background-alt": "#282A36",
@@ -127,5 +124,4 @@ c.tabs.favicons.scale = 1
 c.tabs.indicator.width = 1
 c.tabs.padding = padding
 
-# Don't load autoconfig.yml
 config.load_autoconfig(False)
