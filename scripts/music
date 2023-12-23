@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+mpv --vo=null --no-video --term-osd-bar --volume=60 --shuffle "$@"

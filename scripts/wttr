@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+curl -Lfs "https://wttr.in/$@"
