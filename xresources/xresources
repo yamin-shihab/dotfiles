@@ -1,0 +1,43 @@
+*.font: xft:monospace:pixelsize=16
+
+*.intensityStyles: false
+
+*.background: #282A36
+*.foreground: #F8F8F2
+*.color0:     #000000
+*.color1:     #FF5555
+*.color2:     #50FA7B
+*.color3:     #F1FA8C
+*.color4:     #BD93F9
+*.color5:     #FF79C6
+*.color6:     #8BE9FD
+*.color7:     #F8F8F2
+*.color8:     #6272A4
+*.color9:     #FF6E6E
+*.color10:    #69FF94
+*.color11:    #FFFFA5
+*.color12:    #D6ACFF
+*.color13:    #FF92DF
+*.color14:    #A4FFFF
+*.color15:    #FFFFFF
+
+*.scrollBar: false
+*.scrollTtyKeypress: true
+*.scrollTtyOutput: false
+*.scrollWithBuffer: true
+
+*.urgentOnBell: true
+*.visualBell: true
+
+*.perl-ext-common: default,matcher,searchable-scrollback
+
+*.matcher.button: 1
+*.url-launcher: xdg-open
+
+*.iso14755: false
+*.iso14755_52: false
+*.keysym.C-M-c: builtin-string:
+*.keysym.C-M-v: builtin-string:
+*.keysym.C-S-0x3F: searchable-scrollback:start
+*.keysym.C-S-0x43: eval:selection_to_clipboard
+*.keysym.C-S-0x56: eval:paste_clipboard
