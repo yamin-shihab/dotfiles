@@ -13,8 +13,6 @@ export NETHACKOPTIONS="$XDG_CONFIG_HOME/nethack/nethackrc"
 export PARALLEL_HOME="$XDG_CONFIG_HOME/parallel"
 export RANDFILE="$XDG_CACHE_HOME/openssl/rnd"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
-export RXVT_SOCKET="$XDG_RUNTIME_DIR/urxvtd"
-export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
 export XINITRC="$XDG_CONFIG_HOME/xinit/xinitrc"
 
 export HISTSIZE=1000000
@@ -86,6 +84,7 @@ if [ "$TERM" = "linux" ]; then
 	printf %b "\e]PDff88e8"
 	printf %b "\e]PE97e2ff"
 	printf %b "\e]PFffffff"
+    clear
 fi
 
 alias cp="cp -irv"
@@ -99,5 +98,3 @@ alias mkdir="mkdir -pv"
 alias mv="mv -iv"
 alias rm="rm -Irv"
 alias sudo="sudo "
-
-clear
