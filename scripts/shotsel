@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+exec grim -g "$(slurp -d -b 282A3699 -c 6272A4 -F monospace)" "$(date +$HOME/media/pix/screenshots/%F_%T.png)"
