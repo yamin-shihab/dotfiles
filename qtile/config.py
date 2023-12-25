@@ -21,6 +21,7 @@ colors = {
     "yellow": "#F1FA8C",
 }
 
+auto_fullscreen = False
 focus_on_window_activation = "urgent"
 
 wl_input_rules = {
@@ -120,6 +121,7 @@ layouts = [
         border_width=2,
         margin=10,
     ),
+    layout.Max(),
 ]
 
 floating_layout = layout.Floating(
@@ -150,10 +152,11 @@ keys = [
     Key(["mod4"], "3", lazy.group["3"].toscreen()),
     Key(["mod4"], "4", lazy.group["4"].toscreen()),
     Key(["mod4"], "5", lazy.group["5"].toscreen()),
+    Key(["mod4"], "b", lazy.hide_show_bar()),
     Key(["mod4"], "backspace", lazy.spawn("playerctl play-pause")),
     Key(["mod4"], "comma", lazy.to_screen(0)),
     Key(["mod4"], "equal", lazy.spawn("playerctl next")),
-    Key(["mod4"], "f", lazy.window.toggle_fullscreen()),
+    Key(["mod4"], "f", lazy.next_layout()),
     Key(["mod4"], "h", lazy.layout.shrink_main()),
     Key(["mod4"], "j", lazy.group.next_window()),
     Key(["mod4"], "k", lazy.group.prev_window()),
