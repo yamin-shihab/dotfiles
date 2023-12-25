@@ -2,7 +2,10 @@ from libqtile import bar, layout, widget
 from libqtile.backend.wayland import InputConfig
 from libqtile.config import Click, Drag, Group, Key, Screen
 from libqtile.lazy import lazy
-import os, random
+import os, random, subprocess
+
+subprocess.run(["dbus-update-activation-environment", "--systemd", "WAYLAND_DISPLAY", "XDG_CURRENT_DESKTOP"])
+subprocess.run(["systemctl", "--user", "import-environment", "WAYLAND_DISPLAY", "XDG_CURRENT_DESKTOP"])
 
 colors = {
     "background": "#282A36",
@@ -18,8 +21,19 @@ colors = {
     "yellow": "#F1FA8C",
 }
 
-cursor_warp = True
 focus_on_window_activation = "urgent"
+
+wl_input_rules = {
+    "*": InputConfig(
+        accel_profile="flat",
+        kb_layout="us,us",
+        kb_options="grp:win_space_toggle",
+        kb_repeat_delay=300,
+        kb_repeat_rate=40,
+        kb_variant="colemak,",
+        natural_scroll=True,
+    ),
+}
 
 path = os.path.expanduser("~/media/pix/wallpapers/")
 wallpaper = path + random.choice(os.listdir(path))
@@ -120,17 +134,17 @@ keys = [
     Key(["mod4", "shift"], "3", lazy.window.togroup("3")),
     Key(["mod4", "shift"], "4", lazy.window.togroup("4")),
     Key(["mod4", "shift"], "5", lazy.window.togroup("5")),
-    Key(["mod4", "shift"], "backspace", lazy.spawn("pulsemixer --toggle-mute")),
+    Key(["mod4", "shift"], "backspace", lazy.spawn("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")),
     Key(["mod4", "shift"], "comma", lazy.window.toscreen(0)),
-    Key(["mod4", "shift"], "equal", lazy.spawn("pulsemixer --change-volume +20")),
+    Key(["mod4", "shift"], "equal", lazy.spawn("wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 20%+")),
     Key(["mod4", "shift"], "j", lazy.layout.shuffle_down()),
     Key(["mod4", "shift"], "k", lazy.layout.shuffle_up()),
-    Key(["mod4", "shift"], "minus", lazy.spawn("pulsemixer --change-volume -20")),
+    Key(["mod4", "shift"], "minus", lazy.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 20%-")),
     Key(["mod4", "shift"], "period", lazy.window.toscreen(1)),
     Key(["mod4", "shift"], "q", lazy.shutdown()),
     Key(["mod4", "shift"], "r", lazy.reload_config()),
-    Key(["mod4", "shift"], "return", lazy.spawn("urxvtc")),
-    Key(["mod4", "shift"], "s", lazy.spawn("flameshot gui")),
+    Key(["mod4", "shift"], "return", lazy.spawn("foot")),
+    Key(["mod4", "shift"], "s", lazy.spawn("shotsel")),
     Key(["mod4"], "1", lazy.group["1"].toscreen()),
     Key(["mod4"], "2", lazy.group["2"].toscreen()),
     Key(["mod4"], "3", lazy.group["3"].toscreen()),
@@ -148,7 +162,7 @@ keys = [
     Key(["mod4"], "n", lazy.layout.normalize()),
     Key(["mod4"], "period", lazy.to_screen(1)),
     Key(["mod4"], "r", lazy.spawncmd()),
-    Key(["mod4"], "s", lazy.spawn("flameshot full")),
+    Key(["mod4"], "s", lazy.spawn("shot")),
     Key(["mod4"], "t", lazy.window.toggle_floating()),
     Key(["mod4"], "tab", lazy.widget["notify"].clear()),
     Key(["mod4"], "w", lazy.window.kill()),
