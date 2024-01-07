@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-
-exec curl -Lfs "https://ifconfig.co/$@"

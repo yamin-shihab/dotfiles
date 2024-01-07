@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+exec feh --bg-fill "$(find "$HOME/media/pix/wallpapers" -type f | shuf -n 1)" --no-fehbg
