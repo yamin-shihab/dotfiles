@@ -1,24 +1,27 @@
 c.auto_save.session = True
 c.colors.webpage.bg = ""
 c.colors.webpage.preferred_color_scheme = "dark"
-c.completion.height = "20%"
+c.completion.height = "33%"
 c.completion.timestamp_format = "%F %T"
-c.content.blocking.hosts.lists = ["file:///etc/hosts"]
+c.content.blocking.adblock.lists = [
+    "https://easylist-downloads.adblockplus.org/abp-filters-anti-cv.txt",
+    "https://easylist.to/easylist/easylist.txt",
+    "https://easylist.to/easylist/easyprivacy.txt",
+    "https://raw.githubusercontent.com/Spam404/lists/master/adblock-list.txt",
+    "https://raw.githubusercontent.com/bongochong/CombinedPrivacyBlockLists/master/cpbl-abp-list.txt",
+    "https://raw.githubusercontent.com/hoshsadiq/adblock-nocoin-list/master/nocoin.txt",
+    "https://secure.fanboy.co.nz/fanboy-annoyance.txt",
+]
+c.content.blocking.hosts.lists = ["https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts"]
 c.content.blocking.method = "both"
 c.content.cookies.accept = "no-3rdparty"
-c.content.javascript.clipboard = "access"
-c.content.plugins = True
 c.editor.command = ["foot", "nvim", "+call cursor({line}, {column})", "{file}"]
-c.fonts.default_size = "12pt"
+c.fonts.default_size = "16pt"
 c.hints.chars = "arstneio"
-c.hints.mode = "letter"
-c.hints.radius = 0
 c.hints.scatter = False
-c.input.insert_mode.plugins = True
 c.keyhint.radius = 0
 c.prompt.radius = 0
-c.session.lazy_restore = True
-c.spellcheck.languages = [ "en-US" ]
+c.spellcheck.languages = ["en-US"]
 c.tabs.last_close = "close"
 c.window.hide_decoration = True
 
@@ -124,4 +127,4 @@ c.tabs.favicons.scale = 1
 c.tabs.indicator.width = 1
 c.tabs.padding = padding
 
-config.load_autoconfig(False)
+config.load_autoconfig(True)
