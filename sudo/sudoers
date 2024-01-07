@@ -5,5 +5,3 @@ Defaults timestamp_timeout=0
 %sudo ALL=(ALL:ALL) ALL
 %wheel ALL=(ALL:ALL) ALL
 root ALL=(ALL:ALL) ALL
-
-@includedir /etc/sudoers.d

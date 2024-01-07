@@ -1,15 +1,14 @@
-$include /etc/inputrc
-
-set editing-mode vi
-set keymap vi-insert
-set show-mode-in-prompt on
+set bell-style none
 set colored-completion-prefix on
 set colored-stats on
+set echo-control-characters off
+set editing-mode vi
+set keymap vi-insert
 set mark-symlinked-directories on
 set menu-complete-display-prefix on
-set visible-stats on
-set echo-control-characters off
 set show-all-if-ambiguous on
+set show-mode-in-prompt on
+set visible-stats on
 
 $if mode=vi
     set keymap vi-command

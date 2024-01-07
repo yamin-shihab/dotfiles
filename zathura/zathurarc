@@ -1,5 +1,5 @@
 set adjust-open width
-set font "monospace 12"
+set font "monospace 16"
 set selection-clipboard "clipboard"
 set window-title-basename "true"
 
