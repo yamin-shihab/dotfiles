@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-
-exec grim "$(date +$HOME/media/pix/screenshots/%F_%T.png)"

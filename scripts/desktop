@@ -1,4 +1,0 @@
-#!/usr/bin/env sh
-
-export XDG_CURRENT_DESKTOP=wlroots
-exec dbus-run-session qtile start -b wayland
