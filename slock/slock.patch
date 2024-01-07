@@ -1,0 +1,114 @@
+diff --git a/Makefile b/Makefile
+index 6d74b21..8d6cf78 100644
+--- a/Makefile
++++ b/Makefile
+@@ -18,6 +18,7 @@ config.h:
+ 
+ slock: ${OBJ}
+ 	${CC} -o $@ ${OBJ} ${LDFLAGS}
++	strip $@
+ 
+ clean:
+ 	rm -f slock ${OBJ} slock-${VERSION}.tar.gz
+diff --git a/config.def.h b/config.def.h
+index 9855e21..420e500 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -1,12 +1,11 @@
+-/* user and group to drop privileges to */
+-static const char *user  = "nobody";
+-static const char *group = "nogroup";
+-
+ static const char *colorname[NUMCOLS] = {
+-	[INIT] =   "black",     /* after initialization */
+-	[INPUT] =  "#005577",   /* during input */
+-	[FAILED] = "#CC3333",   /* wrong password */
++	[INIT] =   "#282A36",   /* after initialization */
++	[INPUT] =  "#6272A4",   /* during input */
++	[FAILED] = "#FF5555",   /* wrong password */
+ };
+ 
+ /* treat a cleared input like a wrong password (color) */
+-static const int failonclear = 1;
++static const int failonclear = 0;
++
++/* time in seconds to cancel lock with mouse movement */
++static const int timetocancel = 3;
+diff --git a/slock.c b/slock.c
+index b2f14e3..8f6d299 100644
+--- a/slock.c
++++ b/slock.c
+@@ -13,6 +13,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <unistd.h>
++#include <time.h>
+ #include <sys/types.h>
+ #include <X11/extensions/Xrandr.h>
+ #include <X11/keysym.h>
+@@ -24,6 +25,8 @@
+ 
+ char *argv0;
+ 
++static time_t locktime;
++
+ enum {
+ 	INIT,
+ 	INPUT,
+@@ -141,6 +144,7 @@ readpw(Display *dpy, struct xrandr *rr, struct lock **locks, int nscreens,
+ 	oldc = INIT;
+ 
+ 	while (running && !XNextEvent(dpy, &ev)) {
++		running = !((time(NULL) - locktime < timetocancel) && (ev.type == MotionNotify));
+ 		if (ev.type == KeyPress) {
+ 			explicit_bzero(&buf, sizeof(buf));
+ 			num = XLookupString(&ev.xkey, buf, sizeof(buf), &ksym, 0);
+@@ -156,6 +160,22 @@ readpw(Display *dpy, struct xrandr *rr, struct lock **locks, int nscreens,
+ 			    IsPFKey(ksym) ||
+ 			    IsPrivateKeypadKey(ksym))
+ 				continue;
++			if (ev.xkey.state & ControlMask) {
++				switch (ksym) {
++				case XK_u:
++					ksym = XK_Escape;
++					break;
++				case XK_m:
++					ksym = XK_Return;
++					break;
++				case XK_j:
++					ksym = XK_Return;
++					break;
++				case XK_h:
++					ksym = XK_BackSpace;
++					break;
++				}
++			}
+ 			switch (ksym) {
+ 			case XK_Return:
+ 				passwd[len] = '\0';
+@@ -276,6 +296,7 @@ lockscreen(Display *dpy, struct xrandr *rr, int screen)
+ 				XRRSelectInput(dpy, lock->win, RRScreenChangeNotifyMask);
+ 
+ 			XSelectInput(dpy, lock->root, SubstructureNotifyMask);
++			locktime = time(NULL);
+ 			return lock;
+ 		}
+ 
+@@ -325,13 +346,13 @@ main(int argc, char **argv) {
+ 
+ 	/* validate drop-user and -group */
+ 	errno = 0;
+-	if (!(pwd = getpwnam(user)))
+-		die("slock: getpwnam %s: %s\n", user,
++	if (!(pwd = getpwnam(getenv("USER"))))
++		die("slock: getpwnam %s: %s\n", getenv("USER"),
+ 		    errno ? strerror(errno) : "user entry not found");
+ 	duid = pwd->pw_uid;
+ 	errno = 0;
+-	if (!(grp = getgrnam(group)))
+-		die("slock: getgrnam %s: %s\n", group,
++	if (!(grp = getgrnam(getenv("USER"))))
++		die("slock: getgrnam %s: %s\n", getenv("USER"),
+ 		    errno ? strerror(errno) : "group entry not found");
+ 	dgid = grp->gr_gid;
+ 
