@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+
+dbus-update-activation-environment DISPLAY XAUTHORITY
+systemctl --user import-environment DISPLAY XAUTHORITY
+
+export XDG_CURRENT_DSEKTOP=dwm
+export XDG_SESSION_DESKTOP=dwm
+
+nvidia-settings --config="$XDG_CONFIG_HOME/nvidia/settings" --load-config-only &
+openrgb -p default &
+picom &
+wallpaper &
+xautolock -time 3 -locker slock &
+
+while true; do
+    xprop -root -set WM_NAME " $(date +"%F %T") "
+    sleep 1
+done &
+
+exec dwm
