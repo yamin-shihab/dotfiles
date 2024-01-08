@@ -1,5 +1,5 @@
 diff --git a/Makefile b/Makefile
-index 15db421..3284c2d 100644
+index 15db421..b7bf078 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -4,7 +4,7 @@
@@ -25,6 +25,19 @@ index 15db421..3284c2d 100644
  
  clean:
  	rm -f st $(OBJ) st-$(VERSION).tar.gz
+@@ -43,9 +45,12 @@ install: st
+ 	chmod 644 $(DESTDIR)$(MANPREFIX)/man1/st.1
+ 	tic -sx st.info
+ 	@echo Please see the README file regarding the terminfo entry of st.
++	mkdir -p $(DESTDIR)$(APPPREFIX)
++	cp -f st.desktop $(DESTDIR)$(APPPREFIX)
+ 
+ uninstall:
+ 	rm -f $(DESTDIR)$(PREFIX)/bin/st
++	rm -f $(DESTDIR)$(APPPREFIX)/st.desktop
+ 	rm -f $(DESTDIR)$(MANPREFIX)/man1/st.1
+ 
+ .PHONY: all clean dist install uninstall
 diff --git a/boxdraw.c b/boxdraw.c
 new file mode 100644
 index 0000000..28a92d0
@@ -446,7 +459,7 @@ index 0000000..7890500
 +	/* U+2571 - U+2573: unsupported (diagonals) */
 +};
 diff --git a/config.def.h b/config.def.h
-index 91ab8ca..31dad59 100644
+index 91ab8ca..80ff8b1 100644
 --- a/config.def.h
 +++ b/config.def.h
 @@ -5,7 +5,7 @@
@@ -634,10 +647,18 @@ index 91ab8ca..31dad59 100644
 +// Active style
 +#define UNDERCURL_STYLE UNDERCURL_SPIKY
 diff --git a/config.mk b/config.mk
-index 1e306f8..69ddd81 100644
+index 1e306f8..71bee79 100644
 --- a/config.mk
 +++ b/config.mk
-@@ -22,7 +22,7 @@ LIBS = -L$(X11LIB) -lm -lrt -lX11 -lutil -lXft \
+@@ -5,6 +5,7 @@ VERSION = 0.9
+ 
+ # paths
+ PREFIX = /usr/local
++APPPREFIX = $(PREFIX)/share/applications
+ MANPREFIX = $(PREFIX)/share/man
+ 
+ X11INC = /usr/X11R6/include
+@@ -22,7 +23,7 @@ LIBS = -L$(X11LIB) -lm -lrt -lX11 -lutil -lXft \
  
  # flags
  STCPPFLAGS = -DVERSION=\"$(VERSION)\" -D_XOPEN_SOURCE=600
@@ -1437,6 +1458,24 @@ index d6478f5..c48ed8a 100644
  	term.ocx = cx;
  	term.ocy = term.c.y;
  	xfinishdraw();
+diff --git a/st.desktop b/st.desktop
+new file mode 100644
+index 0000000..2d2b76f
+--- /dev/null
++++ b/st.desktop
+@@ -0,0 +1,12 @@
++[Desktop Entry]
++Type=Application
++Exec=st
++TryExec=st
++Icon=utilities-terminal
++Terminal=false
++Categories=System;TerminalEmulator;
++
++Name=st
++GenericName=Terminal
++Comment=st is a simple terminal implementation for X
++StartupWMClass=st-256color
 diff --git a/st.h b/st.h
 index fd3b0d8..6a5c12e 100644
 --- a/st.h
