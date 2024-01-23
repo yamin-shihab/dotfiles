@@ -467,7 +467,7 @@ index 91ab8ca..80ff8b1 100644
   * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
   */
 -static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
-+static char *font = "monospace:size=16";
++static char *font = "monospace:size=12";
  static int borderpx = 2;
  
  /*
