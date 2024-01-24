@@ -6,7 +6,7 @@ OPTIONS=catname:Nyan
 OPTIONS=dogname:Doge
 OPTIONS=horsename:Brony
 
-OPTIONS=autopickup, pickup_types:!"$*+/=?
+OPTIONS=autopickup, pickup_types:!"$+/=?
 
 OPTIONS=dark_room
 OPTIONS=mouse_support

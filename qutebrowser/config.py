@@ -1,7 +1,7 @@
 c.auto_save.session = True
 c.colors.webpage.bg = ""
 c.colors.webpage.preferred_color_scheme = "dark"
-c.completion.height = "33%"
+c.completion.height = "20%"
 c.completion.timestamp_format = "%F %T"
 c.content.blocking.adblock.lists = [
     "https://easylist-downloads.adblockplus.org/abp-filters-anti-cv.txt",

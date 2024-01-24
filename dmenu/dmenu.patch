@@ -15,16 +15,17 @@ index 458c524..5ec319b 100644
  clean:
  	rm -f dmenu stest $(OBJ) dmenu-$(VERSION).tar.gz
 diff --git a/config.def.h b/config.def.h
-index 1edb647..536373f 100644
+index 1edb647..2554e61 100644
 --- a/config.def.h
 +++ b/config.def.h
-@@ -4,14 +4,17 @@
+@@ -3,15 +3,16 @@
+ 
  static int topbar = 1;                      /* -b  option; if 0, dmenu appears at bottom     */
  /* -fn option overrides fonts[0]; default X11 font or font set */
- static const char *fonts[] = {
+-static const char *fonts[] = {
 -	"monospace:size=10"
-+	"monospace:size=12"
- };
+-};
++static const char *fonts[] = { "monospace:size=12" };
  static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
  static const char *colors[SchemeLast][2] = {
  	/*     fg         bg       */
