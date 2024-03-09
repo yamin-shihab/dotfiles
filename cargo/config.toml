@@ -1,0 +1,25 @@
+[build]
+rustc-wrapper = "sccache"
+rustflags = [
+    "-C",
+    "link-arg=-fuse-ld=mold",
+    "-Z",
+    "share-generics=y",
+    "-Z",
+    "threads=0",
+]
+
+[profile.dev]
+codegen-backend = "cranelift"
+debug = 0
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3
+
+[profile.release]
+codegen-units = 1
+lto = "fat"
+
+[unstable]
+codegen-backend = true
