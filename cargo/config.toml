@@ -2,7 +2,7 @@
 rustc-wrapper = "sccache"
 rustflags = [
     "-C",
-    "link-arg=-fuse-ld=mold",
+    "link-arg=-fuse-ld=lld",
     "-Z",
     "share-generics=y",
     "-Z",
@@ -10,7 +10,6 @@ rustflags = [
 ]
 
 [profile.dev]
-codegen-backend = "cranelift"
 debug = 0
 opt-level = 1
 
@@ -20,6 +19,3 @@ opt-level = 3
 [profile.release]
 codegen-units = 1
 lto = "fat"
-
-[unstable]
-codegen-backend = true

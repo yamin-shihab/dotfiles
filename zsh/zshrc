@@ -1,3 +1,5 @@
+emulate sh -c "source /etc/profile"
+
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -17,7 +19,6 @@ export XINITRC="$XDG_CONFIG_HOME/xinit/xinitrc"
 
 export HISTSIZE=1000000
 export KEYTIMEOUT=1
-export PATH="$CARGO_HOME/bin:$HOME/bin:$HOME/.local/bin:/usr/local/games:/usr/games:/usr/local/sbin:/usr/sbin:/usr/local/bin:/usr/bin"
 export PROMPT="%B%F{5}[%F{2}%n%F{5}@%F{4}%M %F{3}%~%F{5}] %F{1}%?%F{6}%#%b%f "
 export RPROMPT="%B%F{8}%D{%F %T}%b%f"
 export SAVEHIST=1000000
