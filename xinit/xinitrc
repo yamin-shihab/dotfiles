@@ -3,8 +3,8 @@
 dbus-update-activation-environment DISPLAY XAUTHORITY
 systemctl --user import-environment DISPLAY XAUTHORITY
 
-export XDG_CURRENT_DSEKTOP=dwm
-export XDG_SESSION_DESKTOP=dwm
+export XDG_CURRENT_DSEKTOP=spectrwm
+export XDG_SESSION_DESKTOP=spectrwm
 
 nvidia-settings --config="$XDG_CONFIG_HOME/nvidia/settings" --load-config-only &
 openrgb -p default &
@@ -17,4 +17,4 @@ while true; do
     sleep 1
 done &
 
-exec dwm
+exec spectrwm
