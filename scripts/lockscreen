@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+foreground="F8F8F2"
+background="282A36"
+select="44475A"
+comment="6272A4"
+red="FF5555"
+green="50FA7B"
+purple="BD93F9"
+
+exec i3lock -n -k -c $background --inside-color $select --ring-color $comment --insidever-color $select --ringver-color $green --insidewrong-color $red --ringwrong-color $red --line-color $background --keyhl-color $purple --bshl-color $red --separator-color $background --verif-color $foreground --wrong-color $foreground --modif-color $foreground --time-color $foreground --date-color $foreground --greeter-color $foreground --date-str %F --time-font "monospace" --date-font "monospace" --verif-font "monospace" --wrong-font "monospace"

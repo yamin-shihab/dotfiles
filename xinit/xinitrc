@@ -10,7 +10,7 @@ nvidia-settings --config="$XDG_CONFIG_HOME/nvidia/settings" --load-config-only &
 openrgb -p default &
 picom &
 wallpaper &
-xautolock -time 5 -locker slock &
+xautolock -time 5 -locker lockscreen &
 
 while true; do
     xprop -root -set WM_NAME " $(date +"%F %T") "
