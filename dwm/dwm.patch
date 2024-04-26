@@ -102,7 +102,7 @@ index 9efa774..eca8b7e 100644
 +	{ MODKEY,                       XK_apostrophe,spawn,       {.v = (const char*[]){ "xautolock", "-locknow", NULL } } },
 +	{ MODKEY,                       XK_equal,  spawn,          {.v = (const char*[]){ "playerctl", "next", NULL } } },
 +	{ MODKEY,                       XK_minus,  spawn,          {.v = (const char*[]){ "playerctl", "previous", NULL } } },
-+	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){ "dmenu_run", NULL } } },
++	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){ "rofi", "-show", "drun", "-monitor", "-4", NULL } } },
 +	{ MODKEY,                       XK_s,      spawn,          {.v = (const char*[]){ "flameshot", "full", NULL } } },
 +	{ MODKEY,                       XK_w,      spawn,          {.v = (const char*[]){ "wallpaper", NULL } } },
 +	{ MODKEY|ShiftMask,             XK_BackSpace,spawn,        {.v = (const char*[]){ "wpctl", "set-mute", "@DEFAULT_AUDIO_SINK@", "toggle", NULL } } },

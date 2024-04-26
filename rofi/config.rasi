@@ -1,0 +1,61 @@
+configuration {
+    modes: "drun";
+    show-icons: true;
+}
+
+* {
+    background: #282A36;
+    comment: #6272A4;
+    foreground: #F8F8F2;
+    purple: #BD93F9;
+    red: #FF5555;
+    selection: #44475A;
+
+    normal-background: @background;
+    normal-foreground: @foreground;
+    urgent-background: @background;
+    urgent-foreground: @red;
+    active-background: @background;
+    active-foreground: @purple;
+
+    selected-normal-background: @foreground;
+    selected-normal-foreground: @background;
+    selected-urgent-background: @red;
+    selected-urgent-foreground: @background;
+    selected-active-background: @purple;
+    selected-active-foreground: @background;
+
+    alternate-normal-background: @selection;
+    alternate-normal-foreground: @foreground;
+    alternate-urgent-background: @selection;
+    alternate-urgent-foreground: @red;
+    alternate-active-background: @selection;
+    alternate-active-foreground: @purple;
+
+    border-color: @comment;
+    separatorcolor: @comment;
+}
+
+window {
+    border: 5px;
+}
+
+entry {
+    placeholder-color: @comment;
+}
+
+num-rows {
+    text-color: @comment;
+}
+
+textbox-num-sep {
+    text-color: @comment;
+}
+
+num-filtered-rows {
+    text-color: @comment;
+}
+
+element-icon {
+    size: 25px;
+}
