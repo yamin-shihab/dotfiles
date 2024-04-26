@@ -33,33 +33,41 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
     end,
 })
 
-require("paq")({
-    "echasnovski/mini.nvim",
-    "neovim/nvim-lspconfig",
-    "nvim-treesitter/nvim-treesitter",
-    "savq/paq-nvim",
-})
-vim.keymap.set("n", "<Leader>p", ":PaqSync<CR>")
+local mini_path = vim.fn.stdpath("data") .. "/site/pack/deps/opt/mini.nvim"
+if not vim.loop.fs_stat(mini_path) then
+    local clone_cmd = {
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/echasnovski/mini.nvim",
+        mini_path,
+    }
+    vim.fn.system(clone_cmd)
+    vim.cmd("packadd mini.nvim | helptags ALL")
+else
+    vim.cmd("packadd mini.nvim")
+end
 
-local palette = {
-    base00 = "#282A36",
-    base01 = "#21222C",
-    base02 = "#44475A",
-    base03 = "#6272A4",
-    base04 = "#F8F8F2",
-    base05 = "#F8F8F2",
-    base06 = "#6272A4",
-    base07 = "#F8F8F2",
-    base08 = "#FFB86C",
-    base09 = "#BD93F9",
-    base0A = "#8BE9FD",
-    base0B = "#F1FA8c",
-    base0C = "#FF5555",
-    base0D = "#50FA7B",
-    base0E = "#FF79C6",
-    base0F = "#FF5555",
-}
-require("mini.base16").setup({ palette = palette })
+require("mini.base16").setup({
+    palette = {
+        base00 = "#282A36",
+        base01 = "#21222C",
+        base02 = "#44475A",
+        base03 = "#6272A4",
+        base04 = "#F8F8F2",
+        base05 = "#F8F8F2",
+        base06 = "#6272A4",
+        base07 = "#F8F8F2",
+        base08 = "#FFB86C",
+        base09 = "#BD93F9",
+        base0A = "#8BE9FD",
+        base0B = "#F1FA8c",
+        base0C = "#FF5555",
+        base0D = "#50FA7B",
+        base0E = "#FF79C6",
+        base0F = "#FF5555",
+    },
+})
 
 require("mini.comment").setup({
     mappings = {
@@ -86,10 +94,20 @@ hipatterns.setup({
         hack = { pattern = "%f[%w]()HACK()%f[%W]", group = "MiniHipatternsHack" },
         note = { pattern = "%f[%w]()NOTE()%f[%W]", group = "MiniHipatternsNote" },
         todo = { pattern = "%f[%w]()TODO()%f[%W]", group = "MiniHipatternsTodo" },
-
         hex_color = hipatterns.gen_highlighter.hex_color(),
     },
 })
+
+local deps = require("mini.deps")
+deps.setup()
+deps.add("echasnovski/mini.nvim")
+deps.add("neovim/nvim-lspconfig")
+deps.add("nvim-treesitter/nvim-treesitter")
+vim.keymap.set("n", "<Leader>p", function()
+    deps.clean({ force = true })
+    deps.update(nil, { force = true })
+    require("nvim-treesitter.install").update()()
+end)
 
 local jump2d = require("mini.jump2d")
 require("mini.jump2d").setup({
@@ -134,7 +152,6 @@ starter.setup({
         starter.sections.recent_files(5, false),
         starter.sections.recent_files(5, true),
     },
-    silent = true,
 })
 
 local statusline = require("mini.statusline")
@@ -169,27 +186,26 @@ vim.api.nvim_create_autocmd("BufWrite", {
 })
 
 local lsp = require("lspconfig")
-for _, server in pairs({ "ccls", "gdscript", "lua_ls", "pyright", "rust_analyzer" }) do
+for _, server in pairs({ "bashls", "ccls", "lua_ls", "pyright", "rust_analyzer" }) do
     lsp[server].setup({
         on_attach = function(client)
             client.server_capabilities.semanticTokensProvider = nil
         end,
     })
 end
-vim.keymap.set("n", "<Leader>g", vim.lsp.buf.definition)
 vim.keymap.set("n", "<Leader>d", vim.lsp.buf.hover)
+vim.keymap.set("n", "<Leader>g", vim.lsp.buf.definition)
 vim.keymap.set("n", "<Leader>j", vim.diagnostic.goto_next)
 vim.keymap.set("n", "<Leader>k", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "<Leader>r", vim.lsp.buf.rename)
+vim.keymap.set("n", "<Leader>t", vim.lsp.buf.type_definition)
 
 require("nvim-treesitter.configs").setup({
     ensure_installed = {
         "bash",
         "c",
         "diff",
-        "gdscript",
         "gitcommit",
-        "godot_resource",
         "ini",
         "json",
         "lua",
@@ -208,4 +224,3 @@ require("nvim-treesitter.configs").setup({
     highlight = { enable = true },
     indent = { enable = true },
 })
-vim.keymap.set("n", "<Leader>t", ":TSUpdate<CR>")
