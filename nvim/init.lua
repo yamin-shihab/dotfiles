@@ -186,7 +186,7 @@ vim.api.nvim_create_autocmd("BufWrite", {
 })
 
 local lsp = require("lspconfig")
-for _, server in pairs({ "bashls", "ccls", "lua_ls", "pyright", "rust_analyzer" }) do
+for _, server in pairs({ "bashls", "ccls", "lua_ls", "pyright", "rust_analyzer", "zls" }) do
     lsp[server].setup({
         on_attach = function(client)
             client.server_capabilities.semanticTokensProvider = nil
@@ -220,6 +220,7 @@ require("nvim-treesitter.configs").setup({
         "toml",
         "vim",
         "vimdoc",
+        "zig",
     },
     highlight = { enable = true },
     indent = { enable = true },

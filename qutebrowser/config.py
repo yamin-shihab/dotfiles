@@ -12,9 +12,10 @@ c.content.blocking.adblock.lists = [
     "https://raw.githubusercontent.com/hoshsadiq/adblock-nocoin-list/master/nocoin.txt",
     "https://secure.fanboy.co.nz/fanboy-annoyance.txt",
 ]
-c.content.blocking.hosts.lists = ["https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts"]
+c.content.blocking.hosts.lists = ["https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-porn/hosts"]
 c.content.blocking.method = "both"
 c.content.cookies.accept = "no-3rdparty"
+c.content.javascript.clipboard = "access"
 c.editor.command = ["foot", "nvim", "+call cursor({line}, {column})", "{file}"]
 c.fonts.default_size = "12pt"
 c.hints.chars = "arstneio"
