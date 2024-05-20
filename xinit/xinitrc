@@ -6,9 +6,11 @@ systemctl --user import-environment DISPLAY XAUTHORITY
 export XDG_CURRENT_DSEKTOP=spectrwm
 export XDG_SESSION_DESKTOP=spectrwm
 
+dunst &
 nvidia-settings --config="$XDG_CONFIG_HOME/nvidia/settings" --load-config-only &
 openrgb -p default &
 picom &
+redshift -PO 6000  &
 wallpaper &
 xautolock -time 5 -locker lockscreen &
 

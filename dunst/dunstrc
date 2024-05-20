@@ -1,0 +1,22 @@
+[global]
+    background = "#282A36"
+    follow = keyboard
+    font = monospace 12
+    foreground = "#F8F8F2"
+    frame_color = "#6272A4"
+    frame_width = 5
+    height = 400
+    history_length = 5
+    icon_corner_radius = 5
+    max_icon_size = 64
+    min_icon_size = 64
+    notification_limit = 5
+    origin = bottom-right
+    separator_height = 2
+    width = 400
+
+[urgency_low]
+    foreground = "#6272A4"
+
+[urgency_critical]
+    foreground = "#FF5555"
