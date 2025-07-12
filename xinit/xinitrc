@@ -12,7 +12,7 @@ openrgb -p default &
 picom &
 redshift -PO 6000  &
 wallpaper &
-xautolock -time 5 -locker lockscreen &
+xss-lock lockscreen &
 
 while true; do
     xprop -root -set WM_NAME " $(date +"%F %T") "

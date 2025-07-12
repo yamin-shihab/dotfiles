@@ -114,7 +114,7 @@ require("mini.jump2d").setup({
     labels = "arstneio",
     mappings = { start_jumping = "<Leader>h" },
     silent = true,
-    spotter = jump2d.gen_pattern_spotter(),
+    spotter = jump2d.gen_spotter.pattern(),
     view = { n_steps_ahead = 2 },
 })
 
@@ -163,12 +163,12 @@ statusline.setup({
             local fileinfo = statusline.section_fileinfo({})
             local location = statusline.section_location({})
             return statusline.combine_groups({
-                { hl = mode_hl, strings = { mode } },
+                { hl = mode_hl,                  strings = { mode } },
                 "%<",
                 { hl = "MiniStatuslineFileinfo", strings = { filename } },
                 "%=",
                 { hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
-                { hl = mode_hl, strings = { location } },
+                { hl = mode_hl,                  strings = { location } },
             })
         end,
     },
@@ -186,12 +186,21 @@ vim.api.nvim_create_autocmd("BufWrite", {
 })
 
 local lsp = require("lspconfig")
-for _, server in pairs({ "bashls", "ccls", "lua_ls", "pyright", "rust_analyzer", "zls" }) do
-    lsp[server].setup({
-        on_attach = function(client)
-            client.server_capabilities.semanticTokensProvider = nil
-        end,
-    })
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+for _, server in pairs({
+    "bashls",
+    "clangd",
+    "cssls",
+    "gdscript",
+    "gdshader_lsp",
+    "html",
+    "lua_ls",
+    "pyright",
+    "rust_analyzer",
+    "zls",
+}) do
+    lsp[server].setup({ capabilities = capabilities })
 end
 vim.keymap.set("n", "<Leader>d", vim.lsp.buf.hover)
 vim.keymap.set("n", "<Leader>g", vim.lsp.buf.definition)
@@ -204,8 +213,11 @@ require("nvim-treesitter.configs").setup({
     ensure_installed = {
         "bash",
         "c",
+        "cpp",
+        "css",
         "diff",
         "gitcommit",
+        "html",
         "ini",
         "json",
         "lua",

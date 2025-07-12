@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-exec mpv av://v4l2:/dev/video0 --demuxer-lavf-format=video4linux2 --demuxer-lavf-o-set=input_format=mjpeg --profile=low-latency --save-position-on-quit=no --screenshot-format=png --screenshot-template="$(date +"$HOME/media/pix/camera/%F_%T")" --untimed
+exec mpv av://v4l2:/dev/video0 --demuxer-lavf-format=video4linux2 --demuxer-lavf-o-set=input_format=mjpeg --input-commands="set vf hflip" --profile=low-latency --save-position-on-quit=no --screenshot-format=png --screenshot-template="$(date +"$HOME/media/pix/camera/%F_%T")" --untimed
