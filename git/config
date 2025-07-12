@@ -1,6 +1,22 @@
-[user]
-    name = Yamin Shihab
-    email = yaminshihab123@gmail.com
+[commit]
+    gpgSign = true
+
+[gpg]
+    format = ssh
+
+[gpg "ssh"]
+    allowedSignersFile = ~/.ssh/allowed_signers
 
 [init]
     defaultBranch = main
+
+[tag]
+    gpgSign = true
+
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+
+[user]
+    email = yaminshihab123@gmail.com
+    name = Yamin Shihab
+    signingkey = ~/.ssh/id_ed25519.pub
