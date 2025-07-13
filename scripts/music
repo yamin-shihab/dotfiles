@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-
-exec mpv --resume-playback=no --save-position-on-quit=no --shuffle --vid=no --volume=60 "$@"

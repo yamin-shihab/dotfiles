@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-
-exec yt-dlp -iwx -o "%(channel)s - %(title)s [%(id)s].%(ext)s" "https://www.youtube.com/playlist?list=PLycMymTUi1MAVImVNyHThM0aKvbtDxwCc" --audio-format opus --download-archive download-archive.txt --embed-thumbnail --no-post-overwrites
