@@ -1,0 +1,90 @@
+{
+  "theme": "Catppuccin Mocha",
+  "icon_theme": "Catppuccin Mocha",
+  "features": {
+    "edit_prediction_provider": "none"
+  },
+  "buffer_font_family": "CommitMono Nerd Font Mono",
+  "buffer_font_size": 16,
+  "ui_font_family": "Adwaita Sans",
+  "ui_font_size": 18,
+  "vim_mode": true,
+  "use_system_path_prompts": false,
+  "cursor_blink": false,
+  "auto_signature_help": true,
+  "inline_code_actions": false,
+  "toolbar": {
+    "selections_menu": true
+  },
+  "title_bar": {
+    "show_branch_icon": true,
+    "show_user_picture": false,
+    "show_sign_in": false
+  },
+  "scrollbar": {
+    "show": "never"
+  },
+  "minimap": {
+    "show": "always",
+    "display_in": "all_editors",
+    "thumb_border": "full"
+  },
+  "search": {
+    "case_sensitive": true,
+    "regex": true
+  },
+  "outline_panel": {
+    "dock": "right"
+  },
+  "collaboration_panel": {
+    "button": false
+  },
+  "notification_panel": {
+    "button": false
+  },
+  "agent": {
+    "version": "2",
+    "enabled": false
+  },
+  "tabs": {
+    "git_status": true,
+    "file_icons": true,
+    "show_diagnostics": "all"
+  },
+  "preview_tabs": {
+    "enable_preview_from_file_finder": true,
+    "enable_preview_from_code_navigation": true
+  },
+  "telemetry": {
+    "metrics": false,
+    "diagnostics": false
+  },
+  "lsp_document_colors": "background",
+  "git": {
+    "inline_blame": {
+      "enabled": false
+    }
+  },
+  "auto_install_extensions": {
+    "basher": true,
+    "cargo-tom": true,
+    "catppuccin": true,
+    "catppuccin-icons": true,
+    "fish": true,
+    "git-firefly": true,
+    "html": true,
+    "ini": true,
+    "log": true,
+    "lua": true,
+    "make": true,
+    "toml": true,
+    "zig": true
+  },
+  "completions": {
+    "lsp_insert_mode": "replace"
+  },
+  "vim": {
+    "toggle_relative_line_numbers": true
+  },
+  "line_indicator_format": "short"
+}
