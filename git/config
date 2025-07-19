@@ -13,9 +13,6 @@
 [tag]
     gpgSign = true
 
-[url "git@github.com:"]
-    insteadOf = https://github.com/
-
 [user]
     email = yaminshihab123@gmail.com
     name = Yamin Shihab

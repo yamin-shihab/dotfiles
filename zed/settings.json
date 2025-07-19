@@ -13,9 +13,6 @@
   "cursor_blink": false,
   "auto_signature_help": true,
   "inline_code_actions": false,
-  "toolbar": {
-    "selections_menu": true
-  },
   "title_bar": {
     "show_branch_icon": true,
     "show_user_picture": false,
